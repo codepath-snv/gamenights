@@ -9,4 +9,4 @@ This is an iOS app to keep records of match results. You can create a group for 
 - Your group of friends play games regularly. You were recently invited to play with them for the first time. You find out they were using this app. You use the app to see what games your friends have played and suggest games you know how to play or want to play.
 
 ## Wireframe
-https://slack-files.com/files-tmb/T02E594GD-F0BBKAZU4-86625f370a/slack_for_ios_upload_1024.jpg
+![Wireframe](wireframe.jpg)
