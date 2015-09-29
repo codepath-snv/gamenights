@@ -127,6 +127,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 })
             }
         })
+    }
 
     private func setupHamburgerViewController() {
         let hamburgerViewController = window?.rootViewController as! HamburgerViewController
