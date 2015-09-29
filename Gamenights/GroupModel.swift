@@ -25,10 +25,8 @@ class GroupModel: NSObject {
 
     func loadAll(onDone: (results: [AnyObject]?, error: NSError?) -> Void) {
         let query = PFQuery(className: "Group")
-        query.findObjectsInBackgroundWithBlock{ (objects: [AnyObject]?, error: NSError?) -> Void in
-            if (error == nil) {
-            }
-        }
+        query.findObjectsInBackgroundWithBlock({ (objects: [AnyObject]?, error: NSError?) -> Void in
+        })
     }
 
     func delete() {
