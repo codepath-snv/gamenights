@@ -14,7 +14,7 @@ class GroupModel: NSObject {
 
     func save(onDone: (error: NSError?) -> Void) {
         let pfObj = PFObject(className: "Group")
-        pfObj["name"] = name
+        pfObj.setValue(name, forKey: "name")
         pfObj.saveInBackgroundWithBlock{(succeeded: Bool, error: NSError?) -> Void in
             if (!succeeded) {
                 print("Failed to save a Group")
