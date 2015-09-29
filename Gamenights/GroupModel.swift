@@ -51,10 +51,9 @@ class GroupModel: NSObject {
         query.findObjectsInBackgroundWithBlock(cb)
     }
 
-    func load(onDone: (result: GroupModel?, error: NSError?) -> Void) {
-        assert(pfObjId != nil, "Need an objectID if you want to load a specific model from Parse")
+    class func loadOne(pfObjId: String!, onDone: (result: GroupModel?, error: NSError?) -> Void) {
         let query = PFQuery(className: "Group")
-        query.getObjectInBackgroundWithId(pfObjId!, block: { (pfResult: PFObject?, error: NSError?) -> Void in
+        query.getObjectInBackgroundWithId(pfObjId, block: { (pfResult: PFObject?, error: NSError?) -> Void in
             if (error != nil) {
                 onDone(result: nil, error: error)
                 return
@@ -66,6 +65,7 @@ class GroupModel: NSObject {
 
     func deleteModel(onDone: (succeeded: Bool, error: NSError?) -> Void) {
         assert(pfObjId != nil, "Need an objectID if you want to delete a specific model from Parse")
+        // TODO: what about dangling child nodes? meh
         let query = PFQuery(className: "Group")
         query.getObjectInBackgroundWithId(pfObjId!, block: { (pfResult: PFObject?, error: NSError?) -> Void in
             if (error != nil) {

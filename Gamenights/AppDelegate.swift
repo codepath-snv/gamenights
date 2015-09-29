@@ -63,5 +63,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         })
     }
 
+    func deleteAllGroupModels() {
+        assert(false, "Don't run this unless you really want to delete all group models, as in, ALL group models")
+        GroupModel.loadAll( { (results: [GroupModel]?, error: NSError?) -> Void in
+            for result in results! {
+                result.deleteModel({(succeeded: Bool, error: NSError?) -> Void in
+                    print("Deleted model named \(result.name)")
+                })
+            }
+        })
+    }
+
 }
 
