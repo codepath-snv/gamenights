@@ -101,12 +101,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                     onDone: { (sessionResults, sessionError) -> Void in
                                         assert(sessionError == nil, "Expect no error")
                                         let loadedSession = SessionModel.findById(sessionResults, id: testSession1.objectId)
-                                        assert(loadedSession!.notes == testSession1.notes)
+                                        assert(loadedSession!.notes == testSession1.notes, "Verify reloaded data")
+                                        print("Re-load check successful")
                                         testGroup1.deleteModel({ (succeeded, deleteError) -> Void in
                                             assert(succeeded && deleteError == nil, "Expect no error")
                                             print("Successfully deleted test group")
                                             GroupModel.loadAll( { (results: [GroupModel]?, error: NSError?) -> Void in
-                                                print("loaded \(results!.count) GroupModels")
+                                                print("Loaded \(results!.count) groupModels (after deleting test crap)")
                                                 for result in results! {
                                                     print("  group named '\(result.name!)' with id \(result.objectId)'")
                                                 }
