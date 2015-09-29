@@ -16,8 +16,8 @@ class GameResultCell: UITableViewCell {
     //    var gameResult: GameResults! {
     var gameResult: [String: String]! {
         didSet {
-            var participants = gameResult["participants"] as String!
-            var winner = gameResult["winner"] as String!
+            let participants = gameResult["participants"] as String!
+            let winner = gameResult["winner"] as String!
             dateLabel.text = gameResult["date"]
             participantsLabel.text = "Participants: \(participants)"
             winnerLabel.text = "Top: \(winner)"
