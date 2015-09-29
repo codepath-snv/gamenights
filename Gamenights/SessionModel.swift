@@ -19,9 +19,9 @@ class SessionModel: NSObject {
         self.parentGroupGameId = parentGroupGameId
         if let pfObj = pfObj {
             pfObjId = pfObj.objectId
-            date = pfObj[""] as? String
-            players = pfObj[""] as? String
-            winner = pfObj[""] as? String
+            date = pfObj["date"] as? String
+            players = pfObj["players"] as? String
+            winner = pfObj["winner"] as? String
             notes = pfObj["notes"] as? String
         }
     }
