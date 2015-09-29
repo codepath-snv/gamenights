@@ -11,7 +11,7 @@ class GroupModel: NSObject {
     var pfObjId: String? = nil
     var name: String? = "New Group"
 
-    init(pfObj: PFObject?) {
+    init(_ pfObj: PFObject?) {
         if let pfObj = pfObj {
             pfObjId = pfObj.objectId
             name = pfObj["name"] as? String
@@ -44,7 +44,7 @@ class GroupModel: NSObject {
             }
             var results = [GroupModel]()
             for object in objects! {
-                results.append(GroupModel(pfObj: object))
+                results.append(GroupModel(object))
             }
             onDone(results: results, error: nil);
         }
@@ -58,7 +58,7 @@ class GroupModel: NSObject {
                 onDone(result: nil, error: error)
                 return
             }
-            let groupModel = GroupModel(pfObj: pfResult)
+            let groupModel = GroupModel(pfResult)
             onDone(result: groupModel, error: nil)
         })
     }

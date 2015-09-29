@@ -27,7 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // [Optional] Track statistics around application opens.
         PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
 
-        self.testModels()
+        //self.testModels()
         return true
     }
 
@@ -54,12 +54,65 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     // TODO: consider moving to GamenightsTests
+    // WTF, seriously need a way to manage async callback stacks like async in node.js
     func testModels() {
-        GroupModel.loadAll( { (results: [GroupModel]?, error: NSError?) -> Void in
-            print("loaded \(results!.count) GroupModels")
-            for result in results! {
-                print("  group named '\(result.name!)' with id \(result.pfObjId)'")
-            }
+        let testGroup1 = GroupModel(nil)
+        testGroup1.name = "Test group 1"
+        testGroup1.save( { (groupError: NSError?) -> Void in
+            assert(groupError == nil, "Expect no error")
+            let parentGroupId = testGroup1.pfObjId
+            let testGroupGame1 = GroupGameModel(parentGroupId: parentGroupId, pfObj: nil)
+            testGroupGame1.name = "Last Night on Earth"
+            testGroupGame1.notes = "Tactical Zombie Battles"
+            testGroupGame1.save( { (groupGameError: NSError?) -> Void in
+                assert(groupGameError == nil, "Expect no error")
+                let parentGroupGameId = testGroupGame1.pfObjId
+                let testSession1 = SessionModel(parentGroupGameId: parentGroupGameId, pfObj: nil)
+                testSession1.date = "2015-09-29"
+                testSession1.players = "Gideon, Shawn, Zhi, Kevin"
+                testSession1.winner = "Zombies"
+                testSession1.notes = "Scenario was \"Burn em out\" but heroes couldn't find enough explosives"
+                testSession1.save( { (sessionError: NSError?) -> Void in
+                    assert(sessionError == nil, "Expect no error")
+                    print("Saved all entities")
+                    // now try to load them back
+                    GroupModel.loadAll({ (groupResults, groupLoadError) -> Void in
+                        assert(groupLoadError == nil, "Expect no error")
+                        let loadedGroup = GroupModel.findById(groupResults, id: testGroup1.pfObjId)
+                        assert(loadedGroup != nil, "Expected to be able to re-load group")
+                        GroupGameModel.loadAllByParentId(loadedGroup?.pfObjId,
+                            onDone: { (groupGameResults, groupGameLoadError) -> Void in
+                                assert(groupGameLoadError == nil, "Expect no error")
+                                let loadedGroupGame = GroupGameModel.findById(groupGameResults, id: testGroupGame1.pfObjId)
+                                assert(loadedGroupGame != nil, "Expected to be able to re-load groupGame")
+                                SessionModel.loadAllByParentId(loadedGroupGame!.pfObjId,
+                                    onDone: { (sessionResults, sessionError) -> Void in
+                                        assert(sessionError == nil, "Expect no error")
+                                        let loadedSession = SessionModel.findById(sessionResults, id: testSession1.pfObjId)
+                                        assert(loadedSession!.notes == testSession1.notes)
+                                        testGroup1.deleteModel({ (succeeded, deleteError) -> Void in
+                                            assert(succeeded && deleteError == nil, "Expect no error")
+                                            print("Successfully deleted test group")
+                                            GroupModel.loadAll( { (results: [GroupModel]?, error: NSError?) -> Void in
+                                                print("loaded \(results!.count) GroupModels")
+                                                for result in results! {
+                                                    print("  group named '\(result.name!)' with id \(result.pfObjId)'")
+                                                }
+                                            })
+                                        })
+                                        testGroupGame1.deleteModel({ (succeeded, deleteError) -> Void in
+                                            assert(succeeded && deleteError == nil, "Expect no error")
+                                            print("Successfully deleted test groupGame")
+                                        })
+                                        testSession1.deleteModel({ (succeeded, deleteError) -> Void in
+                                            assert(succeeded && deleteError == nil, "Expect no error")
+                                            print("Successfully deleted test session")
+                                        })
+                                })
+                        })
+                    })
+                })
+            })
         })
     }
 
