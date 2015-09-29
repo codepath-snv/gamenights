@@ -55,9 +55,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
+    private func setupHamburgerViewController() {
+        let hamburgerViewController = window?.rootViewController as! HamburgerViewController
+
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let menuViewController = storyboard.instantiateViewControllerWithIdentifier("MenuViewController") as! MenuViewController
+        menuViewController.hamburgerViewController = hamburgerViewController
+
+        hamburgerViewController.menuViewController = menuViewController
+    }
+
     // TODO: consider moving to GamenightsTests
     // WTF, seriously need a way to manage async callback stacks like async in node.js
-    func testModels() {
+    private func testModels() {
         let testGroup1 = GroupModel(nil)
         testGroup1.name = "Test group 1"
         testGroup1.save( { (groupError: NSError?) -> Void in
@@ -118,7 +128,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         })
     }
 
-    func deleteAllGroupModels() {
+    private func deleteAllGroupModels() {
         assert(false, "Don't run this unless you really want to delete all group models, as in, ALL group models")
         GroupModel.loadAll( { (results: [GroupModel]?, error: NSError?) -> Void in
             for result in results! {
@@ -127,16 +137,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 })
             }
         })
-    }
-
-    private func setupHamburgerViewController() {
-        let hamburgerViewController = window?.rootViewController as! HamburgerViewController
-        
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let menuViewController = storyboard.instantiateViewControllerWithIdentifier("MenuViewController") as! MenuViewController
-        menuViewController.hamburgerViewController = hamburgerViewController
-        
-        hamburgerViewController.menuViewController = menuViewController
     }
 
 }
