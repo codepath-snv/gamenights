@@ -64,7 +64,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Games" id="bwe-Pc-ybG">
-                        <barButtonItem key="leftBarButtonItem" title="Groups" id="f4C-U1-4pL"/>
+                        <barButtonItem key="leftBarButtonItem" title="Groups" id="f4C-U1-4pL">
+                            <connections>
+                                <action selector="onGroups:" destination="vXZ-lx-hvc" id="1lK-YR-EfH"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Add Game" id="lAN-UI-Xhu">
                             <connections>
                                 <segue destination="SuW-oy-PLT" kind="push" id="9i3-Mz-CRG"/>

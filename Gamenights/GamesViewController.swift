@@ -8,6 +8,10 @@
 
 import UIKit
 
+@objc protocol GamesViewControllerDelegate {
+    optional func gamesViewController(viewController: GamesViewController, didTapGroups sender: AnyObject)
+}
+
 class GamesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 //    var games: [Game]!
     var games: [[String:String]] = [
@@ -16,6 +20,8 @@ class GamesViewController: UIViewController, UITableViewDataSource, UITableViewD
         ["name": "Lego"]
     ]
     @IBOutlet weak var tableView: UITableView!
+    
+    var delegate: HamburgerViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,6 +55,9 @@ class GamesViewController: UIViewController, UITableViewDataSource, UITableViewD
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
     
+    @IBAction func onGroups(sender: AnyObject) {
+        delegate?.gamesViewController(self, didTapGroups: sender)
+    }
     
     /*
     // MARK: - Navigation

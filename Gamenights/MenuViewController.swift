@@ -21,6 +21,8 @@ class MenuViewController: UIViewController {
 
         fetchGroups()
         gamesNavigationController = storyboard.instantiateViewControllerWithIdentifier("GamesNavigationController")
+        let gamesViewController = (gamesNavigationController as! UINavigationController).topViewController as! GamesViewController
+        gamesViewController.delegate = hamburgerViewController
         hamburgerViewController?.contentViewController = gamesNavigationController
     }
 

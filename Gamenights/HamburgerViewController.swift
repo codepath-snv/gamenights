@@ -65,18 +65,22 @@ class HamburgerViewController: UIViewController {
             }
             
         case UIGestureRecognizerState.Ended:
-            UIView.animateWithDuration(0.3, animations: { () -> Void in
-                if velocity.x > 0 {
-                    self.leftConstraint.constant = self.view.frame.size.width - 50
-                } else {
-                    self.leftConstraint.constant = 0
-                }
-                self.view.layoutIfNeeded()
-            })
+            slideMenu(velocity.x > 0)
             
         default:
             NSLog("unhandled Gesture Recognizers State")
         }
+    }
+    
+    private func slideMenu(should: Bool) {
+        UIView.animateWithDuration(0.3, animations: { () -> Void in
+            if should {
+                self.leftConstraint.constant = self.view.frame.size.width - 50
+            } else {
+                self.leftConstraint.constant = 0
+            }
+            self.view.layoutIfNeeded()
+        })
     }
 
     /*
@@ -89,4 +93,10 @@ class HamburgerViewController: UIViewController {
     }
     */
 
+}
+
+extension HamburgerViewController: GamesViewControllerDelegate {
+    func gamesViewController(viewController: GamesViewController, didTapGroups sender: AnyObject) {
+        slideMenu(true)
+    }
 }
