@@ -26,6 +26,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         // [Optional] Track statistics around application opens.
         PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
+        
+        setupHamburgerViewController()
 
         //self.testModels()
         return true
@@ -125,6 +127,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 })
             }
         })
+
+    private func setupHamburgerViewController() {
+        let hamburgerViewController = window?.rootViewController as! HamburgerViewController
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let menuViewController = storyboard.instantiateViewControllerWithIdentifier("MenuViewController") as! MenuViewController
+        menuViewController.hamburgerViewController = hamburgerViewController
+        
+        hamburgerViewController.menuViewController = menuViewController
     }
 
 }
