@@ -49,6 +49,7 @@ class SessionModel: NSObject {
 
     class func loadAllByParentId(parentGroupGameId: String!, onDone: (results: [SessionModel]?, error: NSError?) -> Void) {
         let query = PFQuery(className: "Session")
+        // TODO need where clause
         let cb: PFQueryArrayResultBlock? = {(objects: [PFObject]?, error: NSError?) -> Void in
             if (error != nil) {
                 onDone(results: nil, error: error)

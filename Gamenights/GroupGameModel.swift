@@ -43,6 +43,8 @@ class GroupGameModel: NSObject {
 
     class func loadAllByParentId(parentGroupId: String!, onDone: (results: [GroupGameModel]?, error: NSError?) -> Void) {
         let query = PFQuery(className: "GroupGame")
+        
+        // TODO need where clause
         let cb: PFQueryArrayResultBlock? = {(objects: [PFObject]?, error: NSError?) -> Void in
             if (error != nil) {
                 onDone(results: nil, error: error)
