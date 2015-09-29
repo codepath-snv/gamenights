@@ -10,9 +10,11 @@ import UIKit
 
 class MenuViewController: UIViewController {
     
+    @IBOutlet weak var groupsTableView: UITableView!
+
     var gamesNavigationController: UIViewController!
     var hamburgerViewController: HamburgerViewController?
-    var groups = [Group]()
+    var groups = [GroupModel]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,8 +45,14 @@ class MenuViewController: UIViewController {
     */
     
     private func fetchGroups() {
-        groups.append(Group(dictionary: ["name": "Test Group 1"]))
-        groups.append(Group(dictionary: ["name": "Test Group 2"]))
+        GroupModel.loadAll({ (results, error) -> Void in
+            if (error != nil) {
+                print("Error fetching groups :------(")
+                return
+            }
+            self.groups = results!
+            self.groupsTableView.reloadData()
+        })
     }
 
 }
