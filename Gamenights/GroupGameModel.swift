@@ -8,7 +8,7 @@
 import UIKit
 
 class GroupGameModel: NSObject {
-    var pfObjId: String? = nil
+    var objectId: String? = nil
     var parentGroupId: String? = nil
     var name: String? = "New Game"
     var notes: String? = ""
@@ -16,7 +16,7 @@ class GroupGameModel: NSObject {
     init(parentGroupId: String?, pfObj: PFObject?) {
         self.parentGroupId = parentGroupId
         if let pfObj = pfObj {
-            pfObjId = pfObj.objectId
+            objectId = pfObj.objectId
             name = pfObj["name"] as? String
             notes = pfObj["notes"] as? String
         }
@@ -25,8 +25,8 @@ class GroupGameModel: NSObject {
     // for both create and update
     func save(onDone: (error: NSError?) -> Void) {
         let pfObj = PFObject(className: "GroupGame")
-        if (pfObjId != nil) {
-            pfObj.objectId = pfObjId
+        if (objectId != nil) {
+            pfObj.objectId = objectId
         }
         pfObj["name"] = name
         pfObj["notes"] = notes
@@ -35,7 +35,7 @@ class GroupGameModel: NSObject {
             if (!succeeded) {
                 print("Failed to save a GroupGame")
             } else {
-                self.pfObjId = pfObj.objectId
+                self.objectId = pfObj.objectId
             }
             onDone(error: error)
         }
@@ -59,9 +59,9 @@ class GroupGameModel: NSObject {
         query.findObjectsInBackgroundWithBlock(cb)
     }
 
-    class func loadOne(pfObjId: String!, onDone: (result: GroupGameModel?, error: NSError?) -> Void) {
+    class func loadOne(objectId: String!, onDone: (result: GroupGameModel?, error: NSError?) -> Void) {
         let query = PFQuery(className: "GroupGame")
-        query.getObjectInBackgroundWithId(pfObjId, block: { (pfResult: PFObject?, error: NSError?) -> Void in
+        query.getObjectInBackgroundWithId(objectId, block: { (pfResult: PFObject?, error: NSError?) -> Void in
             if (error != nil) {
                 onDone(result: nil, error: error)
                 return
@@ -73,10 +73,10 @@ class GroupGameModel: NSObject {
     }
 
     func deleteModel(onDone: (succeeded: Bool, error: NSError?) -> Void) {
-        assert(pfObjId != nil, "Need an objectID if you want to delete a specific model from Parse")
+        assert(objectId != nil, "Need an objectID if you want to delete a specific model from Parse")
         // TODO: what about dangling child nodes? meh
         let query = PFQuery(className: "GroupGame")
-        query.getObjectInBackgroundWithId(pfObjId!, block: { (pfResult: PFObject?, error: NSError?) -> Void in
+        query.getObjectInBackgroundWithId(objectId!, block: { (pfResult: PFObject?, error: NSError?) -> Void in
             if (error != nil) {
                 onDone(succeeded: false, error: error)
                 return
@@ -91,7 +91,7 @@ class GroupGameModel: NSObject {
             return nil
         }
         for model in models! {
-            if (model.pfObjId == id) {
+            if (model.objectId == id) {
                 return model
             }
         }

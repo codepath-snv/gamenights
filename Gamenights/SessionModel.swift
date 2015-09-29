@@ -8,7 +8,7 @@
 import UIKit
 
 class SessionModel: NSObject {
-    var pfObjId: String? = nil
+    var objectId: String? = nil
     var parentGroupGameId: String? = nil
     var date: String? = nil
     var players: String? = nil
@@ -18,7 +18,7 @@ class SessionModel: NSObject {
     init(parentGroupGameId: String?, pfObj: PFObject?) {
         self.parentGroupGameId = parentGroupGameId
         if let pfObj = pfObj {
-            pfObjId = pfObj.objectId
+            objectId = pfObj.objectId
             date = pfObj["date"] as? String
             players = pfObj["players"] as? String
             winner = pfObj["winner"] as? String
@@ -29,8 +29,8 @@ class SessionModel: NSObject {
     // for both create and update
     func save(onDone: (error: NSError?) -> Void) {
         let pfObj = PFObject(className: "Session")
-        if (pfObjId != nil) {
-            pfObj.objectId = pfObjId
+        if (objectId != nil) {
+            pfObj.objectId = objectId
         }
         pfObj["date"] = date
         pfObj["players"] = players
@@ -41,7 +41,7 @@ class SessionModel: NSObject {
             if (!succeeded) {
                 print("Failed to save a Session")
             } else {
-                self.pfObjId = pfObj.objectId
+                self.objectId = pfObj.objectId
             }
             onDone(error: error)
         }
@@ -64,9 +64,9 @@ class SessionModel: NSObject {
         query.findObjectsInBackgroundWithBlock(cb)
     }
 
-    class func loadOne(pfObjId: String!, onDone: (result: SessionModel?, error: NSError?) -> Void) {
+    class func loadOne(objectId: String!, onDone: (result: SessionModel?, error: NSError?) -> Void) {
         let query = PFQuery(className: "Session")
-        query.getObjectInBackgroundWithId(pfObjId, block: { (pfResult: PFObject?, error: NSError?) -> Void in
+        query.getObjectInBackgroundWithId(objectId, block: { (pfResult: PFObject?, error: NSError?) -> Void in
             if (error != nil) {
                 onDone(result: nil, error: error)
                 return
@@ -78,9 +78,9 @@ class SessionModel: NSObject {
     }
 
     func deleteModel(onDone: (succeeded: Bool, error: NSError?) -> Void) {
-        assert(pfObjId != nil, "Need an objectID if you want to delete a specific model from Parse")
+        assert(objectId != nil, "Need an objectID if you want to delete a specific model from Parse")
         let query = PFQuery(className: "Session")
-        query.getObjectInBackgroundWithId(pfObjId!, block: { (pfResult: PFObject?, error: NSError?) -> Void in
+        query.getObjectInBackgroundWithId(objectId!, block: { (pfResult: PFObject?, error: NSError?) -> Void in
             if (error != nil) {
                 onDone(succeeded: false, error: error)
                 return
@@ -95,7 +95,7 @@ class SessionModel: NSObject {
             return nil
         }
         for model in models! {
-            if (model.pfObjId == id) {
+            if (model.objectId == id) {
                 return model
             }
         }

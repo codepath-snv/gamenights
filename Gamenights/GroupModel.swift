@@ -8,12 +8,12 @@
 import UIKit
 
 class GroupModel: NSObject {
-    var pfObjId: String? = nil
+    var objectId: String? = nil
     var name: String? = "New Group"
 
     init(_ pfObj: PFObject?) {
         if let pfObj = pfObj {
-            pfObjId = pfObj.objectId
+            objectId = pfObj.objectId
             name = pfObj["name"] as? String
         }
     }
@@ -21,15 +21,15 @@ class GroupModel: NSObject {
     // for both create and update
     func save(onDone: (error: NSError?) -> Void) {
         let pfObj = PFObject(className: "Group")
-        if (pfObjId != nil) {
-            pfObj.objectId = pfObjId
+        if (objectId != nil) {
+            pfObj.objectId = objectId
         }
         pfObj["name"] = name
         pfObj.saveInBackgroundWithBlock{(succeeded: Bool, error: NSError?) -> Void in
             if (!succeeded) {
                 print("Failed to save a Group")
             } else {
-                self.pfObjId = pfObj.objectId
+                self.objectId = pfObj.objectId
             }
             onDone(error: error)
         }
@@ -51,9 +51,9 @@ class GroupModel: NSObject {
         query.findObjectsInBackgroundWithBlock(cb)
     }
 
-    class func loadOne(pfObjId: String!, onDone: (result: GroupModel?, error: NSError?) -> Void) {
+    class func loadOne(objectId: String!, onDone: (result: GroupModel?, error: NSError?) -> Void) {
         let query = PFQuery(className: "Group")
-        query.getObjectInBackgroundWithId(pfObjId, block: { (pfResult: PFObject?, error: NSError?) -> Void in
+        query.getObjectInBackgroundWithId(objectId, block: { (pfResult: PFObject?, error: NSError?) -> Void in
             if (error != nil) {
                 onDone(result: nil, error: error)
                 return
@@ -64,10 +64,10 @@ class GroupModel: NSObject {
     }
 
     func deleteModel(onDone: (succeeded: Bool, error: NSError?) -> Void) {
-        assert(pfObjId != nil, "Need an objectID if you want to delete a specific model from Parse")
+        assert(objectId != nil, "Need an objectID if you want to delete a specific model from Parse")
         // TODO: what about dangling child nodes? meh
         let query = PFQuery(className: "Group")
-        query.getObjectInBackgroundWithId(pfObjId!, block: { (pfResult: PFObject?, error: NSError?) -> Void in
+        query.getObjectInBackgroundWithId(objectId!, block: { (pfResult: PFObject?, error: NSError?) -> Void in
             if (error != nil) {
                 onDone(succeeded: false, error: error)
                 return
@@ -82,7 +82,7 @@ class GroupModel: NSObject {
             return nil
         }
         for model in models! {
-            if (model.pfObjId == id) {
+            if (model.objectId == id) {
                 return model
             }
         }

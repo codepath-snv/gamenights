@@ -72,13 +72,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         testGroup1.name = "Test group 1"
         testGroup1.save( { (groupError: NSError?) -> Void in
             assert(groupError == nil, "Expect no error")
-            let parentGroupId = testGroup1.pfObjId
+            let parentGroupId = testGroup1.objectId
             let testGroupGame1 = GroupGameModel(parentGroupId: parentGroupId, pfObj: nil)
             testGroupGame1.name = "Last Night on Earth"
             testGroupGame1.notes = "Tactical Zombie Battles"
             testGroupGame1.save( { (groupGameError: NSError?) -> Void in
                 assert(groupGameError == nil, "Expect no error")
-                let parentGroupGameId = testGroupGame1.pfObjId
+                let parentGroupGameId = testGroupGame1.objectId
                 let testSession1 = SessionModel(parentGroupGameId: parentGroupGameId, pfObj: nil)
                 testSession1.date = "2015-09-29"
                 testSession1.players = "Gideon, Shawn, Zhi, Kevin"
@@ -90,17 +90,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     // now try to load them back
                     GroupModel.loadAll({ (groupResults, groupLoadError) -> Void in
                         assert(groupLoadError == nil, "Expect no error")
-                        let loadedGroup = GroupModel.findById(groupResults, id: testGroup1.pfObjId)
+                        let loadedGroup = GroupModel.findById(groupResults, id: testGroup1.objectId)
                         assert(loadedGroup != nil, "Expected to be able to re-load group")
-                        GroupGameModel.loadAllByParentId(loadedGroup?.pfObjId,
+                        GroupGameModel.loadAllByParentId(loadedGroup?.objectId,
                             onDone: { (groupGameResults, groupGameLoadError) -> Void in
                                 assert(groupGameLoadError == nil, "Expect no error")
-                                let loadedGroupGame = GroupGameModel.findById(groupGameResults, id: testGroupGame1.pfObjId)
+                                let loadedGroupGame = GroupGameModel.findById(groupGameResults, id: testGroupGame1.objectId)
                                 assert(loadedGroupGame != nil, "Expected to be able to re-load groupGame")
-                                SessionModel.loadAllByParentId(loadedGroupGame!.pfObjId,
+                                SessionModel.loadAllByParentId(loadedGroupGame!.objectId,
                                     onDone: { (sessionResults, sessionError) -> Void in
                                         assert(sessionError == nil, "Expect no error")
-                                        let loadedSession = SessionModel.findById(sessionResults, id: testSession1.pfObjId)
+                                        let loadedSession = SessionModel.findById(sessionResults, id: testSession1.objectId)
                                         assert(loadedSession!.notes == testSession1.notes)
                                         testGroup1.deleteModel({ (succeeded, deleteError) -> Void in
                                             assert(succeeded && deleteError == nil, "Expect no error")
@@ -108,7 +108,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                             GroupModel.loadAll( { (results: [GroupModel]?, error: NSError?) -> Void in
                                                 print("loaded \(results!.count) GroupModels")
                                                 for result in results! {
-                                                    print("  group named '\(result.name!)' with id \(result.pfObjId)'")
+                                                    print("  group named '\(result.name!)' with id \(result.objectId)'")
                                                 }
                                             })
                                         })
