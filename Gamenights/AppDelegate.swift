@@ -27,7 +27,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // [Optional] Track statistics around application opens.
         PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
 
+        self.testModels()
         return true
+    }
+
+    func testModels() {
+        let groupModel = GroupModel(pfObj: nil)
+        groupModel.name = "Test Group 3"
+        groupModel.save( { (error: NSError?) -> Void in
+            print("saved test group")
+            
+            GroupModel.loadAll( { (results: [GroupModel]?, error: NSError?) -> Void in
+                print("loaded \(results!.count) GroupModels")
+                for result in results! {
+                    print("  group named '\(result.name!)' with id \(result.pfObjId)'")
+                }
+                let modifyModel = GroupModel.findById(results, id: "LdO4UxyGPO")
+                modifyModel?.name = "Modified group2"
+                modifyModel?.save( { (error: NSError?) -> Void in
+                    print("ok, saved modified model")
+                })
+            })
+        })
     }
 
     func applicationWillResignActive(application: UIApplication) {
