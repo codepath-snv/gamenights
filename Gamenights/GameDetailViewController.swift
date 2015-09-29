@@ -39,7 +39,7 @@ class GameDetailViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier("GameResultCell", forIndexPath: indexPath) as! GameResultCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("GameResultCell", forIndexPath: indexPath) as! GameResultCell
         
         cell.gameResult = gameResults[indexPath.row]
         return cell
