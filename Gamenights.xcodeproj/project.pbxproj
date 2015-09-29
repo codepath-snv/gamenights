@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		29E0703B1BBA2B8300E9ACE2 /* HamburgerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E0703A1BBA2B8300E9ACE2 /* HamburgerViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		29E0703D1BBA2C8400E9ACE2 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E0703C1BBA2C8400E9ACE2 /* MenuViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		29E070401BBA37EB00E9ACE2 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E0703F1BBA37EB00E9ACE2 /* Group.swift */; settings = {ASSET_TAGS = (); }; };
+		29E070421BBA3B6900E9ACE2 /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E070411BBA3B6900E9ACE2 /* MenuCell.swift */; settings = {ASSET_TAGS = (); }; };
 		B9E9DDDB9F5C6874701B5E67 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E150B66EC1B84DCBC44BB45B /* libPods.a */; };
 		D9081D731BB91403005E3F23 /* GamesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9081D721BB91403005E3F23 /* GamesViewController.swift */; };
 		D9081D761BB91614005E3F23 /* GameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9081D751BB91614005E3F23 /* GameCell.swift */; };
@@ -32,6 +36,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		29E0703A1BBA2B8300E9ACE2 /* HamburgerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HamburgerViewController.swift; sourceTree = "<group>"; };
+		29E0703C1BBA2C8400E9ACE2 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		29E0703F1BBA37EB00E9ACE2 /* Group.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
+		29E070411BBA3B6900E9ACE2 /* MenuCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuCell.swift; sourceTree = "<group>"; };
 		47437790BAC16798DBC51C4E /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		74264B8ECF2A09EC2B67B488 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		D9081D721BB91403005E3F23 /* GamesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GamesViewController.swift; sourceTree = "<group>"; };
@@ -80,6 +88,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		29E0703E1BBA37CD00E9ACE2 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				29E0703F1BBA37EB00E9ACE2 /* Group.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 		D0A8151E9569ECD96E621C9B /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -96,6 +112,8 @@
 				D9081D771BB917D2005E3F23 /* NewGameViewController.swift */,
 				D9081D791BB91888005E3F23 /* NewGameResultViewController.swift */,
 				D9081D7B1BB91901005E3F23 /* GameDetailViewController.swift */,
+				29E0703A1BBA2B8300E9ACE2 /* HamburgerViewController.swift */,
+				29E0703C1BBA2C8400E9ACE2 /* MenuViewController.swift */,
 			);
 			name = "View Controller";
 			sourceTree = "<group>";
@@ -105,6 +123,7 @@
 			children = (
 				D9081D751BB91614005E3F23 /* GameCell.swift */,
 				D9081D7D1BB91931005E3F23 /* GameResultCell.swift */,
+				29E070411BBA3B6900E9ACE2 /* MenuCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -132,6 +151,7 @@
 		D97021291BB90D9800843307 /* Gamenights */ = {
 			isa = PBXGroup;
 			children = (
+				29E0703E1BBA37CD00E9ACE2 /* Models */,
 				D9081D741BB915DA005E3F23 /* Views */,
 				D9081D711BB9133A005E3F23 /* View Controller */,
 				D970212C1BB90D9800843307 /* AppDelegate.swift */,
@@ -308,7 +328,11 @@
 				D9081D7E1BB91931005E3F23 /* GameResultCell.swift in Sources */,
 				D9081D7C1BB91901005E3F23 /* GameDetailViewController.swift in Sources */,
 				D9081D731BB91403005E3F23 /* GamesViewController.swift in Sources */,
+				29E070401BBA37EB00E9ACE2 /* Group.swift in Sources */,
 				D9081D7A1BB91888005E3F23 /* NewGameResultViewController.swift in Sources */,
+				29E070421BBA3B6900E9ACE2 /* MenuCell.swift in Sources */,
+				29E0703D1BBA2C8400E9ACE2 /* MenuViewController.swift in Sources */,
+				29E0703B1BBA2B8300E9ACE2 /* HamburgerViewController.swift in Sources */,
 				D9081D781BB917D2005E3F23 /* NewGameViewController.swift in Sources */,
 				D970212D1BB90D9800843307 /* AppDelegate.swift in Sources */,
 				D9081D761BB91614005E3F23 /* GameCell.swift in Sources */,
