@@ -53,12 +53,27 @@ class GroupModel: NSObject {
 
     func load(onDone: (result: GroupModel?, error: NSError?) -> Void) {
         assert(pfObjId != nil, "Need an objectID if you want to load a specific model from Parse")
-        // TODO
+        let query = PFQuery(className: "Group")
+        query.getObjectInBackgroundWithId(pfObjId!, block: { (pfResult: PFObject?, error: NSError?) -> Void in
+            if (error != nil) {
+                onDone(result: nil, error: error)
+                return
+            }
+            let groupModel = GroupModel(pfObj: pfResult)
+            onDone(result: groupModel, error: nil)
+        })
     }
 
-    func delete() {
+    func deleteModel(onDone: (succeeded: Bool, error: NSError?) -> Void) {
         assert(pfObjId != nil, "Need an objectID if you want to delete a specific model from Parse")
-        // TODO
+        let query = PFQuery(className: "Group")
+        query.getObjectInBackgroundWithId(pfObjId!, block: { (pfResult: PFObject?, error: NSError?) -> Void in
+            if (error != nil) {
+                onDone(succeeded: false, error: error)
+                return
+            }
+            pfResult?.deleteInBackgroundWithBlock(onDone)
+        })
     }
 
     // convenience method to find a certain model in the list by id
