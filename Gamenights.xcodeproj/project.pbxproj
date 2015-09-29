@@ -19,6 +19,7 @@
 		D97021341BB90D9800843307 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D97021331BB90D9800843307 /* Images.xcassets */; };
 		D97021371BB90D9800843307 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D97021351BB90D9800843307 /* LaunchScreen.xib */; };
 		D97021431BB90D9800843307 /* GamenightsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97021421BB90D9800843307 /* GamenightsTests.swift */; };
+		F33FCE401BBA31C800D61EF4 /* GroupModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33FCE3F1BBA31C800D61EF4 /* GroupModel.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +51,7 @@
 		D97021411BB90D9800843307 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D97021421BB90D9800843307 /* GamenightsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamenightsTests.swift; sourceTree = "<group>"; };
 		E150B66EC1B84DCBC44BB45B /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		F33FCE3F1BBA31C800D61EF4 /* GroupModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupModel.swift; sourceTree = "<group>"; };
 		F3FD18901BBA1ED200B7F114 /* Gamenights-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Gamenights-Bridging-Header.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -132,6 +134,7 @@
 		D97021291BB90D9800843307 /* Gamenights */ = {
 			isa = PBXGroup;
 			children = (
+				F3879A021BBA225A00393C83 /* Models */,
 				D9081D741BB915DA005E3F23 /* Views */,
 				D9081D711BB9133A005E3F23 /* View Controller */,
 				D970212C1BB90D9800843307 /* AppDelegate.swift */,
@@ -167,6 +170,14 @@
 				D97021411BB90D9800843307 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F3879A021BBA225A00393C83 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F33FCE3F1BBA31C800D61EF4 /* GroupModel.swift */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -307,6 +318,7 @@
 			files = (
 				D9081D7E1BB91931005E3F23 /* GameResultCell.swift in Sources */,
 				D9081D7C1BB91901005E3F23 /* GameDetailViewController.swift in Sources */,
+				F33FCE401BBA31C800D61EF4 /* GroupModel.swift in Sources */,
 				D9081D731BB91403005E3F23 /* GamesViewController.swift in Sources */,
 				D9081D7A1BB91888005E3F23 /* NewGameResultViewController.swift in Sources */,
 				D9081D781BB917D2005E3F23 /* NewGameViewController.swift in Sources */,
