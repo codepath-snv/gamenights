@@ -21,6 +21,7 @@ class MenuViewController: UIViewController {
 
         fetchGroups()
         gamesNavigationController = storyboard.instantiateViewControllerWithIdentifier("GamesNavigationController")
+        hamburgerViewController?.contentViewController = gamesNavigationController
     }
 
     override func didReceiveMemoryWarning() {
