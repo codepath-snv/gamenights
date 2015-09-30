@@ -13,17 +13,19 @@ class MenuViewController: UIViewController {
     @IBOutlet weak var groupsTableView: UITableView!
 
     var gamesNavigationController: UIViewController!
+    var gamesViewController: GamesViewController!
     var hamburgerViewController: HamburgerViewController?
     var groups = [GroupModel]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
 
         fetchGroups()
         gamesNavigationController = storyboard.instantiateViewControllerWithIdentifier("GamesNavigationController")
-        let gamesViewController = (gamesNavigationController as! UINavigationController).topViewController as! GamesViewController
+        gamesViewController = (gamesNavigationController as! UINavigationController).topViewController as! GamesViewController
+
         gamesViewController.delegate = hamburgerViewController
         hamburgerViewController?.contentViewController = gamesNavigationController
     }
@@ -52,6 +54,10 @@ class MenuViewController: UIViewController {
             }
             self.groups = results!
             self.groupsTableView.reloadData()
+            // Also add in check here to use the last visited group from last session instead
+            if self.groups.count != 0 {
+                self.gamesViewController.group = self.groups[0]
+            }
         })
     }
 
@@ -80,7 +86,9 @@ extension MenuViewController: UITableViewDelegate {
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        
+
         hamburgerViewController?.contentViewController = gamesNavigationController
+        let gamesViewController = (gamesNavigationController as! UINavigationController).topViewController as! GamesViewController
+        gamesViewController.group = groups[indexPath.row]
     }
 }

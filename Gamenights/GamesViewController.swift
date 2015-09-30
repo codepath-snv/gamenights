@@ -13,35 +13,44 @@ import UIKit
 }
 
 class GamesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-//    var games: [Game]!
-    var games: [[String:String]] = [
-        ["name": "Poker"],
-        ["name": "Bang"],
-        ["name": "Lego"]
-    ]
+    var games = [GroupGameModel]()
+
     @IBOutlet weak var tableView: UITableView!
     
     var delegate: HamburgerViewController?
+    
+    var group: GroupModel? {
+        didSet {
+            view.layoutIfNeeded()
+            fetchGroupGames(group!.objectId)
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
         tableView.delegate = self
-        
+
         tableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    }
+    
+    private func fetchGroupGames(groupId: String!) {
+        GroupGameModel.loadAllByParentId(groupId, onDone: { (results, error) -> Void in
+            if (error != nil) {
+                print("Error getting group games.")
+                return
+            }
+            self.games = results!
+            self.tableView.reloadData()
+        })
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        if games != nil {
-            return games.count
-//        } else {
-//            return 0
-//        }
+        return games.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -58,15 +67,30 @@ class GamesViewController: UIViewController, UITableViewDataSource, UITableViewD
     @IBAction func onGroups(sender: AnyObject) {
         delegate?.gamesViewController(self, didTapGroups: sender)
     }
-    
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "GroupGameSegue" {
+            let cell = sender as! UITableViewCell
+            let indexPath = tableView.indexPathForCell(cell)!
+            
+            let game = games[indexPath.row]
+            let gameDetailNavController = segue.destinationViewController as! UINavigationController
+            let gameDetailViewController = gameDetailNavController.topViewController as! GameDetailViewController
+            gameDetailViewController.game = game
+        } else if segue.identifier == "addGameSegue" {
+            let newGameViewController = segue.destinationViewController as! NewGameViewController
+            newGameViewController.groupId = group?.objectId
+        } else if (segue.identifier == "addSessionFromCellSegue") {
+            let button = sender as! UIButton
+            let view = button.superview!
+            let cell = view.superview as!UITableViewCell
+            let indexPath = tableView.indexPathForCell(cell)!
+            
+            let game = games[indexPath.row]
+            let newGameResultViewController = segue.destinationViewController as! NewGameResultViewController
+            newGameResultViewController.groupId = game.objectId
+        }
     }
-    */
+
 
 }
