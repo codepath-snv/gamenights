@@ -17,8 +17,8 @@ class HamburgerViewController: UIViewController {
     var initialLeftMargin: CGFloat!
     
     var menuViewController: UIViewController? {
-        didSet(oldMneuViewController) {
-            removeViewController(oldMneuViewController)
+        didSet(oldMenuViewController) {
+            removeViewController(oldMenuViewController)
             
             view.layoutIfNeeded()
             
