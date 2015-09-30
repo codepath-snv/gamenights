@@ -10,13 +10,12 @@ import UIKit
 
 class GameCell: UITableViewCell {
     @IBOutlet weak var gameLabel: UILabel!
-    @IBOutlet weak var topLabel: UILabel!
+    @IBOutlet weak var notesLabel: UILabel!
 
-//    var game: Game! {
-    var game: [String: String]! {
+    var game: GroupGameModel! {
         didSet {
-            gameLabel.text = game["name"]
-            topLabel.text = "Top: ZZZ"
+            gameLabel.text = game.name as String!
+            notesLabel.text = game.notes as String!
         }
     }
     
