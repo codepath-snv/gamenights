@@ -11,7 +11,7 @@ import UIKit
 class MenuCell: UITableViewCell {
     @IBOutlet weak var groupLabel: UILabel!
     
-    var group: Group! {
+    var group: GroupModel! {
         didSet {
             groupLabel.text = group.name!
         }
