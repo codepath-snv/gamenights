@@ -9,20 +9,21 @@
 import UIKit
 
 class MenuViewController: UIViewController {
-    
-    @IBOutlet weak var groupsTableView: UITableView!
+
+    @IBOutlet weak var playersCollectionView: UICollectionView!
 
     var gamesNavigationController: UIViewController!
     var gamesViewController: GamesViewController!
     var hamburgerViewController: HamburgerViewController?
     var groups = [GroupModel]()
+    var players = [Player]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
 
-        fetchGroups()
+        getPlayers()
         gamesNavigationController = storyboard.instantiateViewControllerWithIdentifier("GamesNavigationController")
         gamesViewController = (gamesNavigationController as! UINavigationController).topViewController as! GamesViewController
 
@@ -46,49 +47,42 @@ class MenuViewController: UIViewController {
     }
     */
     
-    private func fetchGroups() {
-        GroupModel.loadAll({ (results, error) -> Void in
-            if (error != nil) {
-                print("Error fetching groups :------(")
-                return
-            }
-            self.groups = results!
-            self.groupsTableView.reloadData()
-            // Also add in check here to use the last visited group from last session instead
-            if self.groups.count != 0 {
-                self.gamesViewController.group = self.groups[0]
-            }
-        })
+    private func getPlayers() {
+        players = [
+            Player(dictionary: ["name": "Z"]),
+            Player(dictionary: ["name": "Gideon"]),
+            Player(dictionary: ["name": "Shawn"]),
+            Player(dictionary: ["name": "Kevin"])
+        ]
+        playersCollectionView.reloadData()
     }
 
 }
 
-extension MenuViewController: UITableViewDataSource {
+extension MenuViewController: UICollectionViewDataSource {
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
+    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+        return 1;
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return groups.count
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return players.count;
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("MenuCell", forIndexPath: indexPath) as! MenuCell
-        cell.group = groups[indexPath.row]
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        let cell = playersCollectionView.dequeueReusableCellWithReuseIdentifier("MenuCell", forIndexPath: indexPath) as! MenuCell
+        
+        cell.player = players[indexPath.row]
         
         return cell
     }
+
 }
 
-extension MenuViewController: UITableViewDelegate {
-    
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+extension MenuViewController: UICollectionViewDelegate {
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        playersCollectionView.deselectItemAtIndexPath(indexPath, animated: true)
         
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
-
-        hamburgerViewController?.contentViewController = gamesNavigationController
-        let gamesViewController = (gamesNavigationController as! UINavigationController).topViewController as! GamesViewController
-        gamesViewController.group = groups[indexPath.row]
+        // show player details
     }
 }
