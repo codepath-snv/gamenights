@@ -25,7 +25,7 @@
                                         <rect key="frame" x="0.0" y="86" width="320" height="88"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0aY-nz-KlS" id="ytd-Ye-sdg">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="87.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="83"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Game Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bd8-ro-mJQ">
@@ -103,7 +103,7 @@
                                         <rect key="frame" x="0.0" y="86" width="320" height="145"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ctW-Xr-pGb" id="qdf-Iy-7Ke">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="144.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="118"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="09/20/2015" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nuC-3O-b58">
@@ -329,7 +329,7 @@
                             <constraint firstAttribute="trailing" secondItem="du7-SV-ouX" secondAttribute="trailing" id="O0T-9p-fEi"/>
                             <constraint firstItem="du7-SV-ouX" firstAttribute="top" secondItem="ibG-S0-88z" secondAttribute="top" id="YsG-xX-h5R"/>
                             <constraint firstItem="Oej-Yp-Ld8" firstAttribute="top" secondItem="uWD-iE-zOR" secondAttribute="bottom" id="oeD-Ag-8XB"/>
-                            <constraint firstAttribute="trailing" secondItem="uWD-iE-zOR" secondAttribute="trailing" id="xE3-Ma-Xvq"/>
+                            <constraint firstItem="uWD-iE-zOR" firstAttribute="width" secondItem="ibG-S0-88z" secondAttribute="width" id="yGR-qT-bh3"/>
                             <constraint firstItem="uWD-iE-zOR" firstAttribute="leading" secondItem="ibG-S0-88z" secondAttribute="leading" id="ytA-i6-xWg"/>
                         </constraints>
                     </view>
@@ -368,7 +368,7 @@
                                         <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uGg-mx-3zk" id="6pS-pA-qgF">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Group 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zJL-lr-z94">

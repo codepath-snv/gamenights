@@ -17,18 +17,27 @@ class HamburgerViewController: UIViewController {
     var initialLeftMargin: CGFloat!
     
     var menuViewController: UIViewController? {
-        didSet {
+        didSet(oldMenuViewController) {
+            removeViewController(oldMenuViewController)
+            
             view.layoutIfNeeded()
             
+            menuViewController?.willMoveToParentViewController(self)
             menuView.addSubview(menuViewController!.view)
+            menuViewController?.didMoveToParentViewController(self)
             menuViewController!.view.frame = menuView.bounds
         }
     }
     
     var contentViewController: UIViewController? {
-        didSet {
+        didSet(oldContentViewController) {
+            removeViewController(oldContentViewController)
+            
             contentViewController!.view.frame = contentView.bounds
+            
+            contentViewController?.willMoveToParentViewController(self)
             contentView.addSubview(contentViewController!.view)
+            contentViewController?.didMoveToParentViewController(self)
             contentView.layoutIfNeeded()
             
             UIView.animateWithDuration(0.3) { () -> Void in
@@ -69,6 +78,14 @@ class HamburgerViewController: UIViewController {
             
         default:
             NSLog("unhandled Gesture Recognizers State")
+        }
+    }
+    
+    private func removeViewController(vc: UIViewController?) {
+        if let vc = vc {
+            vc.willMoveToParentViewController(nil)
+            vc.view.removeFromSuperview()
+            vc.didMoveToParentViewController(nil)
         }
     }
     
