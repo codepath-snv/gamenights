@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2950C7341BBCEAF400459A5D /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2950C7331BBCEAF400459A5D /* Player.swift */; settings = {ASSET_TAGS = (); }; };
+		29768BE91BBE43F8000457C8 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29768BE81BBE43F8000457C8 /* Constants.swift */; settings = {ASSET_TAGS = (); }; };
 		29E0703B1BBA2B8300E9ACE2 /* HamburgerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E0703A1BBA2B8300E9ACE2 /* HamburgerViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		29E0703D1BBA2C8400E9ACE2 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E0703C1BBA2C8400E9ACE2 /* MenuViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		29E070421BBA3B6900E9ACE2 /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E070411BBA3B6900E9ACE2 /* MenuCell.swift */; settings = {ASSET_TAGS = (); }; };
@@ -40,6 +41,7 @@
 
 /* Begin PBXFileReference section */
 		2950C7331BBCEAF400459A5D /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		29768BE81BBE43F8000457C8 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		29E0703A1BBA2B8300E9ACE2 /* HamburgerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HamburgerViewController.swift; sourceTree = "<group>"; };
 		29E0703C1BBA2C8400E9ACE2 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		29E070411BBA3B6900E9ACE2 /* MenuCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuCell.swift; sourceTree = "<group>"; };
@@ -194,6 +196,7 @@
 				F3B5E0011BBB15B20029E545 /* GroupGameModel.swift */,
 				F33FCE3F1BBA31C800D61EF4 /* GroupModel.swift */,
 				2950C7331BBCEAF400459A5D /* Player.swift */,
+				29768BE81BBE43F8000457C8 /* Constants.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -339,6 +342,7 @@
 				D9081D7C1BB91901005E3F23 /* GameDetailViewController.swift in Sources */,
 				F33FCE401BBA31C800D61EF4 /* GroupModel.swift in Sources */,
 				2950C7341BBCEAF400459A5D /* Player.swift in Sources */,
+				29768BE91BBE43F8000457C8 /* Constants.swift in Sources */,
 				F3B5E0051BBB21B00029E545 /* SessionModel.swift in Sources */,
 				D9081D731BB91403005E3F23 /* GamesViewController.swift in Sources */,
 				D9081D7A1BB91888005E3F23 /* NewGameResultViewController.swift in Sources */,

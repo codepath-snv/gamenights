@@ -15,7 +15,6 @@ class MenuViewController: UIViewController {
     var gamesNavigationController: UIViewController!
     var gamesViewController: GamesViewController!
     var hamburgerViewController: HamburgerViewController?
-    var groups = [GroupModel]()
     var players = [Player]()
 
     override func viewDidLoad() {
@@ -23,12 +22,26 @@ class MenuViewController: UIViewController {
 
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
 
-        getPlayers()
-        gamesNavigationController = storyboard.instantiateViewControllerWithIdentifier("GamesNavigationController")
-        gamesViewController = (gamesNavigationController as! UINavigationController).topViewController as! GamesViewController
+        let defaults = NSUserDefaults.standardUserDefaults()
+        let id = defaults.objectForKey(Constants.UserDefaults.KEY_DEFAULT_GROUP_ID) as! String
+        GroupModel.loadAll({ (groupResults, groupLoadError) -> Void in
+            if let groupLoadError = groupLoadError {
+                NSLog("Failed to load groups \(groupLoadError)")
+            } else {
+                if groupResults!.count > 0 {
+                    self.gamesNavigationController = storyboard.instantiateViewControllerWithIdentifier("GamesNavigationController")
 
-        gamesViewController.delegate = hamburgerViewController
-        hamburgerViewController?.contentViewController = gamesNavigationController
+                    self.gamesViewController = (self.gamesNavigationController as! UINavigationController).topViewController as! GamesViewController
+
+                    self.gamesViewController.group = GroupModel.findById(groupResults, id: id)
+                    self.gamesViewController.delegate = self.hamburgerViewController
+                    self.hamburgerViewController?.contentViewController = self.gamesNavigationController
+                    
+                    self.getPlayersBy(self.gamesViewController.group)
+                }
+            }
+        })
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -47,7 +60,8 @@ class MenuViewController: UIViewController {
     }
     */
     
-    private func getPlayers() {
+    private func getPlayersBy(group: GroupModel) {
+        
         players = [
             Player(dictionary: ["name": "Z"]),
             Player(dictionary: ["name": "Gideon"]),

@@ -9,6 +9,6 @@
 import Foundation
 struct Constants {
     struct UserDefaults {
-        static let KEY_DEFAULT_GROUP = "defaultGroup"
+        static let KEY_DEFAULT_GROUP_ID = "defaultGroupId"
     }
 }
