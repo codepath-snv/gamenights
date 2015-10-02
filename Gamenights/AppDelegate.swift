@@ -13,7 +13,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
 
@@ -26,8 +25,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         // [Optional] Track statistics around application opens.
         PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
-        
-        setupHamburgerViewController()
+
+        setupAppSession()
 
         //self.testModels()
         return true
@@ -64,6 +63,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         menuViewController.hamburgerViewController = hamburgerViewController
 
         hamburgerViewController.menuViewController = menuViewController
+    }
+    
+    //
+    // prefetch group list and store them in local storage
+    //
+    private func setupAppSession() {
+        let defaults = NSUserDefaults.standardUserDefaults()
+        let defaultGroupId = defaults.stringForKey(Constants.UserDefaults.KEY_DEFAULT_GROUP_ID)
+        
+        if defaultGroupId == nil {
+            GroupModel.loadAll({ (groupResults, groupLoadError) -> Void in
+                if let groupLoadError = groupLoadError {
+                    NSLog("Failed to load groups \(groupLoadError)")
+                } else {
+                    if groupResults!.count > 0 {
+                        let defaultGroup = groupResults![0] as GroupModel
+                        let id = defaultGroup.objectId
+                        defaults.setObject(id, forKey: Constants.UserDefaults.KEY_DEFAULT_GROUP_ID)
+                        NSLog("got default group: \(id)")
+                        defaults.synchronize()
+                        self.setupHamburgerViewController()
+                    }
+                }
+            })
+        } else {
+            setupHamburgerViewController()
+        }
     }
 
     // TODO: consider moving to GamenightsTests

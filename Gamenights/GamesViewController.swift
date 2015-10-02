@@ -19,15 +19,16 @@ class GamesViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     var delegate: HamburgerViewController?
     
-    var group: GroupModel? {
+    var group: GroupModel! {
         didSet {
             view.layoutIfNeeded()
-            fetchGroupGames(group!.objectId)
+            fetchGroupGames(group.objectId)
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
         tableView.dataSource = self
         tableView.delegate = self
 
