@@ -60,6 +60,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let menuViewController = storyboard.instantiateViewControllerWithIdentifier("MenuViewController") as! MenuViewController
+        
         menuViewController.hamburgerViewController = hamburgerViewController
 
         hamburgerViewController.menuViewController = menuViewController
