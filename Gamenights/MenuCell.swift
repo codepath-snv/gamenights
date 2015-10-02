@@ -22,6 +22,8 @@ class MenuCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        playerImageView.layer.borderColor = UIColor(white: 0.7, alpha: 0.8).CGColor
+        playerImageView.layer.borderWidth = 1;
         playerImageView.layer.cornerRadius = 5
         playerImageView.clipsToBounds = true
     }
