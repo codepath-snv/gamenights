@@ -9,16 +9,16 @@ import UIKit
 
 class PlayerModel: NSObject {
     var objectId: String? = nil
-    var memberOfGroupIds: [String]? = nil
-    var fullname: String? = nil
-    var nickname: String? = nil
+    var memberOfGroupIds = [String]()
+    var fullname = "Player"
+    var nickname = "Player"
 
-    init(pfObj: PFObject?) {
+    init(_ pfObj: PFObject?) {
         if let pfObj = pfObj {
             objectId = pfObj.objectId
-            memberOfGroupIds = pfObj["memberOfGroupIds"] as? [String]
-            fullname = pfObj["fullname"] as? String
-            nickname = pfObj["nickname"] as? String
+            memberOfGroupIds = pfObj["memberOfGroupIds"] as! [String]
+            fullname = pfObj["fullname"] as! String
+            nickname = pfObj["nickname"] as! String
         }
     }
 
@@ -42,8 +42,10 @@ class PlayerModel: NSObject {
     }
 
     class func loadAllMembersOfGroup(memberOfGroupId: String!, onDone: (results: [PlayerModel]?, error: NSError?) -> Void) {
+        // looks like there's no way to say "where some_id is in a list of ids on the object" in PFQuery.
+        // so just pull all users and filter post-query.
+        // TODO: would need to revisit this approach if this is ever needs to handle lots of Players.
         let query = PFQuery(className: "Player")
-        query.whereKey("parentGroupGameId", equalTo: memberOfGroupId)  // TODO???
         let cb: PFQueryArrayResultBlock? = {(objects: [PFObject]?, error: NSError?) -> Void in
             if (error != nil) {
                 onDone(results: nil, error: error)
@@ -51,8 +53,12 @@ class PlayerModel: NSObject {
             }
             var results = [PlayerModel]()
             for object in objects! {
-                results.append(PlayerModel(pfObj: object))
+                results.append(PlayerModel(object))
             }
+            // only keep a returned Player if it has the given group ID in its list of member-of-groups
+            results = results.filter({ (thisPlayer: PlayerModel) -> Bool in
+                return thisPlayer.memberOfGroupIds.indexOf(memberOfGroupId) != NSNotFound
+            })
             onDone(results: results, error: nil);
         }
         query.findObjectsInBackgroundWithBlock(cb)
@@ -65,7 +71,7 @@ class PlayerModel: NSObject {
                 onDone(result: nil, error: error)
                 return
             }
-            let model = PlayerModel(pfObj: pfResult)
+            let model = PlayerModel(pfResult)
             onDone(result: model, error: nil)
         })
     }
@@ -96,11 +102,8 @@ class PlayerModel: NSObject {
     }
 
     func ensureMemberOfGroup(groupId: String!) {
-        if (memberOfGroupIds == nil) {
-            memberOfGroupIds = [String]()
-        }
-        if (memberOfGroupIds!.indexOf(groupId) == NSNotFound) {
-            memberOfGroupIds!.append(groupId)
+        if (memberOfGroupIds.indexOf(groupId) == NSNotFound) {
+            memberOfGroupIds.append(groupId)
         }
     }
 }
