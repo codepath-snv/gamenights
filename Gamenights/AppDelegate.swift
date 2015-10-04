@@ -22,6 +22,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         // Initialize Parse.
         Parse.setApplicationId("iW02KozyfH3D4BsCwH8x7xXnDflNVgCPdxPMvNuy", clientKey: "DZQh3FHoppuwKRqWjmgaGBKyfxkEJ5G0gJVW4T4u")
+        
+        // navigation bar appearances
+        setupNavigationBarAppearances()
 
         // [Optional] Track statistics around application opens.
         PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
@@ -63,6 +66,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         menuViewController.hamburgerViewController = hamburgerViewController
 
         hamburgerViewController.menuViewController = menuViewController
+    }
+    
+    private func setupNavigationBarAppearances() {
+        UINavigationBar.appearance().tintColor = UIColor.whiteColor()
+        UINavigationBar.appearance().barTintColor = UIColor.brownColor()
+        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
+        
     }
     
     //
