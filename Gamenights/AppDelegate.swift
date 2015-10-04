@@ -12,6 +12,7 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    let storyboard = UIStoryboard(name: "Main", bundle: nil)
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
@@ -87,21 +88,38 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 if let groupLoadError = groupLoadError {
                     NSLog("Failed to load groups \(groupLoadError)")
                 } else {
-                    if groupResults!.count > 0 {
+                    let count = groupResults!.count
+                    NSLog("there are \(count) groups")
+                    switch (count) {
+                    case 0:
+                        NSLog("Show create group view")
+                    case 1:
                         let defaultGroup = groupResults![0] as GroupModel
-                        let id = defaultGroup.objectId
-                        defaults.setObject(id, forKey: Constants.UserDefaults.KEY_DEFAULT_GROUP_ID)
-                        NSLog("got default group: \(id)")
-                        defaults.synchronize()
-                        
-                        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                        let gamesNavigationController = storyboard.instantiateViewControllerWithIdentifier("GamesNavigationController") 
-                        
-                        self.window?.rootViewController = gamesNavigationController
+                        self.handleOnlyOneGroup(defaultGroup)
+                    default:
+                        self.showGroupsView()
                     }
                 }
             })
         }
+    }
+    
+    private func showGroupsView() {
+        let viewController = storyboard.instantiateViewControllerWithIdentifier("GroupsNavigationController")
+        
+        window?.rootViewController = viewController
+    }
+    
+    private func handleOnlyOneGroup(defaultGroup: GroupModel) {
+        let defaults = NSUserDefaults.standardUserDefaults()
+        let id = defaultGroup.objectId
+        defaults.setObject(id, forKey: Constants.UserDefaults.KEY_DEFAULT_GROUP_ID)
+        NSLog("got default group: \(id)")
+        defaults.synchronize()
+        
+        let gamesNavigationController = storyboard.instantiateViewControllerWithIdentifier("GamesNavigationController")
+        
+        window?.rootViewController = gamesNavigationController
     }
 
     // TODO: consider moving to GamenightsTests
