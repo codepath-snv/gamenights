@@ -28,6 +28,8 @@ class GamesViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navigationItem.title = group.name
 
         tableView.dataSource = self
         tableView.delegate = self
