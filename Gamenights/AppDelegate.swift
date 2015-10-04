@@ -58,14 +58,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     private func setupHamburgerViewController() {
-        let hamburgerViewController = window?.rootViewController as! HamburgerViewController
-
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let menuViewController = storyboard.instantiateViewControllerWithIdentifier("MenuViewController") as! MenuViewController
-        
-        menuViewController.hamburgerViewController = hamburgerViewController
-
-        hamburgerViewController.menuViewController = menuViewController
+//        let hamburgerViewController = window?.rootViewController as! HamburgerViewController
+//
+//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//        let menuViewController = storyboard.instantiateViewControllerWithIdentifier("MenuViewController") as! MenuViewController
+//        
+//        menuViewController.hamburgerViewController = hamburgerViewController
+//
+//        hamburgerViewController.menuViewController = menuViewController
     }
     
     private func setupNavigationBarAppearances() {
@@ -93,12 +93,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                         defaults.setObject(id, forKey: Constants.UserDefaults.KEY_DEFAULT_GROUP_ID)
                         NSLog("got default group: \(id)")
                         defaults.synchronize()
-                        self.setupHamburgerViewController()
+                        
+                        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                        let gamesNavigationController = storyboard.instantiateViewControllerWithIdentifier("GamesNavigationController") 
+                        
+                        self.window?.rootViewController = gamesNavigationController
                     }
                 }
             })
-        } else {
-            setupHamburgerViewController()
         }
     }
 

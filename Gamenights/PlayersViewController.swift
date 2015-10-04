@@ -8,40 +8,17 @@
 
 import UIKit
 
-class MenuViewController: UIViewController {
+class PlayersViewController: UIViewController {
 
     @IBOutlet weak var playersCollectionView: UICollectionView!
 
-    var gamesNavigationController: UIViewController!
-    var gamesViewController: GamesViewController!
-    var hamburgerViewController: HamburgerViewController?
+    var group: GroupModel!
     var players = [Player]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-
-        let defaults = NSUserDefaults.standardUserDefaults()
-        let id = defaults.objectForKey(Constants.UserDefaults.KEY_DEFAULT_GROUP_ID) as! String
-        GroupModel.loadAll({ (groupResults, groupLoadError) -> Void in
-            if let groupLoadError = groupLoadError {
-                NSLog("Failed to load groups \(groupLoadError)")
-            } else {
-                if groupResults!.count > 0 {
-                    self.gamesNavigationController = storyboard.instantiateViewControllerWithIdentifier("GamesNavigationController")
-
-                    self.gamesViewController = (self.gamesNavigationController as! UINavigationController).topViewController as! GamesViewController
-
-                    self.gamesViewController.group = GroupModel.findById(groupResults, id: id)
-                    self.gamesViewController.delegate = self.hamburgerViewController
-                    self.hamburgerViewController?.contentViewController = self.gamesNavigationController
-                    
-                    self.getPlayersBy(self.gamesViewController.group)
-                }
-            }
-        })
-
+        getPlayersBy(group)
     }
 
     override func didReceiveMemoryWarning() {
@@ -73,7 +50,7 @@ class MenuViewController: UIViewController {
 
 }
 
-extension MenuViewController: UICollectionViewDataSource {
+extension PlayersViewController: UICollectionViewDataSource {
     
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return 1;
@@ -93,7 +70,7 @@ extension MenuViewController: UICollectionViewDataSource {
 
 }
 
-extension MenuViewController: UICollectionViewDelegate {
+extension PlayersViewController: UICollectionViewDelegate {
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         playersCollectionView.deselectItemAtIndexPath(indexPath, animated: true)
         

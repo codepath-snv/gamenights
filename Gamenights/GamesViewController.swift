@@ -13,12 +13,9 @@ import UIKit
 }
 
 class GamesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    var games = [GroupGameModel]()
-
     @IBOutlet weak var tableView: UITableView!
     
-    var delegate: HamburgerViewController?
-    
+    var games = [GroupGameModel]()
     var group: GroupModel! {
         didSet {
             view.layoutIfNeeded()
@@ -29,16 +26,29 @@ class GamesViewController: UIViewController, UITableViewDataSource, UITableViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.title = group.name
-
         tableView.dataSource = self
         tableView.delegate = self
-
-        tableView.reloadData()
+        
+        updateGroup()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    private func updateGroup() {
+        let defaults = NSUserDefaults.standardUserDefaults()
+        let id = defaults.objectForKey(Constants.UserDefaults.KEY_DEFAULT_GROUP_ID) as! String
+        GroupModel.loadAll({ (groupResults, groupLoadError) -> Void in
+            if let groupLoadError = groupLoadError {
+                NSLog("Failed to load groups \(groupLoadError)")
+            } else {
+                if groupResults!.count > 0 {
+                    self.group = GroupModel.findById(groupResults, id: id)
+                    self.navigationItem.title = self.group.name
+                }
+            }
+        })
     }
     
     private func fetchGroupGames(groupId: String!) {
@@ -66,13 +76,10 @@ class GamesViewController: UIViewController, UITableViewDataSource, UITableViewD
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
-    
-    @IBAction func onGroups(sender: AnyObject) {
-        delegate?.gamesViewController(self, didTapGroups: sender)
-    }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "GroupGameSegue" {
+        switch (segue.identifier!) {
+        case "GroupGameSegue":
             let cell = sender as! UITableViewCell
             let indexPath = tableView.indexPathForCell(cell)!
             
@@ -80,10 +87,10 @@ class GamesViewController: UIViewController, UITableViewDataSource, UITableViewD
             let gameDetailNavController = segue.destinationViewController as! UINavigationController
             let gameDetailViewController = gameDetailNavController.topViewController as! GameDetailViewController
             gameDetailViewController.game = game
-        } else if segue.identifier == "addGameSegue" {
+        case "addGameSegue":
             let newGameViewController = segue.destinationViewController as! NewGameViewController
             newGameViewController.groupId = group?.objectId
-        } else if (segue.identifier == "addSessionFromCellSegue") {
+        case "addSessionFromCellSegue":
             let button = sender as! UIButton
             let view = button.superview!
             let cell = view.superview as!UITableViewCell
@@ -92,6 +99,11 @@ class GamesViewController: UIViewController, UITableViewDataSource, UITableViewD
             let game = games[indexPath.row]
             let newGameResultViewController = segue.destinationViewController as! NewGameResultViewController
             newGameResultViewController.groupId = game.objectId
+        case "playersSegue":
+            let destination = segue.destinationViewController as! PlayersViewController
+            destination.group = group
+        default:
+            NSLog("unhandled segue")
         }
     }
 
