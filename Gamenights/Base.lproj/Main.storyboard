@@ -420,10 +420,10 @@
             </objects>
             <point key="canvasLocation" x="1928" y="-364"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Group Navigation Controller-->
         <scene sceneID="DFb-qX-EhK">
             <objects>
-                <navigationController storyboardIdentifier="GamesNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="t8Z-SB-7DV" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="GamesNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="t8Z-SB-7DV" userLabel="Group Navigation Controller" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="CLg-4Y-Mjj">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -507,6 +507,7 @@
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <connections>
                                             <outlet property="groupLabel" destination="dM7-OE-g9j" id="pgF-5A-YxM"/>
+                                            <segue destination="t8Z-SB-7DV" kind="modal" id="gWm-Os-2NW"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

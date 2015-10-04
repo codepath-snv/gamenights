@@ -37,15 +37,19 @@ class GroupsViewController: UIViewController {
     }
     
 
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        let destinationNavigationController = segue.destinationViewController as! UINavigationController
+        let destinationViewController = destinationNavigationController.topViewController as! GamesViewController
+        let cell = sender as! GroupCell
+        let indexPath = tableView.indexPathForCell(cell)
+        
+        destinationViewController.group = groups?[indexPath!.row]
     }
-    */
 
 }
 
