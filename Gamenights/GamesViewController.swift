@@ -12,7 +12,7 @@ import UIKit
     optional func gamesViewController(viewController: GamesViewController, didTapGroups sender: AnyObject)
 }
 
-class GamesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class GamesViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     var games = [GroupGameModel]()
@@ -25,6 +25,12 @@ class GamesViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let tempImageView = UIImageView(image: UIImage(named: "bg-light"))
+        tempImageView.frame = tableView.frame
+        tempImageView.contentMode = UIViewContentMode.ScaleAspectFill
+        tableView.backgroundView = tempImageView
+        tempImageView.removeFromSuperview()
         
         tableView.dataSource = self
         tableView.delegate = self
@@ -61,21 +67,6 @@ class GamesViewController: UIViewController, UITableViewDataSource, UITableViewD
             self.tableView.reloadData()
         })
     }
-    
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return games.count
-    }
-    
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("GameCell", forIndexPath: indexPath) as! GameCell
-        
-        cell.game = games[indexPath.row]
-        return cell
-    }
-    
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
-    }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         switch (segue.identifier!) {
@@ -108,4 +99,30 @@ class GamesViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
 
 
+}
+
+extension GamesViewController: UITableViewDataSource {
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return games.count
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("GameCell", forIndexPath: indexPath) as! GameCell
+        
+        cell.game = games[indexPath.row]
+        return cell
+    }
+}
+
+extension GamesViewController: UITableViewDelegate {
+    
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    }
+
+    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        cell.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.5)
+    }
 }
