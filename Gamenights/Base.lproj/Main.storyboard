@@ -78,7 +78,7 @@
                                 <items>
                                     <barButtonItem title="Groups" style="plain" id="hzL-iD-N5l">
                                         <connections>
-                                            <segue destination="zY2-XH-DNJ" kind="modal" identifier="groupsSegue" id="P7n-yx-z7g"/>
+                                            <segue destination="zY2-XH-DNJ" kind="custom" identifier="groupsSegue" customClass="ExpandInSegue" customModule="Gamenights" customModuleProvider="target" id="P7n-yx-z7g"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>
@@ -541,7 +541,7 @@
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <connections>
                                             <outlet property="groupLabel" destination="dM7-OE-g9j" id="pgF-5A-YxM"/>
-                                            <segue destination="t8Z-SB-7DV" kind="modal" id="gWm-Os-2NW"/>
+                                            <segue destination="t8Z-SB-7DV" kind="custom" customClass="ExpandInSegue" customModule="Gamenights" customModuleProvider="target" id="gWm-Os-2NW"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
