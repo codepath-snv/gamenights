@@ -70,9 +70,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     private func setupNavigationBarAppearances() {
-        UINavigationBar.appearance().tintColor = UIColor.whiteColor()
-        UINavigationBar.appearance().barTintColor = UIColor.brownColor()
-        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
+        let barColor = UIColor.brownColor()
+        let barTextColor = UIColor.whiteColor()
+        
+        UINavigationBar.appearance().tintColor = barTextColor
+        UINavigationBar.appearance().barTintColor = barColor
+        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: barTextColor]
+        UIToolbar.appearance().tintColor = barTextColor
+        UIToolbar.appearance().barTintColor = barColor
         
     }
     

@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Group Name-->
@@ -17,8 +18,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="88" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="KDB-eP-Pnr">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="88" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="KDB-eP-Pnr">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="516"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="GameCell" rowHeight="88" id="0aY-nz-KlS" customClass="GameCell" customModule="Gamenights" customModuleProvider="target">
@@ -28,13 +29,13 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="88"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Game Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bd8-ro-mJQ">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Game Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bd8-ro-mJQ">
                                                     <rect key="frame" x="8" y="8" width="266" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ReH-T3-3ts">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ReH-T3-3ts">
                                                     <rect key="frame" x="282" y="28" width="30" height="30"/>
                                                     <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <state key="normal" title="+">
@@ -44,13 +45,25 @@
                                                         <segue destination="VCE-E1-7mB" kind="push" identifier="addSessionFromCellSegue" id="alV-AI-4cC"/>
                                                     </connections>
                                                 </button>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Notes notes notes" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SOr-cX-82B">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notes notes notes" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SOr-cX-82B">
                                                     <rect key="frame" x="8" y="28" width="266" height="50"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottomMargin" secondItem="SOr-cX-82B" secondAttribute="bottom" constant="1.5" id="0OF-XZ-bI0"/>
+                                                <constraint firstItem="ReH-T3-3ts" firstAttribute="leading" secondItem="SOr-cX-82B" secondAttribute="trailing" constant="8" symbolic="YES" id="4iM-y9-Dze"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="Bd8-ro-mJQ" secondAttribute="bottom" constant="50.5" id="LJ8-yz-pyk"/>
+                                                <constraint firstItem="Bd8-ro-mJQ" firstAttribute="top" secondItem="ytd-Ye-sdg" secondAttribute="topMargin" id="MGe-BZ-Hm0"/>
+                                                <constraint firstItem="SOr-cX-82B" firstAttribute="leading" secondItem="ytd-Ye-sdg" secondAttribute="leadingMargin" id="UfF-Wl-EG0"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="Bd8-ro-mJQ" secondAttribute="trailing" constant="38" id="aob-j9-uQQ"/>
+                                                <constraint firstItem="SOr-cX-82B" firstAttribute="leading" secondItem="Bd8-ro-mJQ" secondAttribute="leading" id="ljn-vv-W4U"/>
+                                                <constraint firstItem="ReH-T3-3ts" firstAttribute="leading" secondItem="Bd8-ro-mJQ" secondAttribute="trailing" constant="8" symbolic="YES" id="no9-Qs-izh"/>
+                                                <constraint firstItem="ReH-T3-3ts" firstAttribute="centerY" secondItem="ytd-Ye-sdg" secondAttribute="centerY" id="tm7-pq-ll5"/>
+                                                <constraint firstItem="SOr-cX-82B" firstAttribute="top" secondItem="ReH-T3-3ts" secondAttribute="top" id="wpz-H7-ePo"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="gameLabel" destination="Bd8-ro-mJQ" id="VWk-3P-bvB"/>
@@ -60,9 +73,29 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="wZW-Bl-aae">
+                                <rect key="frame" x="0.0" y="524" width="320" height="44"/>
+                                <items>
+                                    <barButtonItem title="Groups" style="plain" id="hzL-iD-N5l">
+                                        <connections>
+                                            <segue destination="zY2-XH-DNJ" kind="modal" identifier="groupsSegue" id="P7n-yx-z7g"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="KDB-eP-Pnr" secondAttribute="trailing" id="7H6-gU-ojC"/>
+                            <constraint firstItem="KDB-eP-Pnr" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="Cv6-FX-VCP"/>
+                            <constraint firstAttribute="trailing" secondItem="wZW-Bl-aae" secondAttribute="trailing" id="OQi-Gi-KlD"/>
+                            <constraint firstAttribute="bottom" secondItem="wZW-Bl-aae" secondAttribute="bottom" id="W4p-vJ-RJo"/>
+                            <constraint firstItem="KDB-eP-Pnr" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="WX8-RY-mrp"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="KDB-eP-Pnr" secondAttribute="bottom" constant="8" id="X4Q-uI-q3F"/>
+                            <constraint firstItem="wZW-Bl-aae" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="t3v-lt-bvz"/>
+                        </constraints>
                     </view>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" title="Group Name" id="bwe-Pc-ybG">
                         <barButtonItem key="leftBarButtonItem" image="players" id="f4C-U1-4pL">
                             <connections>
@@ -75,6 +108,7 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="tableView" destination="KDB-eP-Pnr" id="mZ3-7c-KJK"/>
                     </connections>
@@ -361,7 +395,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="M9U-Nh-cpV">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="524"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="5" minimumInteritemSpacing="5" id="plE-kT-Ghh">
