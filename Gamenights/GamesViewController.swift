@@ -19,7 +19,7 @@ class GamesViewController: UIViewController, UITableViewDataSource, UITableViewD
     var group: GroupModel! {
         didSet {
             view.layoutIfNeeded()
-            self.title = group.name
+            navigationItem.title = group.name
             fetchGroupGames(group.objectId)
         }
     }
@@ -32,6 +32,7 @@ class GamesViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         updateGroup()
     }
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -46,7 +47,6 @@ class GamesViewController: UIViewController, UITableViewDataSource, UITableViewD
             } else {
                 if groupResults!.count > 0 {
                     self.group = GroupModel.findById(groupResults, id: id)
-                    self.navigationItem.title = self.group.name
                 }
             }
         })
