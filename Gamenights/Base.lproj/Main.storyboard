@@ -426,7 +426,7 @@
                                             <constraint firstAttribute="trailing" secondItem="JJ1-y8-sn9" secondAttribute="trailing" id="xUu-zM-241"/>
                                         </constraints>
                                         <connections>
-                                            <outlet property="playerImageView" destination="JJ1-y8-sn9" id="EZ9-Bc-dhQ"/>
+                                            <outlet property="playerImageView" destination="JJ1-y8-sn9" id="NGP-4O-XeB"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -520,7 +520,7 @@
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Group 1" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dM7-OE-g9j">
                                                             <rect key="frame" x="5" y="5" width="294" height="21"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
