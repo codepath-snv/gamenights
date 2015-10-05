@@ -30,7 +30,7 @@ class GamesViewController: UIViewController, UITableViewDataSource, UITableViewD
         tableView.dataSource = self
         tableView.delegate = self
         
-//        updateGroup()
+        updateGroup()
     }
 
     override func didReceiveMemoryWarning() {
