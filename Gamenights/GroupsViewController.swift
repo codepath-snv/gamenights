@@ -54,16 +54,19 @@ class GroupsViewController: UIViewController {
     }
     
     @IBAction func onAddGroup(sender: AnyObject) {
-        let group = GroupModel(nil)
-        group.name = newGroupTextField.text
-        group.save({ (error) -> Void in
-            if error != nil {
-                print("Error creating group")
-                return
-            } else {
-                self.navigationController?.popViewControllerAnimated(true)
-            }
-        })
+        if newGroupTextField.text != "" {
+            let group = GroupModel(nil)
+            group.name = newGroupTextField.text
+            group.save({ (error) -> Void in
+                if error != nil {
+                    print("Error creating group")
+                    return
+                } else {
+                    self.newGroupTextField.text = ""
+                    self.tableView.reloadData()
+                }
+            })
+        }
     }
 }
 
