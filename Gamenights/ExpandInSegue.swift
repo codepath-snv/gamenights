@@ -17,7 +17,7 @@ class ExpandInSegue: UIStoryboardSegue {
         sourceViewController.view.addSubview(destinationViewController.view)
         destinationViewController.view.transform = CGAffineTransformMakeScale(0.05, 0.05)
         
-        UIView.animateWithDuration(0.5, delay: 0.0, options: UIViewAnimationOptions.CurveEaseInOut, animations: { () -> Void in
+        UIView.animateWithDuration(0.2, delay: 0.0, options: UIViewAnimationOptions.CurveEaseOut, animations: { () -> Void in
             destinationViewController.view.transform = CGAffineTransformMakeScale(1.0, 1.0)
             }) { (done) -> Void in
                 destinationViewController.view.removeFromSuperview()
