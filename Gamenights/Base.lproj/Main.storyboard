@@ -68,7 +68,7 @@
                                         <connections>
                                             <outlet property="gameLabel" destination="Bd8-ro-mJQ" id="VWk-3P-bvB"/>
                                             <outlet property="notesLabel" destination="SOr-cX-82B" id="un6-AT-2iU"/>
-                                            <segue destination="2r8-ZE-Yfl" kind="modal" identifier="GroupGameSegue" id="nFZ-CL-QQd"/>
+                                            <segue destination="2r8-ZE-Yfl" kind="modal" identifier="GroupGameSegue" modalTransitionStyle="partialCurl" id="nFZ-CL-QQd"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -78,7 +78,7 @@
                                 <items>
                                     <barButtonItem title="Groups" style="plain" id="hzL-iD-N5l">
                                         <connections>
-                                            <segue destination="zY2-XH-DNJ" kind="custom" identifier="groupsSegue" customClass="ExpandInSegue" customModule="Gamenights" customModuleProvider="target" id="P7n-yx-z7g"/>
+                                            <segue destination="zY2-XH-DNJ" kind="modal" identifier="groupsSegue" modalTransitionStyle="partialCurl" id="P7n-yx-z7g"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>
@@ -541,7 +541,7 @@
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <connections>
                                             <outlet property="groupLabel" destination="dM7-OE-g9j" id="pgF-5A-YxM"/>
-                                            <segue destination="t8Z-SB-7DV" kind="custom" customClass="ExpandInSegue" customModule="Gamenights" customModuleProvider="target" id="gWm-Os-2NW"/>
+                                            <segue destination="t8Z-SB-7DV" kind="modal" modalTransitionStyle="partialCurl" id="gWm-Os-2NW"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
