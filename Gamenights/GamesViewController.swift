@@ -19,6 +19,7 @@ class GamesViewController: UIViewController, UITableViewDataSource, UITableViewD
     var group: GroupModel! {
         didSet {
             view.layoutIfNeeded()
+            self.title = group.name
             fetchGroupGames(group.objectId)
         }
     }
@@ -29,7 +30,7 @@ class GamesViewController: UIViewController, UITableViewDataSource, UITableViewD
         tableView.dataSource = self
         tableView.delegate = self
         
-        updateGroup()
+//        updateGroup()
     }
 
     override func didReceiveMemoryWarning() {

@@ -22,6 +22,7 @@
 		D9081D7A1BB91888005E3F23 /* NewGameResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9081D791BB91888005E3F23 /* NewGameResultViewController.swift */; };
 		D9081D7C1BB91901005E3F23 /* GameDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9081D7B1BB91901005E3F23 /* GameDetailViewController.swift */; };
 		D9081D7E1BB91931005E3F23 /* GameResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9081D7D1BB91931005E3F23 /* GameResultCell.swift */; };
+		D91475741BC1EA7B0080F018 /* NewGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91475731BC1EA7B0080F018 /* NewGroupViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		D970212D1BB90D9800843307 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D970212C1BB90D9800843307 /* AppDelegate.swift */; };
 		D97021321BB90D9800843307 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D97021301BB90D9800843307 /* Main.storyboard */; };
 		D97021341BB90D9800843307 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D97021331BB90D9800843307 /* Images.xcassets */; };
@@ -59,6 +60,7 @@
 		D9081D791BB91888005E3F23 /* NewGameResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewGameResultViewController.swift; sourceTree = "<group>"; };
 		D9081D7B1BB91901005E3F23 /* GameDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameDetailViewController.swift; sourceTree = "<group>"; };
 		D9081D7D1BB91931005E3F23 /* GameResultCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameResultCell.swift; sourceTree = "<group>"; };
+		D91475731BC1EA7B0080F018 /* NewGroupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewGroupViewController.swift; sourceTree = "<group>"; };
 		D97021271BB90D9800843307 /* Gamenights.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gamenights.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D970212B1BB90D9800843307 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D970212C1BB90D9800843307 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = AppDelegate.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -129,6 +131,7 @@
 				29E0703A1BBA2B8300E9ACE2 /* HamburgerViewController.swift */,
 				29E0703C1BBA2C8400E9ACE2 /* PlayersViewController.swift */,
 				29AC500E1BC0CA1A00DDAFA7 /* GroupsViewController.swift */,
+				D91475731BC1EA7B0080F018 /* NewGroupViewController.swift */,
 			);
 			name = "View Controller";
 			sourceTree = "<group>";
@@ -368,6 +371,7 @@
 				D9081D7A1BB91888005E3F23 /* NewGameResultViewController.swift in Sources */,
 				29E070421BBA3B6900E9ACE2 /* MenuCell.swift in Sources */,
 				29E0703D1BBA2C8400E9ACE2 /* PlayersViewController.swift in Sources */,
+				D91475741BC1EA7B0080F018 /* NewGroupViewController.swift in Sources */,
 				29E0703B1BBA2B8300E9ACE2 /* HamburgerViewController.swift in Sources */,
 				D9081D781BB917D2005E3F23 /* NewGameViewController.swift in Sources */,
 				D970212D1BB90D9800843307 /* AppDelegate.swift in Sources */,

@@ -26,7 +26,7 @@
                                         <rect key="frame" x="0.0" y="86" width="320" height="88"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0aY-nz-KlS" id="ytd-Ye-sdg">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="88"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="87.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Game Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bd8-ro-mJQ">
@@ -137,7 +137,7 @@
                                         <rect key="frame" x="0.0" y="86" width="320" height="145"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ctW-Xr-pGb" id="qdf-Iy-7Ke">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="145"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="144.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="09/20/2015" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nuC-3O-b58">
@@ -510,7 +510,7 @@
                                         <rect key="frame" x="0.0" y="92" width="320" height="79"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="E7T-db-33y" id="blv-jL-DRE">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="79"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="78.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9bX-Ok-Dmq">
@@ -541,7 +541,7 @@
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <connections>
                                             <outlet property="groupLabel" destination="dM7-OE-g9j" id="pgF-5A-YxM"/>
-                                            <segue destination="t8Z-SB-7DV" kind="custom" customClass="ExpandInSegue" customModule="Gamenights" customModuleProvider="target" id="gWm-Os-2NW"/>
+                                            <segue destination="t8Z-SB-7DV" kind="modal" identifier="groupDetailsSegue" id="gWm-Os-2NW"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -559,7 +559,13 @@
                             <constraint firstItem="krp-iy-RZM" firstAttribute="leading" secondItem="m9F-Hq-Dr2" secondAttribute="leading" id="Yot-7z-Fr4"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Groups" id="1r1-We-PQW"/>
+                    <navigationItem key="navigationItem" title="Groups" id="1r1-We-PQW">
+                        <barButtonItem key="rightBarButtonItem" title="Add Group" id="wju-bv-3aF">
+                            <connections>
+                                <segue destination="OuL-uk-7pz" kind="push" id="ooz-5a-UoW"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="krp-iy-RZM" id="xsV-nJ-L54"/>
                     </connections>
@@ -567,6 +573,47 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7VG-P3-64H" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="965" y="-321"/>
+        </scene>
+        <!--Add Group-->
+        <scene sceneID="ZFq-12-Pcb">
+            <objects>
+                <viewController id="OuL-uk-7pz" customClass="NewGroupViewController" customModule="Gamenights" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Hh9-KQ-BOw"/>
+                        <viewControllerLayoutGuide type="bottom" id="1m2-Xc-Pkk"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="yjX-i4-n6b">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Group Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aTp-BX-8Fv">
+                                <rect key="frame" x="20" y="229" width="91" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="APM-yl-wYI">
+                                <rect key="frame" x="119" y="223" width="181" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Add Group" id="VU5-PT-8Xd">
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="4VF-Dj-Py4">
+                            <connections>
+                                <action selector="onAddGroup:" destination="OuL-uk-7pz" id="FQb-nZ-TY9"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="newGroupTextField" destination="APM-yl-wYI" id="yMK-IJ-JlN"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eBZ-VB-rwP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1361" y="-321"/>
         </scene>
         <!--Groups Navigation Controller-->
         <scene sceneID="iyl-Ej-AKZ">
