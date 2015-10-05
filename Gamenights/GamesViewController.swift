@@ -14,11 +14,16 @@ import UIKit
 
 class GamesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var tableView: UITableView!
+
+    let defaults = NSUserDefaults.standardUserDefaults()
     
     var games = [GroupGameModel]()
     var group: GroupModel! {
         didSet {
             view.layoutIfNeeded()
+            if let name = group?.name {
+                navigationItem.title = name
+            }
             fetchGroupGames(group.objectId)
         }
     }
@@ -31,13 +36,22 @@ class GamesViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         updateGroup()
     }
+    
+    override func viewDidDisappear(animated: Bool) {
+        let id = group.objectId
+        defaults.setObject(id, forKey: Constants.UserDefaults.KEY_DEFAULT_GROUP_ID)
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
     private func updateGroup() {
-        let defaults = NSUserDefaults.standardUserDefaults()
+        if group != nil {
+            // group has already been set by previous view controller
+            return
+        }
+        
         let id = defaults.objectForKey(Constants.UserDefaults.KEY_DEFAULT_GROUP_ID) as! String
         GroupModel.loadAll({ (groupResults, groupLoadError) -> Void in
             if let groupLoadError = groupLoadError {
@@ -45,7 +59,7 @@ class GamesViewController: UIViewController, UITableViewDataSource, UITableViewD
             } else {
                 if groupResults!.count > 0 {
                     self.group = GroupModel.findById(groupResults, id: id)
-                    self.navigationItem.title = self.group.name
+//                    self.navigationItem.title = self.group.name
                 }
             }
         })
