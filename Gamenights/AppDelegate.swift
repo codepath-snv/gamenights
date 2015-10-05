@@ -70,9 +70,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     private func setupNavigationBarAppearances() {
-        let barColor = UIColor.brownColor()
+        let barColor = UIColor.clearColor()// UIColor.brownColor().colorWithAlphaComponent(0.3)
         let barTextColor = UIColor.whiteColor()
-        
+
         UINavigationBar.appearance().tintColor = barTextColor
         UINavigationBar.appearance().barTintColor = barColor
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: barTextColor]
@@ -88,44 +88,35 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let defaults = NSUserDefaults.standardUserDefaults()
         let defaultGroupId = defaults.stringForKey(Constants.UserDefaults.KEY_DEFAULT_GROUP_ID)
         
-        if defaultGroupId == nil {
-            GroupModel.loadAll({ (groupResults, groupLoadError) -> Void in
-                if let groupLoadError = groupLoadError {
-                    NSLog("Failed to load groups \(groupLoadError)")
-                } else {
-                    let count = groupResults!.count
-                    NSLog("there are \(count) groups")
-                    switch (count) {
-                    case 0:
-                        NSLog("Show create group view")
-                    case 1:
-                        let defaultGroup = groupResults![0] as GroupModel
-                        self.handleOnlyOneGroup(defaultGroup)
-                    default:
-                        self.showGroupsView()
-                    }
-                }
-            })
+        if defaultGroupId != nil {
+            showGroupGames()
         }
+        // else show GroupsView since it's the rootViewController
     }
     
-    private func showGroupsView() {
-        let viewController = storyboard.instantiateViewControllerWithIdentifier("GroupsNavigationController")
-        
-        window?.rootViewController = viewController
-    }
-    
-    private func handleOnlyOneGroup(defaultGroup: GroupModel) {
-        let defaults = NSUserDefaults.standardUserDefaults()
-        let id = defaultGroup.objectId
-        defaults.setObject(id, forKey: Constants.UserDefaults.KEY_DEFAULT_GROUP_ID)
-        NSLog("got default group: \(id)")
-        defaults.synchronize()
-        
+    private func showGroupGames() {
         let gamesNavigationController = storyboard.instantiateViewControllerWithIdentifier("GamesNavigationController")
         
         window?.rootViewController = gamesNavigationController
     }
+    
+//    private func showGroupsView() {
+//        let viewController = storyboard.instantiateViewControllerWithIdentifier("GroupsNavigationController")
+//        
+//        window?.rootViewController = viewController
+//    }
+//    
+//    private func handleOnlyOneGroup(defaultGroup: GroupModel) {
+//        let defaults = NSUserDefaults.standardUserDefaults()
+//        let id = defaultGroup.objectId
+//        defaults.setObject(id, forKey: Constants.UserDefaults.KEY_DEFAULT_GROUP_ID)
+//        NSLog("got default group: \(id)")
+//        defaults.synchronize()
+//        
+//        let gamesNavigationController = storyboard.instantiateViewControllerWithIdentifier("GamesNavigationController")
+//        
+//        window?.rootViewController = gamesNavigationController
+//    }
 
     // TODO: consider moving to GamenightsTests
     // WTF, seriously need a way to manage async callback stacks like async in node.js

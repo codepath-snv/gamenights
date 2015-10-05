@@ -12,13 +12,18 @@ import UIKit
     optional func gamesViewController(viewController: GamesViewController, didTapGroups sender: AnyObject)
 }
 
-class GamesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class GamesViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
+
+    let defaults = NSUserDefaults.standardUserDefaults()
     
     var games = [GroupGameModel]()
     var group: GroupModel! {
         didSet {
             view.layoutIfNeeded()
+            if let name = group?.name {
+                navigationItem.title = name
+            }
             fetchGroupGames(group.objectId)
         }
     }
@@ -26,10 +31,21 @@ class GamesViewController: UIViewController, UITableViewDataSource, UITableViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let tempImageView = UIImageView(image: UIImage(named: "bg-light"))
+        tempImageView.frame = tableView.frame
+        tempImageView.contentMode = UIViewContentMode.ScaleAspectFill
+        tableView.backgroundView = tempImageView
+        tempImageView.removeFromSuperview()
+        
         tableView.dataSource = self
         tableView.delegate = self
         
         updateGroup()
+    }
+    
+    override func viewDidDisappear(animated: Bool) {
+        let id = group.objectId
+        defaults.setObject(id, forKey: Constants.UserDefaults.KEY_DEFAULT_GROUP_ID)
     }
 
     override func didReceiveMemoryWarning() {
@@ -37,7 +53,11 @@ class GamesViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     private func updateGroup() {
-        let defaults = NSUserDefaults.standardUserDefaults()
+        if group != nil {
+            // group has already been set by previous view controller
+            return
+        }
+        
         let id = defaults.objectForKey(Constants.UserDefaults.KEY_DEFAULT_GROUP_ID) as! String
         GroupModel.loadAll({ (groupResults, groupLoadError) -> Void in
             if let groupLoadError = groupLoadError {
@@ -45,7 +65,7 @@ class GamesViewController: UIViewController, UITableViewDataSource, UITableViewD
             } else {
                 if groupResults!.count > 0 {
                     self.group = GroupModel.findById(groupResults, id: id)
-                    self.navigationItem.title = self.group.name
+//                    self.navigationItem.title = self.group.name
                 }
             }
         })
@@ -60,21 +80,6 @@ class GamesViewController: UIViewController, UITableViewDataSource, UITableViewD
             self.games = results!
             self.tableView.reloadData()
         })
-    }
-    
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return games.count
-    }
-    
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("GameCell", forIndexPath: indexPath) as! GameCell
-        
-        cell.game = games[indexPath.row]
-        return cell
-    }
-    
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -108,4 +113,30 @@ class GamesViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
 
 
+}
+
+extension GamesViewController: UITableViewDataSource {
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return games.count
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("GameCell", forIndexPath: indexPath) as! GameCell
+        
+        cell.game = games[indexPath.row]
+        return cell
+    }
+}
+
+extension GamesViewController: UITableViewDelegate {
+    
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    }
+
+    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        cell.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.5)
+    }
 }
