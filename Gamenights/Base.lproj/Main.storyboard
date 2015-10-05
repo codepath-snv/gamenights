@@ -434,6 +434,11 @@
                                     <outlet property="delegate" destination="TPq-1T-lwz" id="eng-RU-jhJ"/>
                                 </connections>
                             </collectionView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="d9M-sU-EWN">
+                                <rect key="frame" x="20" y="532" width="231" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -502,8 +507,27 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2jH-Qz-YbK">
+                                <rect key="frame" x="8" y="526" width="214" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Uw-q1-ftu">
+                                <rect key="frame" x="230" y="526" width="82" height="30"/>
+                                <color key="backgroundColor" red="0.2156862745" green="0.67450980390000004" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="b3o-gv-hdO"/>
+                                </constraints>
+                                <inset key="contentEdgeInsets" minX="5" minY="3" maxX="3" maxY="5"/>
+                                <state key="normal" title="Add Group">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onAddGroup:" destination="VIa-2P-h2A" eventType="touchUpInside" id="fkC-9U-m0c"/>
+                                </connections>
+                            </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="79" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="krp-iy-RZM">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="518"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleAspectFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="GroupCell" rowHeight="79" id="E7T-db-33y" customClass="GroupCell" customModule="Gamenights" customModuleProvider="target">
@@ -517,7 +541,7 @@
                                                     <rect key="frame" x="8" y="8" width="304" height="63"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Group 1" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dM7-OE-g9j">
-                                                            <rect key="frame" x="5" y="5" width="294" height="21"/>
+                                                            <rect key="frame" x="5" y="5" width="294" height="20.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                             <nil key="highlightedColor"/>
@@ -554,66 +578,28 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="krp-iy-RZM" secondAttribute="trailing" id="5c1-4L-y4A"/>
-                            <constraint firstItem="krp-iy-RZM" firstAttribute="bottom" secondItem="IdX-lX-Ndl" secondAttribute="top" id="HeS-PD-Jpf"/>
+                            <constraint firstItem="2jH-Qz-YbK" firstAttribute="leading" secondItem="m9F-Hq-Dr2" secondAttribute="leading" constant="8" id="8rj-aY-2sq"/>
+                            <constraint firstItem="krp-iy-RZM" firstAttribute="bottom" secondItem="IdX-lX-Ndl" secondAttribute="top" constant="-50" id="HeS-PD-Jpf"/>
                             <constraint firstItem="krp-iy-RZM" firstAttribute="top" secondItem="m9F-Hq-Dr2" secondAttribute="top" id="Kpj-PG-Uau"/>
+                            <constraint firstItem="IdX-lX-Ndl" firstAttribute="top" secondItem="7Uw-q1-ftu" secondAttribute="bottom" constant="12" id="PKI-1s-fVp"/>
                             <constraint firstItem="krp-iy-RZM" firstAttribute="leading" secondItem="m9F-Hq-Dr2" secondAttribute="leading" id="Yot-7z-Fr4"/>
+                            <constraint firstItem="7Uw-q1-ftu" firstAttribute="centerY" secondItem="2jH-Qz-YbK" secondAttribute="centerY" id="YqK-WF-0TN"/>
+                            <constraint firstAttribute="trailing" secondItem="7Uw-q1-ftu" secondAttribute="trailing" constant="8" id="bTe-gv-7vg"/>
+                            <constraint firstItem="7Uw-q1-ftu" firstAttribute="leading" secondItem="2jH-Qz-YbK" secondAttribute="trailing" constant="8" id="hMA-Rg-CBh"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Groups" id="1r1-We-PQW">
-                        <barButtonItem key="rightBarButtonItem" title="Add Group" id="wju-bv-3aF">
-                            <connections>
-                                <segue destination="OuL-uk-7pz" kind="push" id="ooz-5a-UoW"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Add Group" id="wju-bv-3aF"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="addGroupButton" destination="7Uw-q1-ftu" id="cTl-Nu-TMU"/>
+                        <outlet property="newGroupTextField" destination="2jH-Qz-YbK" id="1lv-Yx-1JQ"/>
                         <outlet property="tableView" destination="krp-iy-RZM" id="xsV-nJ-L54"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7VG-P3-64H" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="965" y="-321"/>
-        </scene>
-        <!--Add Group-->
-        <scene sceneID="ZFq-12-Pcb">
-            <objects>
-                <viewController id="OuL-uk-7pz" customClass="NewGroupViewController" customModule="Gamenights" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Hh9-KQ-BOw"/>
-                        <viewControllerLayoutGuide type="bottom" id="1m2-Xc-Pkk"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="yjX-i4-n6b">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Group Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aTp-BX-8Fv">
-                                <rect key="frame" x="20" y="229" width="91" height="18"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="APM-yl-wYI">
-                                <rect key="frame" x="119" y="223" width="181" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Add Group" id="VU5-PT-8Xd">
-                        <barButtonItem key="rightBarButtonItem" title="Save" id="4VF-Dj-Py4">
-                            <connections>
-                                <action selector="onAddGroup:" destination="OuL-uk-7pz" id="FQb-nZ-TY9"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="newGroupTextField" destination="APM-yl-wYI" id="yMK-IJ-JlN"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="eBZ-VB-rwP" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1361" y="-321"/>
         </scene>
         <!--Groups Navigation Controller-->
         <scene sceneID="iyl-Ej-AKZ">
