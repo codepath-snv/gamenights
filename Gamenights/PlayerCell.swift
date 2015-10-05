@@ -1,5 +1,5 @@
 //
-//  MenuCell.swift
+//  PlayerCell.swift
 //  Gamenights
 //
 //  Created by Shawn Zhu on 9/28/15.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MenuCell: UICollectionViewCell {
+class PlayerCell: UICollectionViewCell {
     @IBOutlet weak var playerImageView: UIImageView!
 
     var player: Player! {
