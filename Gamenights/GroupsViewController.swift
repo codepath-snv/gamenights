@@ -10,12 +10,14 @@ import UIKit
 
 class GroupsViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var addGroupButton: UIButton!
+    @IBOutlet weak var newGroupTextField: UITextField!
     
     var groups: [GroupModel]?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        addGroupButton.layer.cornerRadius = 5;
         
         // flex row height
         tableView.rowHeight = UITableViewAutomaticDimension
@@ -50,7 +52,19 @@ class GroupsViewController: UIViewController {
             destinationViewController.group = groups?[indexPath!.row]
         }
     }
-
+    
+    @IBAction func onAddGroup(sender: AnyObject) {
+        let group = GroupModel(nil)
+        group.name = newGroupTextField.text
+        group.save({ (error) -> Void in
+            if error != nil {
+                print("Error creating group")
+                return
+            } else {
+                self.navigationController?.popViewControllerAnimated(true)
+            }
+        })
+    }
 }
 
 extension GroupsViewController: UITableViewDataSource {
