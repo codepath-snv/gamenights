@@ -12,6 +12,7 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    let storyboard = UIStoryboard(name: "Main", bundle: nil)
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
@@ -22,6 +23,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         // Initialize Parse.
         Parse.setApplicationId("iW02KozyfH3D4BsCwH8x7xXnDflNVgCPdxPMvNuy", clientKey: "DZQh3FHoppuwKRqWjmgaGBKyfxkEJ5G0gJVW4T4u")
+        
+        // navigation bar appearances
+        setupNavigationBarAppearances()
 
         // [Optional] Track statistics around application opens.
         PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
@@ -55,14 +59,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     private func setupHamburgerViewController() {
-        let hamburgerViewController = window?.rootViewController as! HamburgerViewController
-
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let menuViewController = storyboard.instantiateViewControllerWithIdentifier("MenuViewController") as! MenuViewController
+//        let hamburgerViewController = window?.rootViewController as! HamburgerViewController
+//
+//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//        let menuViewController = storyboard.instantiateViewControllerWithIdentifier("MenuViewController") as! MenuViewController
+//        
+//        menuViewController.hamburgerViewController = hamburgerViewController
+//
+//        hamburgerViewController.menuViewController = menuViewController
+    }
+    
+    private func setupNavigationBarAppearances() {
+        let barColor = UIColor.brownColor()
+        let barTextColor = UIColor.whiteColor()
         
-        menuViewController.hamburgerViewController = hamburgerViewController
-
-        hamburgerViewController.menuViewController = menuViewController
+        UINavigationBar.appearance().tintColor = barTextColor
+        UINavigationBar.appearance().barTintColor = barColor
+        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: barTextColor]
+        UIToolbar.appearance().tintColor = barTextColor
+        UIToolbar.appearance().barTintColor = barColor
+        
     }
     
     //
@@ -77,19 +93,38 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 if let groupLoadError = groupLoadError {
                     NSLog("Failed to load groups \(groupLoadError)")
                 } else {
-                    if groupResults!.count > 0 {
+                    let count = groupResults!.count
+                    NSLog("there are \(count) groups")
+                    switch (count) {
+                    case 0:
+                        NSLog("Show create group view")
+                    case 1:
                         let defaultGroup = groupResults![0] as GroupModel
-                        let id = defaultGroup.objectId
-                        defaults.setObject(id, forKey: Constants.UserDefaults.KEY_DEFAULT_GROUP_ID)
-                        NSLog("got default group: \(id)")
-                        defaults.synchronize()
-                        self.setupHamburgerViewController()
+                        self.handleOnlyOneGroup(defaultGroup)
+                    default:
+                        self.showGroupsView()
                     }
                 }
             })
-        } else {
-            setupHamburgerViewController()
         }
+    }
+    
+    private func showGroupsView() {
+        let viewController = storyboard.instantiateViewControllerWithIdentifier("GroupsNavigationController")
+        
+        window?.rootViewController = viewController
+    }
+    
+    private func handleOnlyOneGroup(defaultGroup: GroupModel) {
+        let defaults = NSUserDefaults.standardUserDefaults()
+        let id = defaultGroup.objectId
+        defaults.setObject(id, forKey: Constants.UserDefaults.KEY_DEFAULT_GROUP_ID)
+        NSLog("got default group: \(id)")
+        defaults.synchronize()
+        
+        let gamesNavigationController = storyboard.instantiateViewControllerWithIdentifier("GamesNavigationController")
+        
+        window?.rootViewController = gamesNavigationController
     }
 
     // TODO: consider moving to GamenightsTests
