@@ -11,11 +11,12 @@ import UIKit
 class MenuCell: UICollectionViewCell {
     @IBOutlet weak var playerImageView: UIImageView!
 
-    var player: Player! {
+    var player: PlayerModel! {
         didSet {
-            if let imageUrl = player.imageUrl {
-                self.playerImageView.setImageWithURL(NSURL(string: imageUrl)!)
-            }
+            let hashkey = player.fullname.stringByAddingPercentEncodingWithAllowedCharacters(.URLHostAllowedCharacterSet())
+            let urlStr = "http://robohash.org/\(hashkey!)"
+            let imageUrl = NSURL(string: urlStr)
+            self.playerImageView.setImageWithURL(imageUrl!)
         }
     }
 
