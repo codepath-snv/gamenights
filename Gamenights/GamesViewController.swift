@@ -19,7 +19,7 @@ class GamesViewController: UIViewController, UITableViewDataSource, UITableViewD
     var group: GroupModel! {
         didSet {
             view.layoutIfNeeded()
-            self.title = group.name
+            navigationItem.title = group.name
             fetchGroupGames(group.objectId)
         }
     }
@@ -33,6 +33,7 @@ class GamesViewController: UIViewController, UITableViewDataSource, UITableViewD
         updateGroup()
     }
 
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -45,12 +46,11 @@ class GamesViewController: UIViewController, UITableViewDataSource, UITableViewD
                 NSLog("Failed to load groups \(groupLoadError)")
             } else {
                 if groupResults!.count > 0 {
-                    if (id == nil) {
-                        self.group = groupResults![0]
-                    } else {
+                    if let id = id { // since id is optional we need to 
                         self.group = GroupModel.findById(groupResults, id: id)
+                    } else {
+                        self.group = groupResults![0]
                     }
-                    self.navigationItem.title = self.group.name
                 }
             }
         })
