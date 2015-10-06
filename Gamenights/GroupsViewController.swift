@@ -18,7 +18,7 @@ class GroupsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         addGroupButton.layer.cornerRadius = 5;
-        
+
         // flex row height
         tableView.rowHeight = UITableViewAutomaticDimension
         
@@ -37,7 +37,6 @@ class GroupsViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
 
     // MARK: - Navigation
 
