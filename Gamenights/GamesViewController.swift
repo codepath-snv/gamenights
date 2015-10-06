@@ -96,14 +96,8 @@ class GamesViewController: UIViewController, UITableViewDataSource, UITableViewD
             let newGameViewController = segue.destinationViewController as! NewGameViewController
             newGameViewController.groupId = group?.objectId
         case "addSessionFromCellSegue":
-            let button = sender as! UIButton
-            let view = button.superview!
-            let cell = view.superview as!UITableViewCell
-            let indexPath = tableView.indexPathForCell(cell)!
-            
-            let game = games[indexPath.row]
             let newGameResultViewController = segue.destinationViewController as! NewGameResultViewController
-            newGameResultViewController.groupId = game.objectId
+            newGameResultViewController.group = group
         case "playersSegue":
             let destination = segue.destinationViewController as! PlayersViewController
             destination.group = group

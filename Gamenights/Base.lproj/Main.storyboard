@@ -102,7 +102,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="458" y="407"/>
+            <point key="canvasLocation" x="380" y="265"/>
         </scene>
         <!--Game-->
         <scene sceneID="Ev4-fK-4j6">
@@ -183,7 +183,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Klj-c5-biD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="934" y="1072"/>
+            <point key="canvasLocation" x="380" y="1704"/>
         </scene>
         <!--Add Game Result-->
         <scene sceneID="XFa-61-K6h">
@@ -242,6 +242,15 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleAspectFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Gz-3B-PwU">
+                                <rect key="frame" x="114" y="153" width="22" height="22"/>
+                                <state key="normal" title="Button" image="add-user">
+                                    <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="TPq-1T-lwz" kind="push" id="f0W-t2-mfo"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -261,7 +270,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Eua-bR-l3o" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1367" y="407"/>
+            <point key="canvasLocation" x="1014" y="1040"/>
         </scene>
         <!--Add Game-->
         <scene sceneID="zqZ-1O-fa1">
@@ -315,7 +324,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A2k-9f-Zsj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2530" y="-247"/>
+            <point key="canvasLocation" x="-1" y="1040"/>
         </scene>
         <!--Hamburger View Controller-->
         <scene sceneID="qq9-IK-vYI">
@@ -367,7 +376,7 @@
                     </connections>
                 </panGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-93" y="-324"/>
+            <point key="canvasLocation" x="1171" y="-542"/>
         </scene>
         <!--Players-->
         <scene sceneID="Ran-PZ-kYS">
@@ -381,8 +390,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="M9U-Nh-cpV">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="524"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="M9U-Nh-cpV">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="5" minimumInteritemSpacing="5" id="plE-kT-Ghh">
@@ -393,7 +402,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MenuCell" id="Sfm-0U-oMD" userLabel="Menu Cell" customClass="MenuCell" customModule="Gamenights" customModuleProvider="target">
-                                        <rect key="frame" x="5" y="5" width="80" height="80"/>
+                                        <rect key="frame" x="5" y="69" width="80" height="80"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
@@ -425,8 +434,8 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="M9U-Nh-cpV" firstAttribute="leading" secondItem="z5F-fB-jQw" secondAttribute="leading" id="DRh-6c-6uL"/>
+                            <constraint firstAttribute="bottom" secondItem="M9U-Nh-cpV" secondAttribute="bottom" id="HiO-V6-OFQ"/>
                             <constraint firstItem="M9U-Nh-cpV" firstAttribute="top" secondItem="z5F-fB-jQw" secondAttribute="top" id="gF9-5S-qYe"/>
-                            <constraint firstItem="M9U-Nh-cpV" firstAttribute="bottom" secondItem="noR-Mv-aqY" secondAttribute="top" id="naS-Z0-Z0g"/>
                             <constraint firstAttribute="trailing" secondItem="M9U-Nh-cpV" secondAttribute="trailing" id="vLb-lL-IBD"/>
                         </constraints>
                     </view>
@@ -439,7 +448,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w7x-iD-0Gf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1928" y="-364"/>
+            <point key="canvasLocation" x="1014" y="1704"/>
         </scene>
         <!--Group Navigation Controller-->
         <scene sceneID="DFb-qX-EhK">
@@ -457,7 +466,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ffv-ce-3DJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="77" y="407"/>
+            <point key="canvasLocation" x="-1" y="265"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="LQc-gy-CEd">
@@ -475,7 +484,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="03h-uJ-hA4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="458" y="1072"/>
+            <point key="canvasLocation" x="380" y="1040"/>
         </scene>
         <!--Groups-->
         <scene sceneID="iHy-uj-Ks5">
@@ -579,7 +588,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7VG-P3-64H" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="965" y="-321"/>
+            <point key="canvasLocation" x="370" y="-409"/>
         </scene>
         <!--Groups Navigation Controller-->
         <scene sceneID="iyl-Ej-AKZ">
@@ -598,10 +607,11 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qhs-A3-1vV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="605" y="-321"/>
+            <point key="canvasLocation" x="10" y="-409"/>
         </scene>
     </scenes>
     <resources>
+        <image name="add-user" width="42" height="42"/>
         <image name="default_avatar" width="64" height="64"/>
         <image name="players" width="32" height="32"/>
     </resources>
