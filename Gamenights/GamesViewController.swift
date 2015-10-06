@@ -89,8 +89,7 @@ class GamesViewController: UIViewController, UITableViewDataSource, UITableViewD
             let indexPath = tableView.indexPathForCell(cell)!
             
             let game = games[indexPath.row]
-            let gameDetailNavController = segue.destinationViewController as! UINavigationController
-            let gameDetailViewController = gameDetailNavController.topViewController as! GameDetailViewController
+            let gameDetailViewController = segue.destinationViewController as! GameDetailViewController
             gameDetailViewController.game = game
         case "addGameSegue":
             let newGameViewController = segue.destinationViewController as! NewGameViewController

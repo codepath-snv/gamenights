@@ -78,7 +78,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: barTextColor]
         UIToolbar.appearance().tintColor = barTextColor
         UIToolbar.appearance().barTintColor = barColor
-        
     }
     
     //

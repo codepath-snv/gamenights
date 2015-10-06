@@ -26,6 +26,12 @@ class GameDetailViewController: UIViewController, UITableViewDataSource, UITable
         
         tableView.reloadData()
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        if game != nil {
+            fetchGameSessions(game!.objectId)
+        }
+    }
 
     private func fetchGameSessions(gameId: String!) {
         SessionModel.loadAllByParentId(gameId, onDone: { (results, error) -> Void in
@@ -61,15 +67,19 @@ class GameDetailViewController: UIViewController, UITableViewDataSource, UITable
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
-    
-    @IBAction func onGoBack(sender: AnyObject) {
-        dismissViewControllerAnimated(true, completion: nil)
-    }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "addSessionFromModalSegue" {
+        let cell = sender as! GameResultCell
+        switch (segue.identifier!) {
+        case "addSessionFromModalSegue":
             let newGameResultViewController = segue.destinationViewController as! NewGameResultViewController
             newGameResultViewController.groupId = game!.objectId
+        case "EditGameSessionSegue":
+            let newGameResultViewController = segue.destinationViewController as! NewGameResultViewController
+            newGameResultViewController.groupId = game!.objectId
+            newGameResultViewController.gameSession = cell.gameSession
+        default:
+            NSLog("default segue")
         }
     }
 
