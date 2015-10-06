@@ -61,10 +61,6 @@ class GameDetailViewController: UIViewController, UITableViewDataSource, UITable
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
-    
-    @IBAction func onGoBack(sender: AnyObject) {
-        dismissViewControllerAnimated(true, completion: nil)
-    }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "addSessionFromModalSegue" {
