@@ -32,7 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         setupAppSession()
 
-        self.testModels()
+        //self.testModels()
         return true
     }
 

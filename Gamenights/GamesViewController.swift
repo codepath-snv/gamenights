@@ -39,13 +39,17 @@ class GamesViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     private func updateGroup() {
         let defaults = NSUserDefaults.standardUserDefaults()
-        let id = defaults.objectForKey(Constants.UserDefaults.KEY_DEFAULT_GROUP_ID) as! String
+        let id = defaults.objectForKey(Constants.UserDefaults.KEY_DEFAULT_GROUP_ID) as? String
         GroupModel.loadAll({ (groupResults, groupLoadError) -> Void in
             if let groupLoadError = groupLoadError {
                 NSLog("Failed to load groups \(groupLoadError)")
             } else {
                 if groupResults!.count > 0 {
-                    self.group = GroupModel.findById(groupResults, id: id)
+                    if (id == nil) {
+                        self.group = groupResults![0]
+                    } else {
+                        self.group = GroupModel.findById(groupResults, id: id)
+                    }
                     self.navigationItem.title = self.group.name
                 }
             }
