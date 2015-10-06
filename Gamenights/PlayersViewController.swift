@@ -17,7 +17,7 @@ class PlayersViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         getPlayersBy(group)
     }
 

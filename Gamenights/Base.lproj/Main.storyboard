@@ -395,32 +395,45 @@
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="5" minimumInteritemSpacing="5" id="plE-kT-Ghh">
-                                    <size key="itemSize" width="80" height="80"/>
+                                    <size key="itemSize" width="108" height="118"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="5" minY="5" maxX="5" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MenuCell" id="Sfm-0U-oMD" userLabel="Menu Cell" customClass="MenuCell" customModule="Gamenights" customModuleProvider="target">
-                                        <rect key="frame" x="5" y="69" width="80" height="80"/>
+                                        <rect key="frame" x="5" y="69" width="108" height="118"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="108" height="118"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default_avatar" translatesAutoresizingMaskIntoConstraints="NO" id="JJ1-y8-sn9">
-                                                    <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                                    <rect key="frame" x="14" y="0.0" width="80" height="80"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="80" id="Wa2-Ch-0qz"/>
+                                                        <constraint firstAttribute="width" constant="80" id="yjS-ed-NeF"/>
+                                                    </constraints>
                                                 </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Gideon Goodwing" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AdO-Fi-jtB">
+                                                    <rect key="frame" x="4" y="88" width="101" height="15"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <constraints>
-                                            <constraint firstItem="JJ1-y8-sn9" firstAttribute="leading" secondItem="Sfm-0U-oMD" secondAttribute="leading" id="6Ch-gQ-sbl"/>
-                                            <constraint firstAttribute="bottom" secondItem="JJ1-y8-sn9" secondAttribute="bottom" id="dgi-5a-iAu"/>
-                                            <constraint firstItem="JJ1-y8-sn9" firstAttribute="top" secondItem="Sfm-0U-oMD" secondAttribute="top" id="gAF-HG-Z55"/>
-                                            <constraint firstAttribute="trailing" secondItem="JJ1-y8-sn9" secondAttribute="trailing" id="xUu-zM-241"/>
+                                            <constraint firstItem="AdO-Fi-jtB" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Sfm-0U-oMD" secondAttribute="leading" constant="2" id="9bO-aa-o7U"/>
+                                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="AdO-Fi-jtB" secondAttribute="bottom" constant="8" id="FJ7-o5-MEp"/>
+                                            <constraint firstItem="AdO-Fi-jtB" firstAttribute="centerX" secondItem="Sfm-0U-oMD" secondAttribute="centerX" id="OnT-bx-4aw"/>
+                                            <constraint firstItem="JJ1-y8-sn9" firstAttribute="centerX" secondItem="Sfm-0U-oMD" secondAttribute="centerX" id="Wzg-jc-P9a"/>
+                                            <constraint firstItem="JJ1-y8-sn9" firstAttribute="top" secondItem="Sfm-0U-oMD" secondAttribute="top" id="c05-sl-Jsy"/>
+                                            <constraint firstItem="AdO-Fi-jtB" firstAttribute="top" secondItem="JJ1-y8-sn9" secondAttribute="bottom" constant="8" id="paO-qT-PDT"/>
+                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="AdO-Fi-jtB" secondAttribute="trailing" constant="2" id="qNQ-Md-Il7"/>
                                         </constraints>
                                         <connections>
+                                            <outlet property="nameLabel" destination="AdO-Fi-jtB" id="1hP-bi-CgP"/>
                                             <outlet property="playerImageView" destination="JJ1-y8-sn9" id="EZ9-Bc-dhQ"/>
                                         </connections>
                                     </collectionViewCell>
