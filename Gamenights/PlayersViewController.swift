@@ -26,6 +26,10 @@ class PlayersViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func didTapPlayer(sender: UIButton) {
+        // toggle selected state
+        sender.selected = !sender.selected
+    }
 
     /*
     // MARK: - Navigation
