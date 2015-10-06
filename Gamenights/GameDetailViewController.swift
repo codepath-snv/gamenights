@@ -28,8 +28,8 @@ class GameDetailViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     override func viewWillAppear(animated: Bool) {
-        if game != nil {
-            fetchGameSessions(game!.objectId)
+        if let game = game {
+            fetchGameSessions(game.objectId)
         }
     }
 
