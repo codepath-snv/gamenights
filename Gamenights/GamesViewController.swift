@@ -46,7 +46,7 @@ class GamesViewController: UIViewController, UITableViewDataSource, UITableViewD
                 NSLog("Failed to load groups \(groupLoadError)")
             } else {
                 if groupResults!.count > 0 {
-                    if let id = id { // since id is optional we need to 
+                    if let id = id { // unwinding optional id before use
                         self.group = GroupModel.findById(groupResults, id: id)
                     } else {
                         self.group = groupResults![0]
