@@ -20,13 +20,21 @@ class NewGameResultViewController: UIViewController {
             groupId = group.objectId
         }
     }
-
+    var gameSession: SessionModel?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         notesTextView.layer.borderWidth = 0.5
         notesTextView.layer.cornerRadius = 5
         notesTextView.layer.borderColor = UIColor(red: 204/255, green: 204/255, blue: 204/255, alpha: 1.0).CGColor
+        
+        if (gameSession != nil) {
+            dateTextField.text = gameSession!.date as String!
+            participantsTextField.text = gameSession!.players as String!
+            winnerTextField.text = gameSession!.winner as String!
+            notesTextView.text = gameSession!.notes as String!
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -36,13 +44,16 @@ class NewGameResultViewController: UIViewController {
 
     @IBAction func onAddGameSession(sender: AnyObject) {
         if (dateTextField.text != "" || participantsTextField.text != "" || winnerTextField.text != "" || notesTextView.text != "") {
-            let gameSession = SessionModel(parentGroupGameId: groupId!, pfObj: nil)
-            gameSession.date = dateTextField.text
-            gameSession.players = participantsTextField.text
-            gameSession.winner = winnerTextField.text
-            gameSession.notes = notesTextView.text
+            if (gameSession == nil) {
+                gameSession = SessionModel(parentGroupGameId: groupId!, pfObj: nil)
+            }
             
-            gameSession.save({ (error) -> Void in
+            gameSession!.date = dateTextField.text
+            gameSession!.players = participantsTextField.text
+            gameSession!.winner = winnerTextField.text
+            gameSession!.notes = notesTextView.text
+            
+            gameSession!.save({ (error) -> Void in
                 if error != nil {
                     print("Error creating game session")
                     return

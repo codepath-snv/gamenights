@@ -121,11 +121,11 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="GameResultCell" rowHeight="145" id="ctW-Xr-pGb" customClass="GameResultCell" customModule="Gamenights" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="GameResultCell" rowHeight="145" id="ctW-Xr-pGb" customClass="GameResultCell" customModule="Gamenights" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="86" width="320" height="145"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ctW-Xr-pGb" id="qdf-Iy-7Ke">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="145"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="145"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="09/20/2015" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nuC-3O-b58">
@@ -159,6 +159,7 @@
                                             <outlet property="notesLabel" destination="kst-cW-aIo" id="cvk-2w-RAa"/>
                                             <outlet property="participantsLabel" destination="ilh-Cw-DF4" id="WA8-id-df6"/>
                                             <outlet property="winnerLabel" destination="DtC-w8-4M6" id="mWq-zD-4TM"/>
+                                            <segue destination="VCE-E1-7mB" kind="push" identifier="EditGameSessionSegue" id="CO2-yh-iAq"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -167,6 +168,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Game" id="hMu-b2-OnA">
+                        <barButtonItem key="backBarButtonItem" title=" " id="xfB-kZ-fX0"/>
                         <barButtonItem key="rightBarButtonItem" title="+" id="eqe-ef-VCf">
                             <connections>
                                 <segue destination="VCE-E1-7mB" kind="push" identifier="addSessionFromModalSegue" id="Gvf-z0-Vz6"/>
@@ -635,6 +637,6 @@
         <image name="plus-19C2FF" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Gvf-z0-Vz6"/>
+        <segue reference="CO2-yh-iAq"/>
     </inferredMetricsTieBreakers>
 </document>
