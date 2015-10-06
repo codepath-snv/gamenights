@@ -13,7 +13,7 @@ class PlayersViewController: UIViewController {
     @IBOutlet weak var playersCollectionView: UICollectionView!
 
     var group: GroupModel!
-    var players = [Player]()
+    var players = [PlayerModel]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,14 +38,15 @@ class PlayersViewController: UIViewController {
     */
     
     private func getPlayersBy(group: GroupModel) {
-        
-        players = [
-            Player(dictionary: ["name": "Z"]),
-            Player(dictionary: ["name": "Gideon"]),
-            Player(dictionary: ["name": "Shawn"]),
-            Player(dictionary: ["name": "Kevin"])
-        ]
-        playersCollectionView.reloadData()
+        print("Loading players for group \(group.objectId)")
+        PlayerModel.loadAllMembersOfGroup(group.objectId) { (results, error) -> Void in
+            if (error != nil || results == nil) {
+                print("Failed to load players for group \(group.objectId)")
+                return
+            }
+            self.players = results!
+            self.playersCollectionView.reloadData()
+        }
     }
 
 }

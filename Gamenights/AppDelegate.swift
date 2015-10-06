@@ -134,6 +134,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                         let loadedSession = SessionModel.findById(sessionResults, id: testSession1.objectId)
                                         assert(loadedSession!.notes == testSession1.notes, "Verify reloaded data")
                                         print("Re-load check successful")
+                                        let player = PlayerModel(nil)
+                                        player.fullname = "Test McTesterson"
+                                        player.nickname = "Testy"
+                                        player.ensureMemberOfGroup(testGroup1.objectId)
+                                        player.save({ (playerError: NSError?) -> Void in
+                                            assert(playerError == nil, "Expected to be able to save player")
+                                            PlayerModel.loadAllMembersOfGroup(testGroup1.objectId, onDone: { (results, reloadPlayerError) -> Void in
+                                                assert(reloadPlayerError == nil, "Expected to be able to re-load players")
+                                                assert(results?.count == 1, "Expected to see the player")
+                                                let reloadedPlayer = results![0]
+                                                assert(reloadedPlayer.objectId == player.objectId, "Should have loaded back same player")
+                                                player.deleteModel({ (succeeded, error) -> Void in
+                                                    print("Successfully deleted test player")
+                                                })
+                                            })
+                                        })
                                         testGroup1.deleteModel({ (succeeded, deleteError) -> Void in
                                             assert(succeeded && deleteError == nil, "Expect no error")
                                             print("Successfully deleted test group")
