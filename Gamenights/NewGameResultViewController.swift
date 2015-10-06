@@ -15,6 +15,11 @@ class NewGameResultViewController: UIViewController {
     @IBOutlet weak var notesTextView: UITextView!
 
     var groupId: String?
+    var group: GroupModel! {
+        didSet {
+            groupId = group.objectId
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,14 +52,15 @@ class NewGameResultViewController: UIViewController {
             })
         }
     }
-    /*
+
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        
+        let destinationViewController = segue.destinationViewController as! PlayersViewController
+        
+        destinationViewController.group = group
     }
-    */
 
 }
