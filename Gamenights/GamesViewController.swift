@@ -104,7 +104,7 @@ class GamesViewController: UIViewController, UITableViewDataSource, UITableViewD
             let destination = segue.destinationViewController as! PlayersViewController
             destination.group = group
         default:
-            NSLog("unhandled segue")
+            NSLog("default segue")
         }
     }
 

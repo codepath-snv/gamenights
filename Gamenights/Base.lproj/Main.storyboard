@@ -6,7 +6,7 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Group Name-->
+        <!--Games View Controller-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
                 <viewController id="vXZ-lx-hvc" customClass="GamesViewController" customModule="Gamenights" customModuleProvider="target" sceneMemberID="viewController">
@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="88" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="KDB-eP-Pnr">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="516"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="GameCell" rowHeight="88" id="0aY-nz-KlS" customClass="GameCell" customModule="Gamenights" customModuleProvider="target">
@@ -73,33 +73,20 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="wZW-Bl-aae">
-                                <rect key="frame" x="0.0" y="524" width="320" height="44"/>
-                                <items>
-                                    <barButtonItem title="Groups" style="plain" id="hzL-iD-N5l">
-                                        <connections>
-                                            <segue destination="zY2-XH-DNJ" kind="modal" identifier="groupsSegue" id="P7n-yx-z7g"/>
-                                        </connections>
-                                    </barButtonItem>
-                                </items>
-                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="KDB-eP-Pnr" secondAttribute="trailing" id="7H6-gU-ojC"/>
                             <constraint firstItem="KDB-eP-Pnr" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="Cv6-FX-VCP"/>
-                            <constraint firstAttribute="trailing" secondItem="wZW-Bl-aae" secondAttribute="trailing" id="OQi-Gi-KlD"/>
-                            <constraint firstAttribute="bottom" secondItem="wZW-Bl-aae" secondAttribute="bottom" id="W4p-vJ-RJo"/>
                             <constraint firstItem="KDB-eP-Pnr" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="WX8-RY-mrp"/>
-                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="KDB-eP-Pnr" secondAttribute="bottom" constant="8" id="X4Q-uI-q3F"/>
-                            <constraint firstItem="wZW-Bl-aae" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="t3v-lt-bvz"/>
+                            <constraint firstAttribute="bottom" secondItem="KDB-eP-Pnr" secondAttribute="bottom" id="czS-tX-fNY"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Group Name" id="bwe-Pc-ybG">
+                    <navigationItem key="navigationItem" id="bwe-Pc-ybG">
                         <barButtonItem key="leftBarButtonItem" image="players" id="f4C-U1-4pL">
                             <connections>
-                                <segue destination="TPq-1T-lwz" kind="push" identifier="playersSegue" id="3ak-sz-4SW"/>
+                                <segue destination="zY2-XH-DNJ" kind="modal" identifier="groupsSegue" id="i9D-oX-KhL"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Add Game" id="lAN-UI-Xhu">
@@ -394,7 +381,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="M9U-Nh-cpV">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="M9U-Nh-cpV">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="524"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -406,7 +393,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MenuCell" id="Sfm-0U-oMD" userLabel="Menu Cell" customClass="MenuCell" customModule="Gamenights" customModuleProvider="target">
-                                        <rect key="frame" x="5" y="69" width="80" height="80"/>
+                                        <rect key="frame" x="5" y="5" width="80" height="80"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
