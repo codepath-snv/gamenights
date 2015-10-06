@@ -10,12 +10,14 @@ import UIKit
 
 class GroupsViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var addGroupButton: UIButton!
+    @IBOutlet weak var newGroupTextField: UITextField!
     
     var groups: [GroupModel]?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        addGroupButton.layer.cornerRadius = 5;
         
         // flex row height
         tableView.rowHeight = UITableViewAutomaticDimension
@@ -41,16 +43,31 @@ class GroupsViewController: UIViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-        let destinationNavigationController = segue.destinationViewController as! UINavigationController
-        let destinationViewController = destinationNavigationController.topViewController as! GamesViewController
-        let cell = sender as! GroupCell
-        let indexPath = tableView.indexPathForCell(cell)
-        
-        destinationViewController.group = groups?[indexPath!.row]
+        if segue.identifier == "groupDetailsSegue" {
+            let destinationNavigationController = segue.destinationViewController as! UINavigationController
+            let destinationViewController = destinationNavigationController.topViewController as! GamesViewController
+            let cell = sender as! GroupCell
+            let indexPath = tableView.indexPathForCell(cell)
+            
+            destinationViewController.group = groups?[indexPath!.row]
+        }
     }
-
+    
+    @IBAction func onAddGroup(sender: AnyObject) {
+        if newGroupTextField.text != "" {
+            let group = GroupModel(nil)
+            group.name = newGroupTextField.text
+            group.save({ (error) -> Void in
+                if error != nil {
+                    print("Error creating group")
+                    return
+                } else {
+                    self.newGroupTextField.text = ""
+                    self.tableView.reloadData()
+                }
+            })
+        }
+    }
 }
 
 extension GroupsViewController: UITableViewDataSource {
