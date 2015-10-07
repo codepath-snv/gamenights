@@ -54,6 +54,7 @@ class GamesViewController: UIViewController, UITableViewDataSource, UITableViewD
                     } else {
                         self.group = groupResults![0]
                     }
+                    NSLog("Group: \(self.group.name) with id: \(self.group.objectId)")
                 }
             }
         })
