@@ -22,6 +22,8 @@ class GameCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        gameLabel.preferredMaxLayoutWidth = gameLabel.frame.size.width
+        notesLabel.preferredMaxLayoutWidth = notesLabel.frame.size.width
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
