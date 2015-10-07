@@ -21,7 +21,8 @@ class GroupsViewController: UIViewController {
 
         // flex row height
         tableView.rowHeight = UITableViewAutomaticDimension
-        
+        tableView.estimatedRowHeight = 150
+
         GroupModel.loadAll({ (groupResults, groupLoadError) -> Void in
             if let groupLoadError = groupLoadError {
                 NSLog("Failed to load groups \(groupLoadError)")
