@@ -10,7 +10,7 @@ import UIKit
 
 class GameDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var tableView: UITableView!
-    var gameResults: [GameSessionModel]!
+    var gameSessions: [GameSessionModel]!
 
     var game: GroupGameModel? {
         didSet {
@@ -39,7 +39,7 @@ class GameDetailViewController: UIViewController, UITableViewDataSource, UITable
                 print("Error getting game detail.")
                 return
             }
-            self.gameResults = results!
+            self.gameSessions = results!
             self.tableView.reloadData()
         })
     }
@@ -50,8 +50,8 @@ class GameDetailViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if gameResults != nil {
-            return gameResults.count
+        if gameSessions != nil {
+            return gameSessions.count
         } else {
             return 0
         }
@@ -60,7 +60,7 @@ class GameDetailViewController: UIViewController, UITableViewDataSource, UITable
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("GameSessionCell", forIndexPath: indexPath) as! GameSessionCell
         
-        cell.gameSession = gameResults[indexPath.row]
+        cell.gameSession = gameSessions[indexPath.row]
         return cell
     }
     

@@ -123,9 +123,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                         let loadedGroup = GroupModel.findById(groupResults, id: testGroup1.objectId)
                         assert(loadedGroup != nil, "Expected to be able to re-load group")
                         GroupGameModel.loadAllByParentId(loadedGroup?.objectId,
-                            onDone: { (groupGameResults, groupGameLoadError) -> Void in
+                            onDone: { (gameSessions, groupGameLoadError) -> Void in
                                 assert(groupGameLoadError == nil, "Expect no error")
-                                let loadedGroupGame = GroupGameModel.findById(groupGameResults, id: testGroupGame1.objectId)
+                                let loadedGroupGame = GroupGameModel.findById(gameSessions, id: testGroupGame1.objectId)
                                 assert(loadedGroupGame != nil, "Expected to be able to re-load groupGame")
                                 GameSessionModel.loadAllByParentId(loadedGroupGame!.objectId,
                                     onDone: { (sessionResults, sessionError) -> Void in
