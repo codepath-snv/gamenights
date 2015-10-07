@@ -186,7 +186,7 @@
         <!--Add Game Result-->
         <scene sceneID="XFa-61-K6h">
             <objects>
-                <viewController id="VCE-E1-7mB" customClass="NewGameResultViewController" customModule="Gamenights" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="VCE-E1-7mB" customClass="GameSessionViewController" customModule="Gamenights" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Jok-95-JcF"/>
                         <viewControllerLayoutGuide type="bottom" id="Wz2-d5-hj2"/>

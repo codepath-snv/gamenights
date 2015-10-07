@@ -1,5 +1,5 @@
 //
-//  NewGameResultViewController.swift
+//  GameSessionViewController.swift
 //  Gamenights
 //
 //  Created by Zhi Huang on 9/27/15.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class NewGameResultViewController: UIViewController {
+class GameSessionViewController: UIViewController {
     @IBOutlet weak var dateTextField: UITextField!
     @IBOutlet weak var participantsTextField: UITextField!
     @IBOutlet weak var winnerTextField: UITextField!
