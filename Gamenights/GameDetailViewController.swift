@@ -72,12 +72,12 @@ class GameDetailViewController: UIViewController, UITableViewDataSource, UITable
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        let cell = sender as! GameSessionCell
         switch (segue.identifier!) {
-        case "addSessionFromModalSegue":
+        case "AddGameSessionSegue":
             let gameSessionViewController = segue.destinationViewController as! GameSessionViewController
             gameSessionViewController.groupId = game!.objectId
         case "EditGameSessionSegue":
+            let cell = sender as! GameSessionCell
             let gameSessionViewController = segue.destinationViewController as! GameSessionViewController
             gameSessionViewController.groupId = game!.objectId
             gameSessionViewController.gameSession = cell.gameSession
