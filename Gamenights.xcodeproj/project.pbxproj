@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		29768BE91BBE43F8000457C8 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29768BE81BBE43F8000457C8 /* Constants.swift */; settings = {ASSET_TAGS = (); }; };
+		297C30641BC4EB5E00F4D360 /* GameNightsError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297C30631BC4EB5E00F4D360 /* GameNightsError.swift */; settings = {ASSET_TAGS = (); }; };
 		29AC500F1BC0CA1A00DDAFA7 /* GroupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29AC500E1BC0CA1A00DDAFA7 /* GroupsViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		29AC50111BC0CABF00DDAFA7 /* GroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29AC50101BC0CABF00DDAFA7 /* GroupCell.swift */; settings = {ASSET_TAGS = (); }; };
 		29C1F2A61BC1A021002FEEB5 /* ExpandInSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C1F2A51BC1A021002FEEB5 /* ExpandInSegue.swift */; settings = {ASSET_TAGS = (); }; };
@@ -44,6 +45,7 @@
 
 /* Begin PBXFileReference section */
 		29768BE81BBE43F8000457C8 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		297C30631BC4EB5E00F4D360 /* GameNightsError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameNightsError.swift; sourceTree = "<group>"; };
 		29AC500E1BC0CA1A00DDAFA7 /* GroupsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupsViewController.swift; sourceTree = "<group>"; };
 		29AC50101BC0CABF00DDAFA7 /* GroupCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupCell.swift; sourceTree = "<group>"; };
 		29C1F2A51BC1A021002FEEB5 /* ExpandInSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpandInSegue.swift; sourceTree = "<group>"; };
@@ -214,6 +216,7 @@
 				F3B5E0011BBB15B20029E545 /* GroupGameModel.swift */,
 				F33FCE3F1BBA31C800D61EF4 /* GroupModel.swift */,
 				29768BE81BBE43F8000457C8 /* Constants.swift */,
+				297C30631BC4EB5E00F4D360 /* GameNightsError.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -362,6 +365,7 @@
 				F33FCE401BBA31C800D61EF4 /* GroupModel.swift in Sources */,
 				29AC500F1BC0CA1A00DDAFA7 /* GroupsViewController.swift in Sources */,
 				29768BE91BBE43F8000457C8 /* Constants.swift in Sources */,
+				297C30641BC4EB5E00F4D360 /* GameNightsError.swift in Sources */,
 				F3B5E0051BBB21B00029E545 /* GameSessionModel.swift in Sources */,
 				D9081D731BB91403005E3F23 /* GamesViewController.swift in Sources */,
 				D9081D7A1BB91888005E3F23 /* GameSessionViewController.swift in Sources */,

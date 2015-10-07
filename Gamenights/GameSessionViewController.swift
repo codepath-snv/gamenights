@@ -8,18 +8,21 @@
 
 import UIKit
 
+//
+// two views can reach here: 
+//   1. GamesViewController; and
+//   2. GameDetailViewController
+//
 class GameSessionViewController: UIViewController {
     @IBOutlet weak var dateTextField: UITextField!
     @IBOutlet weak var participantsTextField: UITextField!
     @IBOutlet weak var winnerTextField: UITextField!
     @IBOutlet weak var notesTextView: UITextView!
 
-    var groupId: String?
-    var group: GroupModel! {
-        didSet {
-            groupId = group.objectId
-        }
-    }
+    var groupId: String!    // required - set by source view controller
+    var group: GroupModel?  // computed from groupId
+    
+    // gameSession is only available if coming from GameDetailViewController
     var gameSession: GameSessionModel?
     
     override func viewDidLoad() {
@@ -30,11 +33,15 @@ class GameSessionViewController: UIViewController {
         notesTextView.layer.borderColor = UIColor(red: 204/255, green: 204/255, blue: 204/255, alpha: 1.0).CGColor
         
         if (gameSession != nil) {
+            // from: GameDetailViewController
             dateTextField.text = gameSession!.date as String!
             participantsTextField.text = gameSession!.players as String!
             winnerTextField.text = gameSession!.winner as String!
             notesTextView.text = gameSession!.notes as String!
-        }
+        } // else from GamesViewController
+        
+        // need to set group
+        findGroup()
     }
 
     override func didReceiveMemoryWarning() {
@@ -74,4 +81,17 @@ class GameSessionViewController: UIViewController {
         destinationViewController.group = group
     }
 
+    private func findGroup() {
+        GroupModel.loadAll { (results, error) -> Void in
+            if error != nil {
+                NSLog("Network error: can't get groups")
+            } else {
+                self.group = GroupModel.findById(results, id: self.groupId)
+                if self.group == nil {
+                    let error = GameNightsError.InvalidGroup(id: self.groupId)
+                    NSLog("!!!!\(error)")
+                }
+            }
+        }
+    }
 }

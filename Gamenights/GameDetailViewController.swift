@@ -75,11 +75,11 @@ class GameDetailViewController: UIViewController, UITableViewDataSource, UITable
         switch (segue.identifier!) {
         case "AddGameSessionSegue":
             let gameSessionViewController = segue.destinationViewController as! GameSessionViewController
-            gameSessionViewController.groupId = game!.objectId
+            gameSessionViewController.groupId = game!.parentGroupId
         case "EditGameSessionSegue":
             let cell = sender as! GameSessionCell
             let gameSessionViewController = segue.destinationViewController as! GameSessionViewController
-            gameSessionViewController.groupId = game!.objectId
+            gameSessionViewController.groupId = game!.parentGroupId
             gameSessionViewController.gameSession = cell.gameSession
         default:
             NSLog("default segue")

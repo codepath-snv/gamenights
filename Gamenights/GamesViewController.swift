@@ -54,6 +54,7 @@ class GamesViewController: UIViewController, UITableViewDataSource, UITableViewD
                     } else {
                         self.group = groupResults![0]
                     }
+                    NSLog("Group: \(self.group.name) with id: \(self.group.objectId)")
                 }
             }
         })
@@ -99,7 +100,7 @@ class GamesViewController: UIViewController, UITableViewDataSource, UITableViewD
             newGameViewController.groupId = group?.objectId
         case "addSessionFromCellSegue":
             let gameSessionViewController = segue.destinationViewController as! GameSessionViewController
-            gameSessionViewController.group = group
+            gameSessionViewController.groupId = group.objectId
         case "playersSegue":
             let destination = segue.destinationViewController as! PlayersViewController
             destination.group = group
