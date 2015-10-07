@@ -1,5 +1,5 @@
 //
-//  GameResultCell.swift
+//  GameSessionCell.swift
 //  Gamenights
 //
 //  Created by Zhi Huang on 9/27/15.
@@ -8,13 +8,13 @@
 
 import UIKit
 
-class GameResultCell: UITableViewCell {
+class GameSessionCell: UITableViewCell {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var participantsLabel: UILabel!
     @IBOutlet weak var winnerLabel: UILabel!
     @IBOutlet weak var notesLabel: UILabel!
 
-    var gameSession: SessionModel! {
+    var gameSession: GameSessionModel! {
         didSet {
             dateLabel.text = gameSession.date as String!
             participantsLabel.text = gameSession.players as String!

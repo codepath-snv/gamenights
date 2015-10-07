@@ -10,7 +10,7 @@ import UIKit
 
 class GameDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var tableView: UITableView!
-    var gameResults: [SessionModel]!
+    var gameSessions: [GameSessionModel]!
 
     var game: GroupGameModel? {
         didSet {
@@ -34,12 +34,12 @@ class GameDetailViewController: UIViewController, UITableViewDataSource, UITable
     }
 
     private func fetchGameSessions(gameId: String!) {
-        SessionModel.loadAllByParentId(gameId, onDone: { (results, error) -> Void in
+        GameSessionModel.loadAllByParentId(gameId, onDone: { (results, error) -> Void in
             if (error != nil) {
                 print("Error getting game detail.")
                 return
             }
-            self.gameResults = results!
+            self.gameSessions = results!
             self.tableView.reloadData()
         })
     }
@@ -50,17 +50,17 @@ class GameDetailViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if gameResults != nil {
-            return gameResults.count
+        if gameSessions != nil {
+            return gameSessions.count
         } else {
             return 0
         }
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("GameResultCell", forIndexPath: indexPath) as! GameResultCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("GameSessionCell", forIndexPath: indexPath) as! GameSessionCell
         
-        cell.gameSession = gameResults[indexPath.row]
+        cell.gameSession = gameSessions[indexPath.row]
         return cell
     }
     
@@ -69,15 +69,15 @@ class GameDetailViewController: UIViewController, UITableViewDataSource, UITable
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        let cell = sender as! GameResultCell
+        let cell = sender as! GameSessionCell
         switch (segue.identifier!) {
         case "addSessionFromModalSegue":
-            let newGameResultViewController = segue.destinationViewController as! NewGameResultViewController
-            newGameResultViewController.groupId = game!.objectId
+            let gameSessionViewController = segue.destinationViewController as! GameSessionViewController
+            gameSessionViewController.groupId = game!.objectId
         case "EditGameSessionSegue":
-            let newGameResultViewController = segue.destinationViewController as! NewGameResultViewController
-            newGameResultViewController.groupId = game!.objectId
-            newGameResultViewController.gameSession = cell.gameSession
+            let gameSessionViewController = segue.destinationViewController as! GameSessionViewController
+            gameSessionViewController.groupId = game!.objectId
+            gameSessionViewController.gameSession = cell.gameSession
         default:
             NSLog("default segue")
         }
