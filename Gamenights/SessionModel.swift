@@ -1,5 +1,5 @@
 //
-//  SessionModel.swift
+//  GameSessionModel.swift
 //  Gamenights
 //
 //  Created by Gideon Goodwin on 9/28/15.
@@ -7,7 +7,7 @@
 //
 import UIKit
 
-class SessionModel: NSObject {
+class GameSessionModel: NSObject {
     var objectId: String? = nil
     var parentGroupGameId: String? = nil
     var date: String? = nil
@@ -47,7 +47,7 @@ class SessionModel: NSObject {
         }
     }
 
-    class func loadAllByParentId(parentGroupGameId: String!, onDone: (results: [SessionModel]?, error: NSError?) -> Void) {
+    class func loadAllByParentId(parentGroupGameId: String!, onDone: (results: [GameSessionModel]?, error: NSError?) -> Void) {
         let query = PFQuery(className: "Session")
         query.whereKey("parentGroupGameId", equalTo: parentGroupGameId)
         let cb: PFQueryArrayResultBlock? = {(objects: [PFObject]?, error: NSError?) -> Void in
@@ -55,16 +55,16 @@ class SessionModel: NSObject {
                 onDone(results: nil, error: error)
                 return
             }
-            var results = [SessionModel]()
+            var results = [GameSessionModel]()
             for object in objects! {
-                results.append(SessionModel(parentGroupGameId: parentGroupGameId, pfObj: object))
+                results.append(GameSessionModel(parentGroupGameId: parentGroupGameId, pfObj: object))
             }
             onDone(results: results, error: nil);
         }
         query.findObjectsInBackgroundWithBlock(cb)
     }
 
-    class func loadOne(objectId: String!, onDone: (result: SessionModel?, error: NSError?) -> Void) {
+    class func loadOne(objectId: String!, onDone: (result: GameSessionModel?, error: NSError?) -> Void) {
         let query = PFQuery(className: "Session")
         query.getObjectInBackgroundWithId(objectId, block: { (pfResult: PFObject?, error: NSError?) -> Void in
             if (error != nil) {
@@ -72,7 +72,7 @@ class SessionModel: NSObject {
                 return
             }
             let parentGroupGameId = pfResult?["parentGroupGameId"] as? String
-            let model = SessionModel(parentGroupGameId: parentGroupGameId, pfObj: pfResult)
+            let model = GameSessionModel(parentGroupGameId: parentGroupGameId, pfObj: pfResult)
             onDone(result: model, error: nil)
         })
     }
@@ -90,7 +90,7 @@ class SessionModel: NSObject {
     }
 
     // convenience method to find a certain model in the list by id
-    class func findById(models: [SessionModel]?, id: NSString?) -> SessionModel? {
+    class func findById(models: [GameSessionModel]?, id: NSString?) -> GameSessionModel? {
         if (models == nil || id == nil) {
             return nil
         }

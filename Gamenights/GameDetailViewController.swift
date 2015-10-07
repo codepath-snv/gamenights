@@ -10,7 +10,7 @@ import UIKit
 
 class GameDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var tableView: UITableView!
-    var gameResults: [SessionModel]!
+    var gameResults: [GameSessionModel]!
 
     var game: GroupGameModel? {
         didSet {
@@ -34,7 +34,7 @@ class GameDetailViewController: UIViewController, UITableViewDataSource, UITable
     }
 
     private func fetchGameSessions(gameId: String!) {
-        SessionModel.loadAllByParentId(gameId, onDone: { (results, error) -> Void in
+        GameSessionModel.loadAllByParentId(gameId, onDone: { (results, error) -> Void in
             if (error != nil) {
                 print("Error getting game detail.")
                 return

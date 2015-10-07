@@ -20,7 +20,7 @@ class NewGameResultViewController: UIViewController {
             groupId = group.objectId
         }
     }
-    var gameSession: SessionModel?
+    var gameSession: GameSessionModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,7 +45,7 @@ class NewGameResultViewController: UIViewController {
     @IBAction func onAddGameSession(sender: AnyObject) {
         if (dateTextField.text != "" || participantsTextField.text != "" || winnerTextField.text != "" || notesTextView.text != "") {
             if (gameSession == nil) {
-                gameSession = SessionModel(parentGroupGameId: groupId!, pfObj: nil)
+                gameSession = GameSessionModel(parentGroupGameId: groupId!, pfObj: nil)
             }
             
             gameSession!.date = dateTextField.text

@@ -109,7 +109,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             testGroupGame1.save( { (groupGameError: NSError?) -> Void in
                 assert(groupGameError == nil, "Expect no error")
                 let parentGroupGameId = testGroupGame1.objectId
-                let testSession1 = SessionModel(parentGroupGameId: parentGroupGameId, pfObj: nil)
+                let testSession1 = GameSessionModel(parentGroupGameId: parentGroupGameId, pfObj: nil)
                 testSession1.date = "2015-09-29"
                 testSession1.players = "Gideon, Shawn, Zhi, Kevin"
                 testSession1.winner = "Zombies"
@@ -127,10 +127,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                 assert(groupGameLoadError == nil, "Expect no error")
                                 let loadedGroupGame = GroupGameModel.findById(groupGameResults, id: testGroupGame1.objectId)
                                 assert(loadedGroupGame != nil, "Expected to be able to re-load groupGame")
-                                SessionModel.loadAllByParentId(loadedGroupGame!.objectId,
+                                GameSessionModel.loadAllByParentId(loadedGroupGame!.objectId,
                                     onDone: { (sessionResults, sessionError) -> Void in
                                         assert(sessionError == nil, "Expect no error")
-                                        let loadedSession = SessionModel.findById(sessionResults, id: testSession1.objectId)
+                                        let loadedSession = GameSessionModel.findById(sessionResults, id: testSession1.objectId)
                                         assert(loadedSession!.notes == testSession1.notes, "Verify reloaded data")
                                         print("Re-load check successful")
                                         let player = PlayerModel(nil)

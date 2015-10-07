@@ -14,7 +14,7 @@ class GameResultCell: UITableViewCell {
     @IBOutlet weak var winnerLabel: UILabel!
     @IBOutlet weak var notesLabel: UILabel!
 
-    var gameSession: SessionModel! {
+    var gameSession: GameSessionModel! {
         didSet {
             dateLabel.text = gameSession.date as String!
             participantsLabel.text = gameSession.players as String!
