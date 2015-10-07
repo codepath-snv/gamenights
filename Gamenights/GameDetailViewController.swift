@@ -58,7 +58,7 @@ class GameDetailViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("GameResultCell", forIndexPath: indexPath) as! GameResultCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("GameSessionCell", forIndexPath: indexPath) as! GameSessionCell
         
         cell.gameSession = gameResults[indexPath.row]
         return cell
@@ -69,7 +69,7 @@ class GameDetailViewController: UIViewController, UITableViewDataSource, UITable
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        let cell = sender as! GameResultCell
+        let cell = sender as! GameSessionCell
         switch (segue.identifier!) {
         case "addSessionFromModalSegue":
             let newGameResultViewController = segue.destinationViewController as! NewGameResultViewController
