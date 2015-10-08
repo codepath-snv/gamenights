@@ -31,6 +31,17 @@ class PlayersViewController: UIViewController {
         sender.selected = !sender.selected
     }
 
+    @IBAction func didTapCancel(sender: AnyObject) {
+        navigationController?.popViewControllerAnimated(true)
+    }
+    
+    @IBAction func didTapDone(sender: AnyObject) {
+        // can't save until session is saved
+        NSLog("Need Implemenation!!!")
+        
+        navigationController?.popViewControllerAnimated(true)
+    }
+    
     /*
     // MARK: - Navigation
 
