@@ -482,7 +482,8 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Players" id="WY7-GX-KKX">
-                        <barButtonItem key="rightBarButtonItem" title="Add" id="0l1-Rq-7P5"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Ago-t0-eVP"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="0l1-Rq-7P5"/>
                     </navigationItem>
                     <connections>
                         <outlet property="playersCollectionView" destination="M9U-Nh-cpV" id="9h8-bH-aae"/>
