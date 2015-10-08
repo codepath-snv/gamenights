@@ -31,6 +31,10 @@ class PlayersViewController: UIViewController {
         sender.selected = !sender.selected
     }
 
+    @IBAction func didTapCancel(sender: AnyObject) {
+        navigationController?.popViewControllerAnimated(true)
+    }
+    
     /*
     // MARK: - Navigation
 

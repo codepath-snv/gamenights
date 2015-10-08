@@ -482,7 +482,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Players" id="WY7-GX-KKX">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Ago-t0-eVP"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Ago-t0-eVP">
+                            <connections>
+                                <action selector="didTapCancel:" destination="TPq-1T-lwz" id="Mbk-2d-e38"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="0l1-Rq-7P5"/>
                     </navigationItem>
                     <connections>
