@@ -487,7 +487,11 @@
                                 <action selector="didTapCancel:" destination="TPq-1T-lwz" id="Mbk-2d-e38"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="0l1-Rq-7P5"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="0l1-Rq-7P5">
+                            <connections>
+                                <action selector="didTapDone:" destination="TPq-1T-lwz" id="iHC-k6-c22"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="playersCollectionView" destination="M9U-Nh-cpV" id="9h8-bH-aae"/>
@@ -495,7 +499,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w7x-iD-0Gf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1088" y="1877"/>
+            <point key="canvasLocation" x="950" y="1872"/>
         </scene>
         <!--Group Navigation Controller-->
         <scene sceneID="DFb-qX-EhK">
@@ -649,6 +653,6 @@
         <image name="plus-19C2FF" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Gvf-z0-Vz6"/>
+        <segue reference="alV-AI-4cC"/>
     </inferredMetricsTieBreakers>
 </document>
