@@ -257,9 +257,10 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleAspectFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Gz-3B-PwU">
-                                <rect key="frame" x="114" y="153" width="22" height="22"/>
-                                <state key="normal" title="Button" image="add-user">
+                            <button opaque="NO" contentMode="scaleAspectFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="top" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Gz-3B-PwU">
+                                <rect key="frame" x="16" y="153" width="288" height="59"/>
+                                <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="65" maxY="0.0"/>
+                                <state key="normal" image="edit-24">
                                     <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
@@ -646,8 +647,8 @@
     </scenes>
     <resources>
         <image name="add-session" width="21" height="21"/>
-        <image name="add-user" width="42" height="42"/>
         <image name="default_avatar" width="64" height="64"/>
+        <image name="edit-24" width="24" height="24"/>
         <image name="minus-19C2FF" width="24" height="24"/>
         <image name="players" width="32" height="32"/>
         <image name="plus-19C2FF" width="24" height="24"/>
