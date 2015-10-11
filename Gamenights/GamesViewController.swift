@@ -78,6 +78,7 @@ class GamesViewController: UIViewController, UITableViewDataSource, UITableViewD
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("GameCell", forIndexPath: indexPath) as! GameCell
         
+        cell.accessoryType = UITableViewCellAccessoryType.None
         cell.game = games[indexPath.row]
         return cell
     }
