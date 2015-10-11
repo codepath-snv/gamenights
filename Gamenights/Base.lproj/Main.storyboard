@@ -437,30 +437,17 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="center" contentHorizontalAlignment="right" contentVerticalAlignment="top" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xov-bl-S0d">
-                                                    <rect key="frame" x="0.0" y="0.0" width="108" height="118"/>
-                                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="12" maxY="0.0"/>
-                                                    <state key="normal" image="plus-19C2FF"/>
-                                                    <state key="selected" image="minus-19C2FF"/>
-                                                    <connections>
-                                                        <action selector="didTapPlayer:" destination="TPq-1T-lwz" eventType="touchUpInside" id="lIV-lh-cGo"/>
-                                                    </connections>
-                                                </button>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <constraints>
                                             <constraint firstItem="AdO-Fi-jtB" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Sfm-0U-oMD" secondAttribute="leading" constant="2" id="9bO-aa-o7U"/>
-                                            <constraint firstItem="Xov-bl-S0d" firstAttribute="top" secondItem="JJ1-y8-sn9" secondAttribute="top" id="EEi-KJ-4Yj"/>
                                             <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="AdO-Fi-jtB" secondAttribute="bottom" constant="8" id="FJ7-o5-MEp"/>
                                             <constraint firstItem="AdO-Fi-jtB" firstAttribute="centerX" secondItem="Sfm-0U-oMD" secondAttribute="centerX" id="OnT-bx-4aw"/>
-                                            <constraint firstAttribute="bottom" secondItem="Xov-bl-S0d" secondAttribute="bottom" id="PYN-D2-yF3"/>
                                             <constraint firstItem="JJ1-y8-sn9" firstAttribute="centerX" secondItem="Sfm-0U-oMD" secondAttribute="centerX" id="Wzg-jc-P9a"/>
                                             <constraint firstItem="JJ1-y8-sn9" firstAttribute="top" secondItem="Sfm-0U-oMD" secondAttribute="top" id="c05-sl-Jsy"/>
-                                            <constraint firstItem="Xov-bl-S0d" firstAttribute="centerX" secondItem="JJ1-y8-sn9" secondAttribute="centerX" id="pDj-cD-svj"/>
                                             <constraint firstItem="AdO-Fi-jtB" firstAttribute="top" secondItem="JJ1-y8-sn9" secondAttribute="bottom" constant="8" id="paO-qT-PDT"/>
                                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="AdO-Fi-jtB" secondAttribute="trailing" constant="2" id="qNQ-Md-Il7"/>
-                                            <constraint firstItem="Xov-bl-S0d" firstAttribute="leading" secondItem="Sfm-0U-oMD" secondAttribute="leading" id="rHv-dP-Hfc"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="nameLabel" destination="AdO-Fi-jtB" id="1hP-bi-CgP"/>
@@ -649,9 +636,7 @@
         <image name="add-session" width="21" height="21"/>
         <image name="default_avatar" width="64" height="64"/>
         <image name="edit-24" width="24" height="24"/>
-        <image name="minus-19C2FF" width="24" height="24"/>
         <image name="players" width="32" height="32"/>
-        <image name="plus-19C2FF" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="alV-AI-4cC"/>
