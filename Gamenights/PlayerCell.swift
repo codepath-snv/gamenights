@@ -14,6 +14,7 @@ import UIKit
 
 class PlayerCell: UICollectionViewCell {
     @IBOutlet weak var playerImageView: UIImageView!
+    @IBOutlet weak var selectStateImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
 
     var delegate: PlayersViewController?
@@ -26,6 +27,7 @@ class PlayerCell: UICollectionViewCell {
             
             nameLabel.text = player.nickname
             playerImageView.alpha = (selected) ? 1 : 0.7
+            selectStateImageView.highlighted = selected
         }
     }
 
@@ -33,7 +35,6 @@ class PlayerCell: UICollectionViewCell {
         super.awakeFromNib()
         // Initialization code
         let tap = UITapGestureRecognizer(target: self, action: "didTapPlayerImage:")
-        userInteractionEnabled = true
         playerImageView.userInteractionEnabled = true
         playerImageView.addGestureRecognizer(tap)
 
@@ -55,6 +56,7 @@ class PlayerCell: UICollectionViewCell {
         selected = !selected
         
         playerImageView.alpha = (selected) ? 1 : 0.7
+        selectStateImageView.highlighted = selected
         delegate?.playerCell(self, didTapPlayer: selected)
     }
     

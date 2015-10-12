@@ -438,6 +438,9 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="plus-3E0B80-32" highlightedImage="minus-3E0B80-32" translatesAutoresizingMaskIntoConstraints="NO" id="2XJ-Ul-etI">
+                                                    <rect key="frame" x="68" y="0.0" width="27" height="28"/>
+                                                </imageView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
@@ -453,6 +456,7 @@
                                         <connections>
                                             <outlet property="nameLabel" destination="AdO-Fi-jtB" id="1hP-bi-CgP"/>
                                             <outlet property="playerImageView" destination="JJ1-y8-sn9" id="EZ9-Bc-dhQ"/>
+                                            <outlet property="selectStateImageView" destination="2XJ-Ul-etI" id="Rwk-Kr-GmL"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -654,7 +658,9 @@
         <image name="add-session" width="21" height="21"/>
         <image name="default_avatar" width="64" height="64"/>
         <image name="edit-24" width="24" height="24"/>
+        <image name="minus-3E0B80-32" width="16" height="16"/>
         <image name="players" width="32" height="32"/>
+        <image name="plus-3E0B80-32" width="16" height="16"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="alV-AI-4cC"/>
