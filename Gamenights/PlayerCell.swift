@@ -9,7 +9,7 @@
 import UIKit
 
 @objc protocol PlayerCellDelegate {
-    optional func playerCell(cell: PlayerCell, didTapPlayer player: PlayerModel)
+    optional func playerCell(cell: PlayerCell, didTapPlayer addPlayer: Bool)
 }
 
 class PlayerCell: UICollectionViewCell {
@@ -25,6 +25,7 @@ class PlayerCell: UICollectionViewCell {
             self.playerImageView.setImageWithURL(imageUrl!, placeholderImage: UIImage(named: "default_avatar"))
             
             nameLabel.text = player.nickname
+            playerImageView.alpha = (selected) ? 1 : 0.7
         }
     }
 
@@ -35,8 +36,8 @@ class PlayerCell: UICollectionViewCell {
         userInteractionEnabled = true
         playerImageView.userInteractionEnabled = true
         playerImageView.addGestureRecognizer(tap)
-        
-        playerImageView.alpha = 0.7
+
+        playerImageView.alpha = (selected) ? 1 : 0.7
         playerImageView.backgroundColor = UIColor.brownColor()
         playerImageView.layer.borderColor = UIColor(white: 0.7, alpha: 0.8).CGColor
         playerImageView.layer.borderWidth = 1
@@ -52,14 +53,9 @@ class PlayerCell: UICollectionViewCell {
     
     func didTapPlayerImage(tapGestureRecognizer: UITapGestureRecognizer) {
         selected = !selected
-        NSLog("is player highlighted: \(selected)")
         
-        if selected {
-            playerImageView.alpha = 1
-        } else {
-            playerImageView.alpha = 0.7
-        }
-        delegate?.playerCell(self, didTapPlayer: player)
+        playerImageView.alpha = (selected) ? 1 : 0.7
+        delegate?.playerCell(self, didTapPlayer: selected)
     }
     
     private func preferredMaxLayoutWidth() {

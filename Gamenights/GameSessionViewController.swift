@@ -26,7 +26,11 @@ class GameSessionViewController: UIViewController {
     var gameSession: GameSessionModel?
     var playersInSession: [PlayerModel]? {
         didSet {
-            
+            var nicknames = [String]()
+            playersInSession?.forEach({ (player: PlayerModel) -> () in
+                nicknames.append(player.nickname)
+            })
+            participantsTextField.text = nicknames.joinWithSeparator(", ")
         }
     }
     
@@ -86,6 +90,10 @@ class GameSessionViewController: UIViewController {
         let destinationViewController = segue.destinationViewController as! PlayersViewController
         
         destinationViewController.group = group
+        if let playersInSession = playersInSession {
+            NSLog("passing players of session to next view \(playersInSession)")
+            destinationViewController.playersInSession = playersInSession
+        }
     }
 
     private func findGroup() {

@@ -14,12 +14,16 @@ class PlayersViewController: UIViewController {
 
     var group: GroupModel!
     var playersInGroup = [PlayerModel]()
-    var playersInSession = [PlayerModel]()
+    var playersInSession: [PlayerModel]?
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if playersInSession == nil {
+            // if it's not passed in by source controller
+            playersInSession = [PlayerModel]()
+        }
         getPlayersBy(group)
     }
 
@@ -36,13 +40,12 @@ class PlayersViewController: UIViewController {
         // can't save until session is saved
         navigationController?.popViewControllerAnimated(true)
         
-        let playerNames = playersInSession.map { player in
-            "\(player.nickname)"
-        }
-        let names = playerNames.joinWithSeparator(", ")
+        
         let gameSessionViewController = navigationController?.topViewController as! GameSessionViewController
         
-        gameSessionViewController.participantsTextField.text = names
+        if let playersInSession = playersInSession {
+            gameSessionViewController.playersInSession = playersInSession
+        }
     }
     
     /*
@@ -81,8 +84,12 @@ extension PlayersViewController: UICollectionViewDataSource {
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("PlayerCell", forIndexPath: indexPath) as! PlayerCell
-        
-        cell.player = playersInGroup[indexPath.row]
+        let player = playersInGroup[indexPath.row]
+        let index = playersInSession?.indexOf({ $0.objectId == player.objectId })
+        if  index != nil {
+            cell.selected = true
+        }
+        cell.player = player
         cell.delegate = self
         
         return cell
@@ -99,15 +106,18 @@ extension PlayersViewController: UICollectionViewDelegate {
 }
 
 extension PlayersViewController: PlayerCellDelegate {
-    func playerCell(cell: PlayerCell, didTapPlayer player: PlayerModel) {
+    func playerCell(cell: PlayerCell, didTapPlayer addPlayer: Bool) {
         // update session players
-        if cell.selected {
-            if !playersInSession.contains(player) {
-                playersInSession.append(player)
+        let player = cell.player
+        if addPlayer {
+            let index = playersInSession?.indexOf({ $0.objectId == player.objectId })
+            if (index == nil) {
+                playersInSession!.append(player)
             }
         } else {
-            playersInSession = playersInSession.filter({ (el) -> Bool in
-                return el != player
+            // remove player
+            playersInSession = playersInSession!.filter({ (el) -> Bool in
+                return el.objectId != player.objectId
             })
         }
     }
