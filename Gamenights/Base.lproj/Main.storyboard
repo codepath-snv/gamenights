@@ -220,7 +220,7 @@
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kek-5c-MMA">
                                 <rect key="frame" x="16" y="115" width="288" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Participants:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oeA-Zf-b2a">
                                 <rect key="frame" x="16" y="153" width="96" height="21"/>
@@ -256,9 +256,10 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleAspectFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Gz-3B-PwU">
-                                <rect key="frame" x="114" y="153" width="22" height="22"/>
-                                <state key="normal" title="Button" image="add-user">
+                            <button opaque="NO" contentMode="scaleAspectFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="top" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Gz-3B-PwU">
+                                <rect key="frame" x="16" y="153" width="288" height="59"/>
+                                <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="65" maxY="0.0"/>
+                                <state key="normal" image="edit-24">
                                     <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
@@ -425,6 +426,7 @@
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default_avatar" translatesAutoresizingMaskIntoConstraints="NO" id="JJ1-y8-sn9">
                                                     <rect key="frame" x="14" y="0.0" width="80" height="80"/>
+                                                    <gestureRecognizers/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="80" id="Wa2-Ch-0qz"/>
                                                         <constraint firstAttribute="width" constant="80" id="yjS-ed-NeF"/>
@@ -435,34 +437,25 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="center" contentHorizontalAlignment="right" contentVerticalAlignment="top" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xov-bl-S0d">
-                                                    <rect key="frame" x="0.0" y="0.0" width="108" height="118"/>
-                                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="12" maxY="0.0"/>
-                                                    <state key="normal" image="plus-19C2FF"/>
-                                                    <state key="selected" image="minus-19C2FF"/>
-                                                    <connections>
-                                                        <action selector="didTapPlayer:" destination="TPq-1T-lwz" eventType="touchUpInside" id="lIV-lh-cGo"/>
-                                                    </connections>
-                                                </button>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="plus-3E0B80-32" highlightedImage="minus-3E0B80-32" translatesAutoresizingMaskIntoConstraints="NO" id="2XJ-Ul-etI">
+                                                    <rect key="frame" x="68" y="0.0" width="27" height="28"/>
+                                                </imageView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <constraints>
                                             <constraint firstItem="AdO-Fi-jtB" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Sfm-0U-oMD" secondAttribute="leading" constant="2" id="9bO-aa-o7U"/>
-                                            <constraint firstItem="Xov-bl-S0d" firstAttribute="top" secondItem="JJ1-y8-sn9" secondAttribute="top" id="EEi-KJ-4Yj"/>
                                             <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="AdO-Fi-jtB" secondAttribute="bottom" constant="8" id="FJ7-o5-MEp"/>
                                             <constraint firstItem="AdO-Fi-jtB" firstAttribute="centerX" secondItem="Sfm-0U-oMD" secondAttribute="centerX" id="OnT-bx-4aw"/>
-                                            <constraint firstAttribute="bottom" secondItem="Xov-bl-S0d" secondAttribute="bottom" id="PYN-D2-yF3"/>
                                             <constraint firstItem="JJ1-y8-sn9" firstAttribute="centerX" secondItem="Sfm-0U-oMD" secondAttribute="centerX" id="Wzg-jc-P9a"/>
                                             <constraint firstItem="JJ1-y8-sn9" firstAttribute="top" secondItem="Sfm-0U-oMD" secondAttribute="top" id="c05-sl-Jsy"/>
-                                            <constraint firstItem="Xov-bl-S0d" firstAttribute="centerX" secondItem="JJ1-y8-sn9" secondAttribute="centerX" id="pDj-cD-svj"/>
                                             <constraint firstItem="AdO-Fi-jtB" firstAttribute="top" secondItem="JJ1-y8-sn9" secondAttribute="bottom" constant="8" id="paO-qT-PDT"/>
                                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="AdO-Fi-jtB" secondAttribute="trailing" constant="2" id="qNQ-Md-Il7"/>
-                                            <constraint firstItem="Xov-bl-S0d" firstAttribute="leading" secondItem="Sfm-0U-oMD" secondAttribute="leading" id="rHv-dP-Hfc"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="nameLabel" destination="AdO-Fi-jtB" id="1hP-bi-CgP"/>
                                             <outlet property="playerImageView" destination="JJ1-y8-sn9" id="EZ9-Bc-dhQ"/>
+                                            <outlet property="selectStateImageView" destination="2XJ-Ul-etI" id="Rwk-Kr-GmL"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -642,15 +635,33 @@
             </objects>
             <point key="canvasLocation" x="-1" y="-409"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="Epd-Pr-ePm">
+            <objects>
+                <viewController id="88Z-Ih-v6q" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="W8I-OW-qI2"/>
+                        <viewControllerLayoutGuide type="bottom" id="cHK-oh-0cq"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="qt2-3j-7Sp">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0dN-8y-Wm0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
     </scenes>
     <resources>
         <image name="add-session" width="21" height="21"/>
-        <image name="add-user" width="42" height="42"/>
         <image name="default_avatar" width="64" height="64"/>
-        <image name="minus-19C2FF" width="24" height="24"/>
+        <image name="edit-24" width="24" height="24"/>
+        <image name="minus-3E0B80-32" width="16" height="16"/>
         <image name="players" width="32" height="32"/>
         <image name="plus-19C2FF" width="24" height="24"/>
         <image name="plus-icon" width="24" height="24"/>
+        <image name="plus-3E0B80-32" width="16" height="16"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="alV-AI-4cC"/>

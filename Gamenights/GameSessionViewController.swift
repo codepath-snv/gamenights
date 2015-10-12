@@ -24,6 +24,15 @@ class GameSessionViewController: UIViewController {
     
     // gameSession is only available if coming from GameDetailViewController
     var gameSession: GameSessionModel?
+    var playersInSession: [PlayerModel]? {
+        didSet {
+            var nicknames = [String]()
+            playersInSession?.forEach({ (player: PlayerModel) -> () in
+                nicknames.append(player.nickname)
+            })
+            participantsTextField.text = nicknames.joinWithSeparator(", ")
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +40,8 @@ class GameSessionViewController: UIViewController {
         notesTextView.layer.borderWidth = 0.5
         notesTextView.layer.cornerRadius = 5
         notesTextView.layer.borderColor = UIColor(red: 204/255, green: 204/255, blue: 204/255, alpha: 1.0).CGColor
+        
+        participantsTextField.enabled = false
         
         if (gameSession != nil) {
             // from: GameDetailViewController
@@ -79,6 +90,10 @@ class GameSessionViewController: UIViewController {
         let destinationViewController = segue.destinationViewController as! PlayersViewController
         
         destinationViewController.group = group
+        if let playersInSession = playersInSession {
+            NSLog("passing players of session to next view \(playersInSession)")
+            destinationViewController.playersInSession = playersInSession
+        }
     }
 
     private func findGroup() {
