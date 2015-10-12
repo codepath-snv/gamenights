@@ -13,22 +13,23 @@ class PlayersViewController: UIViewController {
     @IBOutlet weak var playersCollectionView: UICollectionView!
 
     var group: GroupModel!
-    var players = [PlayerModel]()
+    var playersInGroup = [PlayerModel]()
+    var playersInSession: [PlayerModel]?
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if playersInSession == nil {
+            // if it's not passed in by source controller
+            playersInSession = [PlayerModel]()
+        }
         getPlayersBy(group)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-    @IBAction func didTapPlayer(sender: UIButton) {
-        // toggle selected state
-        sender.selected = !sender.selected
     }
 
     @IBAction func didTapCancel(sender: AnyObject) {
@@ -37,9 +38,14 @@ class PlayersViewController: UIViewController {
     
     @IBAction func didTapDone(sender: AnyObject) {
         // can't save until session is saved
-        NSLog("Need Implemenation!!!")
-        
         navigationController?.popViewControllerAnimated(true)
+        
+        
+        let gameSessionViewController = navigationController?.topViewController as! GameSessionViewController
+        
+        if let playersInSession = playersInSession {
+            gameSessionViewController.playersInSession = playersInSession
+        }
     }
     
     /*
@@ -59,7 +65,7 @@ class PlayersViewController: UIViewController {
                 print("Failed to load players for group \(group.objectId)")
                 return
             }
-            self.players = results!
+            self.playersInGroup = results!
             self.playersCollectionView.reloadData()
         }
     }
@@ -73,13 +79,18 @@ extension PlayersViewController: UICollectionViewDataSource {
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return players.count;
+        return playersInGroup.count;
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = playersCollectionView.dequeueReusableCellWithReuseIdentifier("PlayerCell", forIndexPath: indexPath) as! PlayerCell
-        
-        cell.player = players[indexPath.row]
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("PlayerCell", forIndexPath: indexPath) as! PlayerCell
+        let player = playersInGroup[indexPath.row]
+        let index = playersInSession?.indexOf({ $0.objectId == player.objectId })
+        if  index != nil {
+            cell.selected = true
+        }
+        cell.player = player
+        cell.delegate = self
         
         return cell
     }
@@ -88,8 +99,26 @@ extension PlayersViewController: UICollectionViewDataSource {
 
 extension PlayersViewController: UICollectionViewDelegate {
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        playersCollectionView.deselectItemAtIndexPath(indexPath, animated: true)
         
-        // show player details
+        //collectionView.deselectItemAtIndexPath(indexPath, animated: true)
+    }
+    
+}
+
+extension PlayersViewController: PlayerCellDelegate {
+    func playerCell(cell: PlayerCell, didTapPlayer addPlayer: Bool) {
+        // update session players
+        let player = cell.player
+        if addPlayer {
+            let index = playersInSession?.indexOf({ $0.objectId == player.objectId })
+            if (index == nil) {
+                playersInSession!.append(player)
+            }
+        } else {
+            // remove player
+            playersInSession = playersInSession!.filter({ (el) -> Bool in
+                return el.objectId != player.objectId
+            })
+        }
     }
 }
