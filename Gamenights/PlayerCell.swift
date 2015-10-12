@@ -8,10 +8,15 @@
 
 import UIKit
 
+@objc protocol PlayerCellDelegate {
+    optional func playerCell(cell: PlayerCell, didTapPlayer player: PlayerModel)
+}
+
 class PlayerCell: UICollectionViewCell {
     @IBOutlet weak var playerImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
 
+    var delegate: PlayersViewController?
     var player: PlayerModel! {
         didSet {
             let hashkey = player.fullname.stringByAddingPercentEncodingWithAllowedCharacters(.URLHostAllowedCharacterSet())
@@ -26,22 +31,35 @@ class PlayerCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        let tap = UITapGestureRecognizer(target: self, action: "didTapPlayerImage:")
+        userInteractionEnabled = true
+        playerImageView.userInteractionEnabled = true
+        playerImageView.addGestureRecognizer(tap)
+        
+        playerImageView.alpha = 0.7
         playerImageView.backgroundColor = UIColor.brownColor()
         playerImageView.layer.borderColor = UIColor(white: 0.7, alpha: 0.8).CGColor
         playerImageView.layer.borderWidth = 1
         playerImageView.layer.cornerRadius = 5
         playerImageView.clipsToBounds = true
-        
-        NSLog("is hightlighted: \(playerImageView.highlighted)")
-        if playerImageView.highlighted {
-            playerImageView.backgroundColor = UIColor.magentaColor()
-        }
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
         
         self.preferredMaxLayoutWidth()
+    }
+    
+    func didTapPlayerImage(tapGestureRecognizer: UITapGestureRecognizer) {
+        selected = !selected
+        NSLog("is player highlighted: \(selected)")
+        
+        if selected {
+            playerImageView.alpha = 1
+        } else {
+            playerImageView.alpha = 0.7
+        }
+        delegate?.playerCell(self, didTapPlayer: player)
     }
     
     private func preferredMaxLayoutWidth() {

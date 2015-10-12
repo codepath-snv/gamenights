@@ -24,6 +24,11 @@ class GameSessionViewController: UIViewController {
     
     // gameSession is only available if coming from GameDetailViewController
     var gameSession: GameSessionModel?
+    var playersInSession: [PlayerModel]? {
+        didSet {
+            
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

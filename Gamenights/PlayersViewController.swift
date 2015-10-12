@@ -34,9 +34,15 @@ class PlayersViewController: UIViewController {
     
     @IBAction func didTapDone(sender: AnyObject) {
         // can't save until session is saved
-        NSLog("Need Implemenation!!!")
-        
         navigationController?.popViewControllerAnimated(true)
+        
+        let playerNames = playersInSession.map { player in
+            "\(player.nickname)"
+        }
+        let names = playerNames.joinWithSeparator(", ")
+        let gameSessionViewController = navigationController?.topViewController as! GameSessionViewController
+        
+        gameSessionViewController.participantsTextField.text = names
     }
     
     /*
@@ -74,9 +80,10 @@ extension PlayersViewController: UICollectionViewDataSource {
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = playersCollectionView.dequeueReusableCellWithReuseIdentifier("PlayerCell", forIndexPath: indexPath) as! PlayerCell
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("PlayerCell", forIndexPath: indexPath) as! PlayerCell
         
         cell.player = playersInGroup[indexPath.row]
+        cell.delegate = self
         
         return cell
     }
@@ -85,25 +92,23 @@ extension PlayersViewController: UICollectionViewDataSource {
 
 extension PlayersViewController: UICollectionViewDelegate {
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        
         //collectionView.deselectItemAtIndexPath(indexPath, animated: true)
-        let cell = collectionView.cellForItemAtIndexPath(indexPath) as! PlayerCell
-        let player = cell.player
-
-        
-        NSLog("is player image highlited: \(cell.playerImageView.highlighted)")
-//        cell.playerImageView.highlighted = !cell.playerImageView.highlighted // toggle highlight
-//        if cell.playerImageView.highlighted {
-//            if !playersInSession.contains(player) {
-//                playersInSession.append(player)
-//            }
-//        } else {
-//            playersInSession = playersInSession.filter({ (el) -> Bool in
-//                return el != player
-//            })
-//        }
-//        
-//        NSLog("players in session \(playersInSession)")
-        
     }
     
+}
+
+extension PlayersViewController: PlayerCellDelegate {
+    func playerCell(cell: PlayerCell, didTapPlayer player: PlayerModel) {
+        // update session players
+        if cell.selected {
+            if !playersInSession.contains(player) {
+                playersInSession.append(player)
+            }
+        } else {
+            playersInSession = playersInSession.filter({ (el) -> Bool in
+                return el != player
+            })
+        }
+    }
 }
