@@ -111,7 +111,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 let parentGroupGameId = testGroupGame1.objectId
                 let testSession1 = GameSessionModel(parentGroupGameId: parentGroupGameId, pfObj: nil)
                 testSession1.date = "2015-09-29"
-                testSession1.players = "Gideon, Shawn, Zhi, Kevin"
+                // testSession1.players = "Gideon, Shawn, Zhi, Kevin"
                 testSession1.winner = "Zombies"
                 testSession1.notes = "Scenario was \"Burn em out\" but heroes couldn't find enough explosives"
                 testSession1.save( { (sessionError: NSError?) -> Void in

@@ -12,7 +12,6 @@
 		29AC500F1BC0CA1A00DDAFA7 /* GroupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29AC500E1BC0CA1A00DDAFA7 /* GroupsViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		29AC50111BC0CABF00DDAFA7 /* GroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29AC50101BC0CABF00DDAFA7 /* GroupCell.swift */; settings = {ASSET_TAGS = (); }; };
 		29C1F2A61BC1A021002FEEB5 /* ExpandInSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29C1F2A51BC1A021002FEEB5 /* ExpandInSegue.swift */; settings = {ASSET_TAGS = (); }; };
-		29E0703B1BBA2B8300E9ACE2 /* HamburgerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E0703A1BBA2B8300E9ACE2 /* HamburgerViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		29E0703D1BBA2C8400E9ACE2 /* PlayersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E0703C1BBA2C8400E9ACE2 /* PlayersViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		29E070421BBA3B6900E9ACE2 /* PlayerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E070411BBA3B6900E9ACE2 /* PlayerCell.swift */; settings = {ASSET_TAGS = (); }; };
 		B9E9DDDB9F5C6874701B5E67 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E150B66EC1B84DCBC44BB45B /* libPods.a */; };
@@ -49,7 +48,6 @@
 		29AC500E1BC0CA1A00DDAFA7 /* GroupsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupsViewController.swift; sourceTree = "<group>"; };
 		29AC50101BC0CABF00DDAFA7 /* GroupCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupCell.swift; sourceTree = "<group>"; };
 		29C1F2A51BC1A021002FEEB5 /* ExpandInSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpandInSegue.swift; sourceTree = "<group>"; };
-		29E0703A1BBA2B8300E9ACE2 /* HamburgerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HamburgerViewController.swift; sourceTree = "<group>"; };
 		29E0703C1BBA2C8400E9ACE2 /* PlayersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayersViewController.swift; sourceTree = "<group>"; };
 		29E070411BBA3B6900E9ACE2 /* PlayerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerCell.swift; sourceTree = "<group>"; };
 		47437790BAC16798DBC51C4E /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -128,7 +126,6 @@
 				D9081D771BB917D2005E3F23 /* NewGameViewController.swift */,
 				D9081D791BB91888005E3F23 /* GameSessionViewController.swift */,
 				D9081D7B1BB91901005E3F23 /* GameDetailViewController.swift */,
-				29E0703A1BBA2B8300E9ACE2 /* HamburgerViewController.swift */,
 				29E0703C1BBA2C8400E9ACE2 /* PlayersViewController.swift */,
 				29AC500E1BC0CA1A00DDAFA7 /* GroupsViewController.swift */,
 			);
@@ -372,7 +369,6 @@
 				29E070421BBA3B6900E9ACE2 /* PlayerCell.swift in Sources */,
 				F33B9E001BBF556900F679A4 /* PlayerModel.swift in Sources */,
 				29E0703D1BBA2C8400E9ACE2 /* PlayersViewController.swift in Sources */,
-				29E0703B1BBA2B8300E9ACE2 /* HamburgerViewController.swift in Sources */,
 				D9081D781BB917D2005E3F23 /* NewGameViewController.swift in Sources */,
 				D970212D1BB90D9800843307 /* AppDelegate.swift in Sources */,
 				D9081D761BB91614005E3F23 /* GameCell.swift in Sources */,

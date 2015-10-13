@@ -11,7 +11,7 @@ class GameSessionModel: NSObject {
     var objectId: String? = nil
     var parentGroupGameId: String? = nil
     var date: String? = nil
-    var players: String? = nil
+    var playerIds: [String]?
     var winner: String? = nil
     var notes: String? = nil
 
@@ -20,7 +20,7 @@ class GameSessionModel: NSObject {
         if let pfObj = pfObj {
             objectId = pfObj.objectId
             date = pfObj["date"] as? String
-            players = pfObj["players"] as? String
+            playerIds = pfObj["playerIds"] as? Array
             winner = pfObj["winner"] as? String
             notes = pfObj["notes"] as? String
         }
@@ -33,7 +33,7 @@ class GameSessionModel: NSObject {
             pfObj.objectId = objectId
         }
         pfObj["date"] = date
-        pfObj["players"] = players
+        pfObj["playerIds"] = playerIds
         pfObj["winner"] = winner
         pfObj["notes"] = notes
         pfObj["parentGroupGameId"] = parentGroupGameId
@@ -44,6 +44,21 @@ class GameSessionModel: NSObject {
                 self.objectId = pfObj.objectId
             }
             onDone(error: error)
+        }
+    }
+    
+    func getPlayersWithCompletion(done: ([PlayerModel]?) -> Void) {
+        PlayerModel.loadAllMembersOfGroup(parentGroupGameId) { (results, error) -> Void in
+            var players: [PlayerModel]?
+            
+            if let results = results {
+                players = results.filter({ (player) -> Bool in
+                    let ids = self.playerIds
+                    return (ids != nil) && ids!.contains({ $0 == player.objectId })
+                })
+            }
+            
+            done(players)
         }
     }
 
