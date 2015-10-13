@@ -26,11 +26,15 @@ class GameSessionViewController: UIViewController {
     var gameSession: GameSessionModel?
     var playersInSession: [PlayerModel]? {
         didSet {
-            var nicknames = [String]()
-            playersInSession?.forEach({ (player: PlayerModel) -> () in
-                nicknames.append(player.nickname)
-            })
-            participantsTextField.text = nicknames.joinWithSeparator(", ")
+//            var nicknames = [String]()
+//            playersInSession?.forEach({ (player: PlayerModel) -> () in
+//                nicknames.append(player.nickname)
+//            })
+//            participantsTextField.text = nicknames.joinWithSeparator(", ")
+//            
+            participantsTextField.text = playersInSession?.map({ (el) -> String in
+                el.nickname
+            }).joinWithSeparator(", ")
         }
     }
     
@@ -44,7 +48,9 @@ class GameSessionViewController: UIViewController {
         if (gameSession != nil) {
             // from: GameDetailViewController
             dateTextField.text = gameSession!.date as String!
-            participantsTextField.text = gameSession!.players as String!
+            gameSession!.getPlayersWithCompletion({ (players: [PlayerModel]?) -> Void in
+                self.playersInSession = players
+            })
             winnerTextField.text = gameSession!.winner as String!
             notesTextView.text = gameSession!.notes as String!
         } // else from GamesViewController
@@ -65,7 +71,10 @@ class GameSessionViewController: UIViewController {
             }
             
             gameSession!.date = dateTextField.text
-            gameSession!.players = participantsTextField.text
+            gameSession!.playerIds = playersInSession?.map({ (player: PlayerModel) -> String in
+                player.objectId!
+            })
+            NSLog("Saving players \(gameSession!.playerIds)")
             gameSession!.winner = winnerTextField.text
             gameSession!.notes = notesTextView.text
             

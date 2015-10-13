@@ -17,7 +17,11 @@ class GameSessionCell: UITableViewCell {
     var gameSession: GameSessionModel! {
         didSet {
             dateLabel.text = gameSession.date as String!
-            participantsLabel.text = gameSession.players as String!
+            gameSession.getPlayersWithCompletion({ (players: [PlayerModel]?) -> Void in
+                self.participantsLabel.text = players?.map({ (player) -> String in
+                    player.nickname
+                }).joinWithSeparator(", ")
+            })
             winnerLabel.text = "Winner: \(gameSession.winner as String!)"
             notesLabel.text = gameSession.notes as String!
         }
