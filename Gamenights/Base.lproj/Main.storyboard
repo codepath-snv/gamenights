@@ -256,10 +256,13 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="add-user" translatesAutoresizingMaskIntoConstraints="NO" id="fdb-WW-T1R">
+                                <rect key="frame" x="115" y="158" width="12" height="12"/>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleAspectFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="top" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Gz-3B-PwU">
                                 <rect key="frame" x="16" y="153" width="288" height="59"/>
                                 <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="65" maxY="0.0"/>
-                                <state key="normal" image="edit-24">
+                                <state key="normal">
                                     <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
@@ -586,9 +589,9 @@
     </scenes>
     <resources>
         <image name="add-session" width="21" height="21"/>
+        <image name="add-user" width="42" height="42"/>
         <image name="check-1AC567-32" width="16" height="16"/>
         <image name="default_avatar" width="64" height="64"/>
-        <image name="edit-24" width="24" height="24"/>
         <image name="players" width="32" height="32"/>
         <image name="plus-icon" width="24" height="24"/>
     </resources>

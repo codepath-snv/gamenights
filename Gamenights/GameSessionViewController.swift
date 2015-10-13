@@ -41,8 +41,6 @@ class GameSessionViewController: UIViewController {
         notesTextView.layer.cornerRadius = 5
         notesTextView.layer.borderColor = UIColor(red: 204/255, green: 204/255, blue: 204/255, alpha: 1.0).CGColor
         
-        participantsTextField.enabled = false
-        
         if (gameSession != nil) {
             // from: GameDetailViewController
             dateTextField.text = gameSession!.date as String!
