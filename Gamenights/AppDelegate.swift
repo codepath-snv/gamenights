@@ -70,7 +70,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     private func setupNavigationBarAppearances() {
-        let barColor = UIColor.brownColor()
+        let barColor = UIColor(red: 26/255.0, green: 197/255.0, blue: 103/255.0, alpha: 1)
         let barTextColor = UIColor.whiteColor()
         
         UINavigationBar.appearance().tintColor = barTextColor
