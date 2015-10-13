@@ -53,11 +53,8 @@ class GameSessionModel: NSObject {
             
             if let results = results {
                 players = results.filter({ (player) -> Bool in
-                    if let ids = self.playerIds {
-                        return ids.contains({ $0 == player.objectId })
-                    } else {
-                        return false
-                    }
+                    let ids = self.playerIds
+                    return (ids != nil) && ids!.contains({ $0 == player.objectId })
                 })
             }
             

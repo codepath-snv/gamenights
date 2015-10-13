@@ -26,12 +26,6 @@ class GameSessionViewController: UIViewController {
     var gameSession: GameSessionModel?
     var playersInSession: [PlayerModel]? {
         didSet {
-//            var nicknames = [String]()
-//            playersInSession?.forEach({ (player: PlayerModel) -> () in
-//                nicknames.append(player.nickname)
-//            })
-//            participantsTextField.text = nicknames.joinWithSeparator(", ")
-//            
             participantsTextField.text = playersInSession?.map({ (el) -> String in
                 el.nickname
             }).joinWithSeparator(", ")
