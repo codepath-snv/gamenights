@@ -12,7 +12,6 @@ class GameSessionCell: UITableViewCell {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var participantsLabel: UILabel!
     @IBOutlet weak var winnerLabel: UILabel!
-    @IBOutlet weak var notesLabel: UILabel!
 
     var gameSession: GameSessionModel! {
         didSet {
@@ -23,7 +22,6 @@ class GameSessionCell: UITableViewCell {
                 }).joinWithSeparator(", ")
             })
             winnerLabel.text = "Winner: \(gameSession.winner as String!)"
-            notesLabel.text = gameSession.notes as String!
         }
     }
     
