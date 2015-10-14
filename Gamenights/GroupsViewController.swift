@@ -14,16 +14,25 @@ class GroupsViewController: UIViewController {
     @IBOutlet weak var newGroupTextField: UITextField!
     
     var groups: [GroupModel]?
+    var refreshControl: UIRefreshControl!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         addGroupButton.layer.cornerRadius = 5;
+        refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: "loadAllGroups", forControlEvents: UIControlEvents.ValueChanged)
+        tableView.insertSubview(refreshControl, atIndex: 0)
 
         // flex row height
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 150
 
+        loadAllGroups()
+    }
+
+    func loadAllGroups() {
         GroupModel.loadAll({ (groupResults, groupLoadError) -> Void in
+            self.refreshControl.endRefreshing()
             if let groupLoadError = groupLoadError {
                 NSLog("Failed to load groups \(groupLoadError)")
             } else {
@@ -31,7 +40,6 @@ class GroupsViewController: UIViewController {
                 self.tableView.reloadData()
             }
         });
-
     }
 
     override func didReceiveMemoryWarning() {

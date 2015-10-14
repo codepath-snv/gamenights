@@ -15,6 +15,7 @@ import UIKit
 class GamesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var tableView: UITableView!
     
+    var refreshControl: UIRefreshControl!
     var games = [GroupGameModel]()
     var group: GroupModel! {
         didSet {
@@ -26,6 +27,9 @@ class GamesViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: "onRefreshGroupGames", forControlEvents: UIControlEvents.ValueChanged)
+        tableView.insertSubview(refreshControl, atIndex: 0)
         
         tableView.dataSource = self
         tableView.delegate = self
@@ -35,7 +39,6 @@ class GamesViewController: UIViewController, UITableViewDataSource, UITableViewD
 
         updateGroup()
     }
-
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -59,9 +62,14 @@ class GamesViewController: UIViewController, UITableViewDataSource, UITableViewD
             }
         })
     }
-    
+
+    func onRefreshGroupGames() {
+        fetchGroupGames(group.objectId)
+    }
+
     private func fetchGroupGames(groupId: String!) {
         GroupGameModel.loadAllByParentId(groupId, onDone: { (results, error) -> Void in
+            self.refreshControl.endRefreshing()
             if (error != nil) {
                 print("Error getting group games.")
                 return

@@ -11,6 +11,7 @@ import UIKit
 class GameDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var tableView: UITableView!
     var gameSessions: [GameSessionModel]!
+    var refreshControl: UIRefreshControl!
 
     var game: GroupGameModel? {
         didSet {
@@ -23,6 +24,9 @@ class GameDetailViewController: UIViewController, UITableViewDataSource, UITable
         super.viewDidLoad()
         tableView.dataSource = self
         tableView.delegate = self
+        refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: "onRefreshGameSessions", forControlEvents: UIControlEvents.ValueChanged)
+        tableView.insertSubview(refreshControl, atIndex: 0)
         
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 150
@@ -36,8 +40,13 @@ class GameDetailViewController: UIViewController, UITableViewDataSource, UITable
         }
     }
 
+    func onRefreshGameSessions() {
+        fetchGameSessions(game!.objectId)
+    }
+
     private func fetchGameSessions(gameId: String!) {
         GameSessionModel.loadAllByParentId(gameId, onDone: { (results, error) -> Void in
+            self.refreshControl.endRefreshing()
             if (error != nil) {
                 print("Error getting game detail.")
                 return
