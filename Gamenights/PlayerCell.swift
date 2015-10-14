@@ -14,7 +14,6 @@ import UIKit
 
 class PlayerCell: UICollectionViewCell {
     @IBOutlet weak var playerImageView: UIImageView!
-    @IBOutlet weak var checkImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
 
     var delegate: PlayersViewController?
@@ -65,11 +64,9 @@ class PlayerCell: UICollectionViewCell {
         if should {
             playerImageView.alpha = 1
             playerImageView.backgroundColor = UIColor(red: 160/255, green: 244/255, blue: 245/255, alpha: 1)
-            checkImageView.alpha = 1
         } else {
             playerImageView.alpha = 0.2
             playerImageView.backgroundColor = UIColor.clearColor()
-            checkImageView.alpha = 0.2
         }
     }
 }
