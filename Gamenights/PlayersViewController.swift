@@ -33,9 +33,9 @@ class PlayersViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    @IBAction func didTapCancel(sender: AnyObject) {
-        navigationController?.popViewControllerAnimated(true)
-    }
+//    @IBAction func didTapCancel(sender: AnyObject) {
+//        navigationController?.popViewControllerAnimated(true)
+//    }
     
     @IBAction func didTapDone(sender: AnyObject) {
         // can't save until session is saved

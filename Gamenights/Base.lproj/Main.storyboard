@@ -611,7 +611,7 @@
     <resources>
         <image name="add-session" width="21" height="21"/>
         <image name="add-user" width="42" height="42"/>
-        <image name="check-1AC567-32" width="16" height="16"/>
+        <image name="check-1AC567-32" width="32" height="32"/>
         <image name="default_avatar" width="64" height="64"/>
         <image name="players" width="32" height="32"/>
     </resources>
