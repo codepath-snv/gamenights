@@ -13,13 +13,14 @@ class PlayersViewController: UIViewController {
     @IBOutlet weak var playersCollectionView: UICollectionView!
 
     var group: GroupModel!
+    var gameName: String?
     var playersInGroup = [PlayerModel]()
     var playersInSession: [PlayerModel]?
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        navigationItem.title = gameName
         if playersInSession == nil {
             // if it's not passed in by source controller
             playersInSession = [PlayerModel]()

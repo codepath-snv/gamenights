@@ -92,7 +92,7 @@
             </objects>
             <point key="canvasLocation" x="541" y="298"/>
         </scene>
-        <!--Sessions-->
+        <!--Game Detail View Controller-->
         <scene sceneID="Ev4-fK-4j6">
             <objects>
                 <viewController id="HYk-F5-iRT" customClass="GameDetailViewController" customModule="Gamenights" customModuleProvider="target" sceneMemberID="viewController">
@@ -160,7 +160,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Sessions" id="hMu-b2-OnA">
+                    <navigationItem key="navigationItem" id="hMu-b2-OnA">
                         <barButtonItem key="backBarButtonItem" title=" " id="xfB-kZ-fX0"/>
                         <barButtonItem key="rightBarButtonItem" image="add-session" id="eqe-ef-VCf">
                             <connections>
@@ -288,7 +288,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="vFO-pU-Pec">
                         <barButtonItem key="backBarButtonItem" title=" " id="gnc-hx-KtP"/>
-                        <barButtonItem key="rightBarButtonItem" title="Save" id="2Jy-8T-3VM">
+                        <barButtonItem key="rightBarButtonItem" image="check-1AC567-32" id="2Jy-8T-3VM">
                             <connections>
                                 <action selector="onAddGameSession:" destination="VCE-E1-7mB" id="wZs-Yx-In0"/>
                             </connections>
@@ -451,12 +451,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Players" id="WY7-GX-KKX">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Ago-t0-eVP">
-                            <connections>
-                                <action selector="didTapCancel:" destination="TPq-1T-lwz" id="Mbk-2d-e38"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="0l1-Rq-7P5">
+                        <barButtonItem key="rightBarButtonItem" image="check-1AC567-32" id="0l1-Rq-7P5">
                             <connections>
                                 <action selector="didTapDone:" destination="TPq-1T-lwz" id="iHC-k6-c22"/>
                             </connections>
@@ -616,6 +611,7 @@
     <resources>
         <image name="add-session" width="21" height="21"/>
         <image name="add-user" width="42" height="42"/>
+        <image name="check-1AC567-32" width="16" height="16"/>
         <image name="default_avatar" width="64" height="64"/>
         <image name="players" width="32" height="32"/>
     </resources>
