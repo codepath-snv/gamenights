@@ -19,7 +19,7 @@ class GameSessionViewController: UIViewController {
     @IBOutlet weak var winnerTextField: UITextField!
     @IBOutlet weak var notesTextView: UITextView!
 
-    var groupId: String!    // required - set by source view controller
+    var game: GroupGameModel! // required - set by source view controller
     var group: GroupModel?  // computed from groupId
     
     // gameSession is only available if coming from GameDetailViewController
@@ -47,6 +47,8 @@ class GameSessionViewController: UIViewController {
             })
             winnerTextField.text = gameSession!.winner as String!
             notesTextView.text = gameSession!.notes as String!
+            
+            print("Editing Game Session with id: \(gameSession!.objectId)")
         } // else from GamesViewController
         
         // need to set group
@@ -58,10 +60,10 @@ class GameSessionViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    @IBAction func onAddGameSession(sender: AnyObject) {
+    @IBAction func onSaveGameSession(sender: AnyObject) {
         if (dateTextField.text != "" || participantsTextField.text != "" || winnerTextField.text != "" || notesTextView.text != "") {
             if (gameSession == nil) {
-                gameSession = GameSessionModel(parentGroupGameId: groupId!, pfObj: nil)
+                gameSession = GameSessionModel(parentGroupGameId: game.objectId!, pfObj: nil)
             }
             
             gameSession!.date = dateTextField.text
@@ -71,6 +73,8 @@ class GameSessionViewController: UIViewController {
             NSLog("Saving players \(gameSession!.playerIds)")
             gameSession!.winner = winnerTextField.text
             gameSession!.notes = notesTextView.text
+            
+            print("Saving Game Session with id: \(gameSession!.objectId) game id: \(gameSession!.parentGroupGameId)")
             
             gameSession!.save({ (error) -> Void in
                 if error != nil {
@@ -102,9 +106,9 @@ class GameSessionViewController: UIViewController {
             if error != nil {
                 NSLog("Network error: can't get groups")
             } else {
-                self.group = GroupModel.findById(results, id: self.groupId)
+                self.group = GroupModel.findById(results, id: self.game.parentGroupId)
                 if self.group == nil {
-                    let error = GameNightsError.InvalidGroup(id: self.groupId)
+                    let error = GameNightsError.InvalidGroup(id: self.game.parentGroupId!)
                     NSLog("!!!!\(error)")
                 }
             }

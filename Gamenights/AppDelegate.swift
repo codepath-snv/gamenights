@@ -155,7 +155,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                             GroupModel.loadAll( { (results: [GroupModel]?, error: NSError?) -> Void in
                                                 print("Loaded \(results!.count) groupModels (after deleting test crap)")
                                                 for result in results! {
-                                                    print("  group named '\(result.name!)' with id \(result.objectId)'")
+                                                    print("  group named '\(result.name!)' with id \(result.objectId!)'")
                                                 }
                                             })
                                         })

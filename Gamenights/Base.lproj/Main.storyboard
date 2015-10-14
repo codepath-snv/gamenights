@@ -290,7 +290,7 @@
                         <barButtonItem key="backBarButtonItem" title=" " id="gnc-hx-KtP"/>
                         <barButtonItem key="rightBarButtonItem" title="Save" id="2Jy-8T-3VM">
                             <connections>
-                                <action selector="onAddGameSession:" destination="VCE-E1-7mB" id="wZs-Yx-In0"/>
+                                <action selector="onSaveGameSession:" destination="VCE-E1-7mB" id="oxW-KQ-WMy"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

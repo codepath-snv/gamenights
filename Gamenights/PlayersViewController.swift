@@ -59,7 +59,7 @@ class PlayersViewController: UIViewController {
     */
     
     private func getPlayersBy(group: GroupModel) {
-        print("Loading players for group \(group.objectId)")
+        print("Loading players for group \(group.objectId!)")
         PlayerModel.loadAllMembersOfGroup(group.objectId) { (results, error) -> Void in
             if (error != nil || results == nil) {
                 print("Failed to load players for group \(group.objectId)")
