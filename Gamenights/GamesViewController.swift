@@ -14,6 +14,7 @@ import UIKit
 
 class GamesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var loadingIndicatorView: UIActivityIndicatorView!
     
     var refreshControl: UIRefreshControl!
     var games = [GroupGameModel]()
@@ -45,9 +46,11 @@ class GamesViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     private func updateGroup() {
+        loadingIndicatorView.startAnimating()
         let defaults = NSUserDefaults.standardUserDefaults()
         let id = defaults.objectForKey(Constants.UserDefaults.KEY_DEFAULT_GROUP_ID) as? String
         GroupModel.loadAll({ (groupResults, groupLoadError) -> Void in
+            self.loadingIndicatorView.stopAnimating()
             if let groupLoadError = groupLoadError {
                 NSLog("Failed to load groups \(groupLoadError)")
             } else {
