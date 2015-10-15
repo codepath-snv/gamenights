@@ -176,6 +176,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="loadingIndicatorView" destination="bHB-uD-GQI" id="mB2-L4-gYN"/>
                         <outlet property="tableView" destination="ley-7T-dkF" id="RIz-4y-art"/>
                     </connections>
                 </viewController>

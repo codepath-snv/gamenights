@@ -10,12 +10,15 @@ import UIKit
 
 class GameDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var loadingIndicatorView: UIActivityIndicatorView!
+    
     var gameSessions: [GameSessionModel]!
     var refreshControl: UIRefreshControl!
 
     var game: GroupGameModel? {
         didSet {
             view.layoutIfNeeded()
+            loadingIndicatorView.startAnimating()
             fetchGameSessions(game!.objectId)
         }
     }
@@ -39,6 +42,7 @@ class GameDetailViewController: UIViewController, UITableViewDataSource, UITable
     override func viewWillAppear(animated: Bool) {
         print("Fetching Games Sessions for game id: \(game!.objectId!)")
         if game != nil {
+            loadingIndicatorView.startAnimating()
             fetchGameSessions(game!.objectId)
         }
     }
@@ -49,6 +53,7 @@ class GameDetailViewController: UIViewController, UITableViewDataSource, UITable
 
     private func fetchGameSessions(gameId: String!) {
         GameSessionModel.loadAllByParentId(gameId, onDone: { (results, error) -> Void in
+            self.loadingIndicatorView.stopAnimating()
             self.refreshControl.endRefreshing()
             if (error != nil) {
                 print("Error getting game detail.")
