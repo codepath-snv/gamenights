@@ -14,7 +14,6 @@ import UIKit
 
 class PlayerCell: UICollectionViewCell {
     @IBOutlet weak var playerImageView: UIImageView!
-    @IBOutlet weak var checkImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
 
     var delegate: PlayersViewController?
@@ -53,7 +52,7 @@ class PlayerCell: UICollectionViewCell {
     func didTapPlayerImage(tapGestureRecognizer: UITapGestureRecognizer) {
         selected = !selected
         
-        markPlayer(selected)
+        animatePlayer(selected)
         delegate?.playerCell(self, didTapPlayer: selected)
     }
     
@@ -64,12 +63,32 @@ class PlayerCell: UICollectionViewCell {
     private func markPlayer(should: Bool) {
         if should {
             playerImageView.alpha = 1
-            playerImageView.backgroundColor = UIColor(red: 160/255, green: 244/255, blue: 245/255, alpha: 1)
-            checkImageView.alpha = 1
         } else {
             playerImageView.alpha = 0.2
-            playerImageView.backgroundColor = UIColor.clearColor()
-            checkImageView.alpha = 0.2
+        }
+    }
+    
+    private func animatePlayer(should: Bool) {
+        let duration = 0.15
+        let image = playerImageView
+        
+        image.backgroundColor = UIColor.clearColor()
+        if should {
+            image.transform = CGAffineTransformMakeScale(0.1,0.1)
+            UIView.animateWithDuration(duration, delay: 0, options: UIViewAnimationOptions.CurveEaseOut, animations: { () -> Void in
+                image.transform = CGAffineTransformMakeScale(1.0, 1.0)
+                }, completion: { (done) -> Void in
+                    image.transform = CGAffineTransformIdentity
+                    self.markPlayer(should)
+            })
+        } else {
+            image.transform = CGAffineTransformMakeScale(0.1,0.1)
+            UIView.animateWithDuration(duration, delay: 0, options: UIViewAnimationOptions.CurveEaseIn, animations: { () -> Void in
+                image.transform = CGAffineTransformMakeScale(1.0, 1.0)
+                }, completion: { (done) -> Void in
+                    image.transform = CGAffineTransformIdentity
+                    self.markPlayer(should)
+            })
         }
     }
 }
