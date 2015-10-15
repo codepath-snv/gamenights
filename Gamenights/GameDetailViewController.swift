@@ -22,6 +22,8 @@ class GameDetailViewController: UIViewController, UITableViewDataSource, UITable
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.title = game?.name
+
         tableView.dataSource = self
         tableView.delegate = self
         refreshControl = UIRefreshControl()
@@ -35,6 +37,7 @@ class GameDetailViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     override func viewWillAppear(animated: Bool) {
+        print("Fetching Games Sessions for game id: \(game!.objectId!)")
         if game != nil {
             fetchGameSessions(game!.objectId)
         }
@@ -81,14 +84,13 @@ class GameDetailViewController: UIViewController, UITableViewDataSource, UITable
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let gameSessionViewController = segue.destinationViewController as! GameSessionViewController
+
+        gameSessionViewController.game = game!
+        
         switch (segue.identifier!) {
-        case "AddGameSessionSegue":
-            let gameSessionViewController = segue.destinationViewController as! GameSessionViewController
-            gameSessionViewController.groupId = game!.parentGroupId
         case "EditGameSessionSegue":
             let cell = sender as! GameSessionCell
-            let gameSessionViewController = segue.destinationViewController as! GameSessionViewController
-            gameSessionViewController.groupId = game!.parentGroupId
             gameSessionViewController.gameSession = cell.gameSession
         default:
             NSLog("default segue")
