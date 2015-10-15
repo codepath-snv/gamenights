@@ -27,8 +27,6 @@ class GroupsViewController: UIViewController {
         // flex row height
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 150
-        
-        loadingIndicatorView.hidesWhenStopped = true
 
         loadAllGroups()
     }
