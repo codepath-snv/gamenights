@@ -532,6 +532,9 @@
                                     <outlet property="delegate" destination="VIa-2P-h2A" id="uDe-Vj-Di8"/>
                                 </connections>
                             </tableView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="UTS-7i-rPD">
+                                <rect key="frame" x="0.0" y="274" width="320" height="20"/>
+                            </activityIndicatorView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="is0-5z-cl6">
                                 <rect key="frame" x="0.0" y="64" width="320" height="47"/>
                                 <subviews>
@@ -580,6 +583,7 @@
                     <navigationItem key="navigationItem" title="Groups" id="1r1-We-PQW"/>
                     <connections>
                         <outlet property="addGroupButton" destination="7Uw-q1-ftu" id="cTl-Nu-TMU"/>
+                        <outlet property="loadingIndicatorView" destination="UTS-7i-rPD" id="Yoq-SJ-kbw"/>
                         <outlet property="newGroupTextField" destination="2jH-Qz-YbK" id="1lv-Yx-1JQ"/>
                         <outlet property="tableView" destination="krp-iy-RZM" id="xsV-nJ-L54"/>
                     </connections>

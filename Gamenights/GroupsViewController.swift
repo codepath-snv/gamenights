@@ -12,6 +12,7 @@ class GroupsViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var addGroupButton: UIButton!
     @IBOutlet weak var newGroupTextField: UITextField!
+    @IBOutlet weak var loadingIndicatorView: UIActivityIndicatorView!
     
     var groups: [GroupModel]?
     var refreshControl: UIRefreshControl!
@@ -26,12 +27,16 @@ class GroupsViewController: UIViewController {
         // flex row height
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 150
+        
+        loadingIndicatorView.hidesWhenStopped = true
 
         loadAllGroups()
     }
 
     func loadAllGroups() {
+        loadingIndicatorView.startAnimating()
         GroupModel.loadAll({ (groupResults, groupLoadError) -> Void in
+            self.loadingIndicatorView.stopAnimating()
             self.refreshControl.endRefreshing()
             if let groupLoadError = groupLoadError {
                 NSLog("Failed to load groups \(groupLoadError)")
