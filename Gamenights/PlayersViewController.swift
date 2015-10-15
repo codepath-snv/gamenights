@@ -13,13 +13,14 @@ class PlayersViewController: UIViewController {
     @IBOutlet weak var playersCollectionView: UICollectionView!
 
     var group: GroupModel!
+    var gameName: String?
     var playersInGroup = [PlayerModel]()
     var playersInSession: [PlayerModel]?
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        navigationItem.title = gameName
         if playersInSession == nil {
             // if it's not passed in by source controller
             playersInSession = [PlayerModel]()
@@ -32,9 +33,9 @@ class PlayersViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    @IBAction func didTapCancel(sender: AnyObject) {
-        navigationController?.popViewControllerAnimated(true)
-    }
+//    @IBAction func didTapCancel(sender: AnyObject) {
+//        navigationController?.popViewControllerAnimated(true)
+//    }
     
     @IBAction func didTapDone(sender: AnyObject) {
         // can't save until session is saved

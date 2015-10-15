@@ -21,6 +21,8 @@ class GameDetailViewController: UIViewController, UITableViewDataSource, UITable
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.title = game?.name
+
         tableView.dataSource = self
         tableView.delegate = self
         
@@ -73,14 +75,13 @@ class GameDetailViewController: UIViewController, UITableViewDataSource, UITable
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let gameSessionViewController = segue.destinationViewController as! GameSessionViewController
+
+        gameSessionViewController.game = game!
+        
         switch (segue.identifier!) {
-        case "AddGameSessionSegue":
-            let gameSessionViewController = segue.destinationViewController as! GameSessionViewController
-            gameSessionViewController.game = game!
         case "EditGameSessionSegue":
             let cell = sender as! GameSessionCell
-            let gameSessionViewController = segue.destinationViewController as! GameSessionViewController
-            gameSessionViewController.game = game!
             gameSessionViewController.gameSession = cell.gameSession
         default:
             NSLog("default segue")

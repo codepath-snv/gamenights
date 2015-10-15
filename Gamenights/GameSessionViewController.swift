@@ -34,6 +34,8 @@ class GameSessionViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navigationItem.title = game.name
 
         notesTextView.layer.borderWidth = 0.5
         notesTextView.layer.cornerRadius = 5
@@ -95,6 +97,7 @@ class GameSessionViewController: UIViewController {
         let destinationViewController = segue.destinationViewController as! PlayersViewController
         
         destinationViewController.group = group
+        destinationViewController.gameName = game.name
         if let playersInSession = playersInSession {
             NSLog("passing players of session to next view \(playersInSession)")
             destinationViewController.playersInSession = playersInSession
