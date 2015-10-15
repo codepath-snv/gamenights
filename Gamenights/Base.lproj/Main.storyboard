@@ -405,6 +405,10 @@
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="35" minY="30" maxX="35" maxY="30"/>
                                 </collectionViewFlowLayout>
+                                <activityIndicatorView key="backgroundView" hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" id="71K-OW-ZU6">
+                                    <rect key="frame" x="0.0" y="-64" width="320" height="568"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                </activityIndicatorView>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PlayerCell" id="Sfm-0U-oMD" userLabel="Player Cell" customClass="PlayerCell" customModule="Gamenights" customModuleProvider="target">
                                         <rect key="frame" x="35" y="94" width="108" height="118"/>
@@ -466,6 +470,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="loadingIndicatorView" destination="71K-OW-ZU6" id="Jgo-K9-1cq"/>
                         <outlet property="playersCollectionView" destination="M9U-Nh-cpV" id="9h8-bH-aae"/>
                     </connections>
                 </viewController>
