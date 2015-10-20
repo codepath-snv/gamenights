@@ -29,8 +29,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="81.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="249" text="Notes notes notes" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SOr-cX-82B">
-                                                    <rect key="frame" x="75" y="28" width="118" height="17"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="249" text="Notes notes notes" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SOr-cX-82B">
+                                                    <rect key="frame" x="75" y="28" width="237" height="37.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -55,10 +55,12 @@
                                                 <constraint firstItem="Bd8-ro-mJQ" firstAttribute="leading" secondItem="q8K-Aj-gxj" secondAttribute="trailing" constant="8" id="KTL-gO-n0J"/>
                                                 <constraint firstItem="Bd8-ro-mJQ" firstAttribute="top" secondItem="ytd-Ye-sdg" secondAttribute="top" constant="8" id="LYr-e4-GpU"/>
                                                 <constraint firstItem="q8K-Aj-gxj" firstAttribute="top" secondItem="ytd-Ye-sdg" secondAttribute="topMargin" id="Lw0-U9-SME"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="SOr-cX-82B" secondAttribute="bottom" constant="8" id="U9k-ef-uW8"/>
                                                 <constraint firstItem="q8K-Aj-gxj" firstAttribute="leading" secondItem="ytd-Ye-sdg" secondAttribute="leadingMargin" id="cZZ-ux-1uc"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="Bd8-ro-mJQ" secondAttribute="trailing" id="evJ-29-36N"/>
                                                 <constraint firstItem="SOr-cX-82B" firstAttribute="top" secondItem="Bd8-ro-mJQ" secondAttribute="bottom" id="h0U-0m-PfH"/>
                                                 <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="SOr-cX-82B" secondAttribute="bottom" constant="8" id="utw-5R-h0s"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="SOr-cX-82B" secondAttribute="trailing" id="zX0-nF-4AW"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
