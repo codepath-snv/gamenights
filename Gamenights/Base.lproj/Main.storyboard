@@ -67,6 +67,7 @@
                                         </tableViewCellContentView>
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <connections>
+                                            <outlet property="gameIconImageView" destination="q8K-Aj-gxj" id="zoA-pi-7LM"/>
                                             <outlet property="gameLabel" destination="Bd8-ro-mJQ" id="VWk-3P-bvB"/>
                                             <outlet property="notesLabel" destination="SOr-cX-82B" id="un6-AT-2iU"/>
                                             <segue destination="HYk-F5-iRT" kind="push" identifier="GroupGameSegue" id="Gti-Fj-R7x"/>

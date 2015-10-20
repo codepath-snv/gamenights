@@ -11,11 +11,13 @@ import UIKit
 class GameCell: UITableViewCell {
     @IBOutlet weak var gameLabel: UILabel!
     @IBOutlet weak var notesLabel: UILabel!
+    @IBOutlet weak var gameIconImageView: UIImageView!
 
     var game: GroupGameModel! {
         didSet {
             gameLabel.text = game.name as String!
             notesLabel.text = game.notes as String!
+            self.setIconImage()
         }
     }
     
@@ -32,4 +34,7 @@ class GameCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
+    func setIconImage() {
+        gameIconImageView.image = UIImage(named: "game-icon-unknown")
+    }
 }
