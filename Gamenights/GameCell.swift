@@ -35,6 +35,40 @@ class GameCell: UITableViewCell {
     }
 
     func setIconImage() {
-        gameIconImageView.image = UIImage(named: "game-icon-unknown")
+        var key = "unknown"
+        if let text = gameLabel.text {
+            if (text.lowercaseString.rangeOfString("ticket to ride") != nil) {
+                key = "ticket-to-ride"
+            } else if (text.lowercaseString.rangeOfString("munchkin") != nil) {
+                key = "munchkin"
+            } else if (text.lowercaseString.rangeOfString("poker") != nil) {
+                key = "poker"
+            } else if (text.lowercaseString.rangeOfString("catan") != nil) {
+                key = "catan"
+            } else if (text.lowercaseString.rangeOfString("beer pong") != nil) {
+                key = "beer-pong"
+            } else if (text.lowercaseString.rangeOfString("dominion") != nil) {
+                key = "dominion"
+            } else if (text.lowercaseString.rangeOfString("chess") != nil) {
+                key = "chess"
+            } else if (text.lowercaseString.rangeOfString("last night on earth") != nil) {
+                key = "last-night-on-earth"
+            } else if (text.lowercaseString.rangeOfString("bang!") != nil) {
+                key = "bang"
+            } else if (text.lowercaseString.rangeOfString("uno") != nil) {
+                key = "uno"
+            } else if (text.lowercaseString.rangeOfString("monopoly") != nil) {
+                key = "monopoly"
+            } else if (text.lowercaseString.rangeOfString("mage knight") != nil) {
+                key = "mage-knight"
+            } else if (text.lowercaseString.rangeOfString("carcassone") != nil) {
+                key = "carcassone"
+            } else if (text.lowercaseString.rangeOfString("risk") != nil) {
+                key = "risk"
+            } else if (text.lowercaseString.rangeOfString("go") != nil) {
+                key = "go"
+            }
+        }
+        gameIconImageView.image = UIImage(named: "game-icon-\(key)")
     }
 }
