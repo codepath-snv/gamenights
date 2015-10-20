@@ -9,7 +9,7 @@ import UIKit
 
 class GroupModel: NSObject {
     var objectId: String? = nil
-    var name: String? = "New Group"
+    var name: String? = ""
 
     init(_ pfObj: PFObject?) {
         if let pfObj = pfObj {

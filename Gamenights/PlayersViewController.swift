@@ -9,8 +9,8 @@
 import UIKit
 
 class PlayersViewController: UIViewController {
-
     @IBOutlet weak var playersCollectionView: UICollectionView!
+    @IBOutlet weak var loadingIndicatorView: UIActivityIndicatorView!
 
     var group: GroupModel!
     var gameName: String?
@@ -60,8 +60,10 @@ class PlayersViewController: UIViewController {
     */
     
     private func getPlayersBy(group: GroupModel) {
+        loadingIndicatorView.startAnimating()
         print("Loading players for group \(group.objectId!)")
         PlayerModel.loadAllMembersOfGroup(group.objectId) { (results, error) -> Void in
+            self.loadingIndicatorView.stopAnimating()
             if (error != nil || results == nil) {
                 print("Failed to load players for group \(group.objectId)")
                 return
