@@ -10,7 +10,7 @@ import UIKit
 class GroupGameModel: NSObject {
     var objectId: String? = nil
     var parentGroupId: String? = nil
-    var name: String? = "New Game"
+    var name: String? = ""
     var notes: String? = ""
 
     init(parentGroupId: String?, pfObj: PFObject?) {

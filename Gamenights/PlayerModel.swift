@@ -10,8 +10,8 @@ import UIKit
 class PlayerModel: NSObject {
     var objectId: String? = nil
     var memberOfGroupIds = [String]()
-    var fullname = "Player"
-    var nickname = "Player"
+    var fullname = ""
+    var nickname = ""
 
     init(_ pfObj: PFObject?) {
         if let pfObj = pfObj {
