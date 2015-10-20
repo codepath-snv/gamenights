@@ -26,6 +26,8 @@ class GameCell: UITableViewCell {
         // Initialization code
         gameLabel.preferredMaxLayoutWidth = gameLabel.frame.size.width
         notesLabel.preferredMaxLayoutWidth = notesLabel.frame.size.width
+        gameIconImageView.layer.cornerRadius = 5;
+        gameIconImageView.clipsToBounds = true
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
