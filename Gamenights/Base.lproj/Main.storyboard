@@ -123,7 +123,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="114" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="ley-7T-dkF">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="114" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="ley-7T-dkF">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -178,6 +178,12 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ley-7T-dkF" firstAttribute="top" secondItem="rkx-n9-cQ0" secondAttribute="top" id="0xf-X7-ukc"/>
+                            <constraint firstAttribute="trailing" secondItem="ley-7T-dkF" secondAttribute="trailing" id="2V8-iS-S6B"/>
+                            <constraint firstItem="ley-7T-dkF" firstAttribute="leading" secondItem="rkx-n9-cQ0" secondAttribute="leading" id="GrQ-7a-UD9"/>
+                            <constraint firstAttribute="bottom" secondItem="ley-7T-dkF" secondAttribute="bottom" id="fnZ-xc-H56"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="hMu-b2-OnA">
                         <barButtonItem key="backBarButtonItem" title=" " id="xfB-kZ-fX0"/>
