@@ -30,7 +30,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="249" text="Notes notes notes" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SOr-cX-82B">
-                                                    <rect key="frame" x="75" y="35" width="118" height="17"/>
+                                                    <rect key="frame" x="75" y="35" width="237" height="17"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -45,7 +45,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" text="Game Name" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bd8-ro-mJQ">
-                                                    <rect key="frame" x="75" y="8" width="93.5" height="19.5"/>
+                                                    <rect key="frame" x="75" y="8" width="237" height="19.5"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -55,7 +55,9 @@
                                                 <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="q8K-Aj-gxj" secondAttribute="bottom" id="9AE-MU-phr"/>
                                                 <constraint firstItem="q8K-Aj-gxj" firstAttribute="leading" secondItem="ytd-Ye-sdg" secondAttribute="leadingMargin" id="FNV-H9-AJE"/>
                                                 <constraint firstItem="Bd8-ro-mJQ" firstAttribute="top" secondItem="ytd-Ye-sdg" secondAttribute="topMargin" id="GGR-Ww-wRB"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="Bd8-ro-mJQ" secondAttribute="trailing" id="H3S-EN-HWZ"/>
                                                 <constraint firstItem="SOr-cX-82B" firstAttribute="leading" secondItem="q8K-Aj-gxj" secondAttribute="trailing" constant="8" id="TqJ-fT-5FF"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="SOr-cX-82B" secondAttribute="trailing" id="Ufd-f0-qhf"/>
                                                 <constraint firstItem="Bd8-ro-mJQ" firstAttribute="leading" secondItem="q8K-Aj-gxj" secondAttribute="trailing" constant="8" id="aaO-up-BJ6"/>
                                                 <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="SOr-cX-82B" secondAttribute="bottom" id="byY-Ey-USu"/>
                                                 <constraint firstItem="SOr-cX-82B" firstAttribute="top" secondItem="Bd8-ro-mJQ" secondAttribute="bottom" constant="8" id="dG6-Yt-JUS"/>
